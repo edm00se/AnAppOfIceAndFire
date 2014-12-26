@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:this.data>
+		<xp:dominoView var="houses" viewName="houses" />
+	</xp:this.data>
+	<xc:navbar />
+	<xp:div id="uiContainer" styleClass="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<xp:text value="Houses of the Seven Kingdoms of Westeros" />
+						</h3>
+					</div>
+					<table class="table table-striped">
+						<tbody>
+							<xp:repeat id="houseRepeat" var="eachHouse" value="#{houses}" rows="5">
+								<tr>
+									<td>
+										<xp:link text="#{eachHouse.name}" value="/house.xsp?id=#{javascript:return eachHouse.getUniversalID();}" />
+										<xp:link styleClass="btn btn-danger pull-right">
+											<xp:eventHandler event="onclick" action="#{javascript:eachHouse.getDocument().remove(true);}" refreshMode="partial"
+												refreshId="uiContainer" />
+											<i class="fa fa-lg fa-trash-o" />
+										</xp:link>
+									</td>
+								</tr>
+							</xp:repeat>
+						</tbody>
+					</table>
+					<div class="panel-footer">
+						<ul class="nav nav-pills nav-justified">
+							<li>
+								<xp:pager id="pager1" for="houseRepeat" partialRefresh="true">
+									<xp:pagerControl type="Previous" id="pagerControl1" value="Previous" />
+								</xp:pager>
+							</li>
+							<li>
+								<xp:pager id="pager2" for="houseRepeat" partialRefresh="true">
+									<xp:pagerControl type="Next" id="pagerControl2" value="Next" />
+								</xp:pager>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xp:div>
+</xp:view>

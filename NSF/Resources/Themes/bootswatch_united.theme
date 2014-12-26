@@ -1,0 +1,5 @@
+<theme extends="bootstrap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd">
+	<resources>
+		<styleSheet href="http://netdna.bootstrapcdn.com/bootswatch/3.0.3/united/bootstrap.min.css" />
+	</resources>
+</theme>

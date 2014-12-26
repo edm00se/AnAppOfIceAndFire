@@ -1,0 +1,16 @@
+<theme extends="bootswatch_united" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd">
+	<resources>
+		<styleSheet href="/howyabean.css" />
+	</resources>
+	<control override="false">
+		<name>ViewRoot</name>
+		<property>
+			<name>pageIcon</name>
+			<value>/$icon</value>
+		</property>
+		<property>
+			<name>pageTitle</name>
+			<value>#{database.title}</value>
+		</property>
+	</control>
+</theme>

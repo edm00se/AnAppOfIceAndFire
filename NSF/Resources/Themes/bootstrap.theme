@@ -1,0 +1,49 @@
+<theme extends="fontawesome" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd">
+	<resources>
+		<styleSheet href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+		<script clientSide="true" src="http://code.jquery.com/jquery-2.0.3.min.js" />
+		<script clientSide="true" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" />
+		<metaData name="viewport" content="width=device-width, initial-scale=1.0" />
+	</resources>
+	<control>
+		<name>Button.Command</name>
+		<property mode="concat">
+			<name>styleClass</name>
+			<value>btn</value>
+		</property>
+	</control>
+	<!-- Set all inputs to bootstrap styling -->
+	<control>
+		<name>InputField.EditBox</name>
+		<property mode="concat">
+			<name>styleClass</name>
+			<value>form-control</value>
+		</property>
+		<property mode="override">
+			<name>showReadonlyAsDisabled</name>
+			<value>#{true}</value>
+		</property>
+	</control>
+	<control>
+		<name>InputField.TextArea</name>
+		<property mode="concat">
+			<name>styleClass</name>
+			<value>form-control</value>
+		</property>
+		<property mode="override">
+			<name>showReadonlyAsDisabled</name>
+			<value>#{true}</value>
+		</property>
+	</control>
+	<control>
+		<name>ComboBox</name>
+		<property mode="concat">
+			<name>styleClass</name>
+			<value>form-control</value>
+		</property>
+		<property mode="override">
+			<name>showReadonlyAsDisabled</name>
+			<value>#{true}</value>
+		</property>
+	</control>
+</theme>

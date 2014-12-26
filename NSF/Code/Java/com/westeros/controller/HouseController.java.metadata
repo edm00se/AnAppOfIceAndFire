@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="86257DB9000E2CB0" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="216" sequence="5" unid="5577E01E1F65077886257DB9007DC0D2">
+<created><datetime>20141225T165333,62-06</datetime></created>
+<modified><datetime>20141225T165503,86-06</datetime></modified>
+<revised><datetime>20141225T165503,85-06</datetime></revised>
+<lastaccessed><datetime>20141225T165503,85-06</datetime></lastaccessed>
+<addedtofile><datetime>20141225T165333,62-06</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/westeros/controller/HouseController.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/westeros/controller/HouseController.java</text></item></note>
