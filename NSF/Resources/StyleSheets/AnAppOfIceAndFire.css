@@ -1,0 +1,6 @@
+body {
+	padding-top: 70px; /* support for navbar-fixed-top */
+}
+.navbar-nav.navbar-right:last-child {
+	margin-right: inherit;
+}

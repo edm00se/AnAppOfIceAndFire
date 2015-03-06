@@ -1,60 +1,65 @@
 <?xml version='1.0' encoding='utf-8'?>
 <form name='house' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
- replicaid='86257DB9000E2CB0' publicaccess='false' designerversion='8.5.3'
+ replicaid='88257E000001FF59' publicaccess='false' designerversion='8.5.3'
  renderpassthrough='true'>
-<noteinfo noteid='1ea' unid='48A425C44E1B808586257DB90078880D' sequence='3'>
+<noteinfo noteid='1a6' unid='48A425C44E1B808586257DB90078880D' sequence='3'>
 <created><datetime>20141225T155631,49-06</datetime></created>
-<modified><datetime>20141225T162111,41-06</datetime></modified>
-<revised><datetime>20141225T162111,40-06</datetime></revised>
-<lastaccessed><datetime>20141225T162111,40-06</datetime></lastaccessed>
-<addedtofile><datetime>20141225T155631,86-06</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
-<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby>
+<modified><datetime>20150305T193140,37-08</datetime></modified>
+<revised><datetime>20150305T193140,36-08</datetime></revised>
+<lastaccessed><datetime>20150305T193140,37-08</datetime></lastaccessed>
+<addedtofile><datetime>20150305T162153,26-08</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
 <body><richtext>
 <pardef id='1'/>
 <par def='1'><field type='text' kind='editable' name='name'/><compositedata
  type='98' prevtype='65418' nexttype='222' afterparcount='7' containertype='65418'
  aftercontainercount='1' afterbegincount='3'>
 Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text'
- kind='editable' name='description'/><compositedata type='98' prevtype='65418'
- nexttype='222' afterparcount='13' containertype='65418' aftercontainercount='1'
- afterbegincount='3'>
-Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text' kind='editable' name='coatOfArms'/><compositedata
- type='98' prevtype='65418' nexttype='222' afterparcount='19' containertype='65418'
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='description'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
  aftercontainercount='1' afterbegincount='3'>
 Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text'
- kind='editable' name='words'/><compositedata type='98' prevtype='65418' nexttype='222'
- afterparcount='25' containertype='65418' aftercontainercount='1' afterbegincount='3'>
-Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field
- type='text' kind='editable' name='seat'/><compositedata type='98' prevtype='65418'
- nexttype='222' afterparcount='31' containertype='65418' aftercontainercount='1'
- afterbegincount='3'>
-Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text' kind='editable' name='currentLord'/><compositedata
- type='98' prevtype='65418' nexttype='222' afterparcount='37' containertype='65418'
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='coatOfArms'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
  aftercontainercount='1' afterbegincount='3'>
 Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text'
- kind='editable' name='region'/><compositedata type='98' prevtype='65418'
- nexttype='222' afterparcount='43' containertype='65418' aftercontainercount='1'
- afterbegincount='3'>
-Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text' kind='editable' name='title'/><compositedata
- type='98' prevtype='65418' nexttype='222' afterparcount='49' containertype='65418'
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='words'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
  aftercontainercount='1' afterbegincount='3'>
 Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field type='text'
- kind='editable' name='heir'/><compositedata type='98' prevtype='65418' nexttype='222'
- afterparcount='55' containertype='65418' aftercontainercount='1' afterbegincount='3'>
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='seat'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
 Yg4BAIQAAAAAAAAAAAA=
-</compositedata><field
- type='text' kind='editable' name='overlord'/><compositedata type='98' prevtype='65418'
- nexttype='222' afterparcount='61' containertype='65418' aftercontainercount='1'
- afterbegincount='3'>
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='currentLord'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='region'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='title'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='heir'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='overlord'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
 Yg4BAIQAAAAAAAAAAAA=
 </compositedata></par></richtext></body>
 <item name='$$ScriptName' summary='false' sign='true'><text>house</text></item></form>
