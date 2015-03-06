@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <view name='houses' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
- replicaid='86257DB9000E2CB0' showinmenu='false' publicaccess='false' designerversion='8.5.3'
+ replicaid='88257E000001FF59' showinmenu='false' publicaccess='false' designerversion='8.5.3'
  unreadmarks='none' onopengoto='lastopened' onrefresh='displayindicator' headers='beveled'
  opencollapsed='false' showresponsehierarchy='true' showmargin='true' shrinkrows='false'
  extendlastcolumn='false' showhierarchies='false' unreadcolor='black' rowlinecount='1'
@@ -8,18 +8,18 @@
  boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
  allowcustomizations='false' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
  uniquekeys='false'>
-<noteinfo noteid='1ee' unid='045E775D8A3E562086257DB900789293' sequence='5'>
+<noteinfo noteid='166' unid='045E775D8A3E562086257DB900789293' sequence='3'>
 <created><datetime>20141225T155658,43-06</datetime></created>
-<modified><datetime>20141225T155747,41-06</datetime></modified>
-<revised><datetime>20141225T155747,40-06</datetime></revised>
-<lastaccessed><datetime>20141225T161241,91-06</datetime></lastaccessed>
-<addedtofile><datetime>20141225T155658,43-06</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
-<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby><code event='selection'><formula
->SELECT Form = "house"</formula></code>
+<modified><datetime>20150305T193243,61-08</datetime></modified>
+<revised><datetime>20150305T193243,60-08</datetime></revised>
+<lastaccessed><datetime>20150305T193243,61-08</datetime></lastaccessed>
+<addedtofile><datetime>20150305T162151,76-08</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby><code
+ event='selection'><formula>SELECT Form = "house"</formula></code>
 <actionbar bgcolor='#f0f0f0' bordercolor='black'>
 <actionbuttonstyle bgcolor='#f0f0f0'/><font color='system'/><border style='solid'
- width='0px 0px 1px'/>
+ width='0px 0px 1px' color='system'/>
 <action title='Categori_ze' showinbar='false' systemcommand='categorize'/>
 <action title='_Edit Document' showinbar='false' systemcommand='edit'/>
 <action title='_Send Document' showinbar='false' systemcommand='send'/>
@@ -42,7 +42,10 @@
 <column sort='ascending' hidedetailrows='false' itemname='name' width='10'
  resizable='true' separatemultiplevalues='false' sortnoaccent='true' sortnocase='true'
  showaslinks='false'><columnheader title='name'><font size='9pt' style='bold'/></columnheader></column>
-<column sort='ascending' hidedetailrows='false' itemname='description' width='10'
+<column sort='ascending' hidedetailrows='false' itemname='description' width='16.2500'
  resizable='true' separatemultiplevalues='false' sortnoaccent='true' sortnocase='true'
- showaslinks='false'><columnheader title='description'><font size='9pt' style='bold'/></columnheader></column></view>
+ showaslinks='false'><columnheader title='description'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='words' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='words'><font size='9pt' style='bold'/></columnheader></column></view>
 

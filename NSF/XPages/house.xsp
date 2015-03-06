@@ -49,7 +49,14 @@
 									value="Description" />
 								<xp:inputTextarea
 									id="description"
-									value="#{gotHouse.description}" />
+									value="#{gotHouse.description}" >
+									<xp:this.attrs>
+										<xp:attr
+											name="rows"
+											value="5">
+										</xp:attr>
+									</xp:this.attrs>
+								</xp:inputTextarea>
 							</div>
 							<div
 								class="form-group">
@@ -130,9 +137,20 @@
 								rendered="#{gotHouse.editMode}">
 								<xp:eventHandler
 									event="onclick"
-									action="#{gotHouse.save}"
 									refreshMode="partial"
-									refreshId="uiContainer" />
+									refreshId="uiContainer"
+									submit="false">
+									<xp:this.action>
+										<xp:actionGroup>
+											<xp:executeScript
+												script="#{gotHouse.save}">
+											</xp:executeScript>
+											<xp:openPage
+												name="/index.xsp">
+											</xp:openPage>
+										</xp:actionGroup>
+									</xp:this.action>
+								</xp:eventHandler>
 								<i
 									class="fa fa-lg fa-save" />
 							</xp:button>

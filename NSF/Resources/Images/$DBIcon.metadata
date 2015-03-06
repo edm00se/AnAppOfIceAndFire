@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1d2" sequence="2" unid="1FB86F8283DF071A85257C48007FAF8C">
+<created><datetime>20131221T181440,12-05</datetime></created>
+<modified><datetime>20150305T162153,92-08</datetime></modified>
+<revised><datetime>20150305T162153,91-08</datetime></revised>
+<lastaccessed><datetime>20150305T162153,92-08</datetime></lastaccessed>
+<addedtofile><datetime>20150305T162153,90-08</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
+<item name="$TITLE" sign="true"><text>$DBIcon</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+<item name="$ImagesWide" sign="true"><number>1</number></item>
+<item name="$ImagesHigh" sign="true"><number>1</number></item>
+<item name="$ImagesColorize" sign="true"><number>0</number></item>
+<item name="$ImageNames" sign="true"><text>C:\Users\emccormi\Desktop\Bronn_and_Tyrion_32.jpg</text></item>
+
+
+<item name="$MimeType" sign="true"><text>image/jpeg</text></item>
+<item name="$FileModDT" sign="true"><datetime>20150101T162136,56-06</datetime></item>
+<item name="$Flags"><text>34CiQ</text></item>
+<item name="$FlagsExt" sign="true"><text>D</text></item></note>
