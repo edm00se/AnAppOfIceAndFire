@@ -7,9 +7,6 @@ import org.openntf.xsp.model.AbstractSmartDocumentModel;
  * This is the primary House Model, for how to structure a House, be it great or
  * small, in the Seven Kingdoms of Westeros... or at least this application.
  * 
- * intent: provide wagering elements for sell-swords to review hiring houses and
- * hire on contract to them, at the advertised rate
- * 
  * @author Eric McCormik, @edm00se
  * 
  */

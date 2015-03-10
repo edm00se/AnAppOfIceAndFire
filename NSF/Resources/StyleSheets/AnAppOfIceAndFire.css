@@ -4,3 +4,7 @@ body {
 .navbar-nav.navbar-right:last-child {
 	margin-right: inherit;
 }
+
+div[role=navigation] > span > span > span {
+	padding: 0.5rem;
+}

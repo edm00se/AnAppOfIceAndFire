@@ -74,6 +74,13 @@
 							</li>
 							<li>
 								<xp:pager
+									layout="Group"
+									partialRefresh="true"
+									id="pager3"
+									for="houseRepeat" />
+							</li>
+							<li>
+								<xp:pager
 									id="pager2"
 									for="houseRepeat"
 									partialRefresh="true">

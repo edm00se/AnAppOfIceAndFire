@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="206" sequence="3" unid="7D5FD27D5B5AC19488257E0200578B21">
+<created><datetime dst="true">20150308T085612,49-07</datetime></created>
+<modified><datetime dst="true">20150308T085613,32-07</datetime></modified>
+<revised><datetime dst="true">20150308T085613,31-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150308T085613,32-07</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20150308T085612,50-07</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/westeros/factory/ServletFactory.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/westeros/factory/ServletFactory.java</text></item></note>
