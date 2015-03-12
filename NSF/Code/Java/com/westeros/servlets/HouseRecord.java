@@ -39,8 +39,8 @@ public class HouseRecord {
 	 * @throws Exception
 	 */
 	public static void doGet(String unid, HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+			FacesContext facesContext, ServletOutputStream out)
+			throws Exception {
 		
 		// create a House model object in memory and load its contents
 		HouseModel myHouse = new HouseModel();

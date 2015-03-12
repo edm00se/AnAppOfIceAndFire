@@ -30,19 +30,24 @@ public class HouseServlet extends AbstractXSPServlet {
 		res.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 		
 		// regex parse pathInfo
-		Matcher matcher;
+		Matcher matchCollection;
+		Matcher matchRecord;
+		
 		String pathInfo = req.getPathInfo();
 		
 		// Method invoking the URI
 		String reqMethod = req.getMethod();
 		
+		matchCollection = regExIdPattern.matcher(pathInfo);
+		matchRecord = regExAllPattern.matcher(pathInfo);
+		
 		/*
 		 * Specific Document, by UNID. Allowed are GET,
 		 * PUT, and DELETE.
 		 */
-		matcher = regExIdPattern.matcher(pathInfo);
-		if (matcher.find()) {
-			String unid = matcher.group(1);
+		
+		if (matchCollection.find()) {
+			String unid = matchCollection.group(1);
 			if (reqMethod.equals("GET")) {
 				
 				// GET the single record
@@ -62,14 +67,11 @@ public class HouseServlet extends AbstractXSPServlet {
 				// unsupported request method
 				HouseRecord.handleUnexpectedVerb(req, res, facesContext, out);
 			}
-		}
-		
-		/*
-		 * Collection, allows only GET for the View equivalent or POST for
-		 * creating a new Document
-		 */
-		matcher = regExAllPattern.matcher(pathInfo);
-		if (matcher.find()) {
+		} else if (matchRecord.find()) {
+			/*
+			 * Collection, allows only GET for the View equivalent or POST for
+			 * creating a new Document
+			 */
 			
 			if (reqMethod.equals("GET")) {
 				

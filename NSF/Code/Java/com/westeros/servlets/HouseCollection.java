@@ -101,14 +101,14 @@ public class HouseCollection {
 	 * @throws Exception
 	 */
 	public static void doPost(HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+			FacesContext facesContext, ServletOutputStream out)
+			throws Exception {
 		
 		// TODO: creation
 		String unid = "";
 		
 		res.setStatus(201);
-		res.addHeader("Location", "/houses/"+unid);
+		res.addHeader("Location", "/house/"+unid);
 		
 	}
 	
