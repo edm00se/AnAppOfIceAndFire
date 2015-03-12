@@ -15,18 +15,17 @@ public class ServletFactory implements IServletFactory {
 	private static final Map<String, String> servletClasses = new HashMap<String, String>();
 	private static final Map<String, String> servletNames = new HashMap<String, String>();
 	private ComponentModule module;
-
+	
 	public void init(ComponentModule module) {
 		servletClasses.put("houses", "com.westeros.servlets.HouseServlet");
 		servletNames.put("houses", "Houses of Westeros");
-
-		servletClasses
-		.put("althouses", "com.westeros.servlets.HouseServletAlt");
+		
+		servletClasses.put("althouses", "com.westeros.servlets.HouseServletAlt");
 		servletNames.put("althouses", "Alt Houses of Westeros");
-
+		
 		this.module = module;
 	}
-
+	
 	public ServletMatch getServletMatch(String contextPath, String path)
 	throws ServletException {
 		try {
@@ -39,7 +38,7 @@ public class ServletFactory implements IServletFactory {
 				if (path.contains("/" + pairs.getKey())) {
 					String pathInfo = path;
 					return new ServletMatch(getWidgetServlet(pairs.getKey()),
-							servletPath, pathInfo);
+									servletPath, pathInfo);
 				}
 			}
 		} catch (Exception e) {
@@ -47,10 +46,10 @@ public class ServletFactory implements IServletFactory {
 		}
 		return null;
 	}
-
+	
 	public Servlet getWidgetServlet(String key) throws ServletException {
 		return module.createServlet(servletClasses.get(key), servletNames
-				.get(key), null);
+						.get(key), null);
 	}
-
+	
 }
