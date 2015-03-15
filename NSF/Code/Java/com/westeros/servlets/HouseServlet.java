@@ -27,7 +27,7 @@ public class HouseServlet extends AbstractXSPServlet {
 		// set content type, cache, and Access-Control headers
 		res.setHeader("Cache-Control", "no-cache");
 		res.setHeader("Access-Control-Allow-Origin", "*");
-		res.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+		res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		
 		// regex parse pathInfo
 		Matcher matchCollection;

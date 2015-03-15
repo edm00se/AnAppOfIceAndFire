@@ -2,9 +2,12 @@ package com.westeros.servlets;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +17,11 @@ import lotus.domino.View;
 import lotus.domino.ViewEntry;
 import lotus.domino.ViewNavigator;
 
+import org.apache.commons.io.IOUtils;
+
 import com.google.gson.Gson;
 import com.westeros.app.Utils;
+import com.westeros.model.HouseModel;
 
 /**
  * The Collection related /houses servlet actions. This class
@@ -101,14 +107,78 @@ public class HouseCollection {
 	 * @throws Exception
 	 */
 	public static void doPost(HttpServletRequest req, HttpServletResponse res,
-			FacesContext facesContext, ServletOutputStream out)
-			throws Exception {
-		
-		// TODO: creation
-		String unid = "";
-		
-		res.setStatus(201);
-		res.addHeader("Location", "/house/"+unid);
+					FacesContext facesContext, ServletOutputStream out)
+	throws Exception {
+		String someMsg = "";
+		try {
+			String unid;
+			
+			ServletInputStream is = req.getInputStream();
+			String reqStr = IOUtils.toString(is);
+			someMsg += "made it past the IOUtils.toString; ";
+			someMsg += "built string: "+reqStr;
+			
+			// com.ibm.commons way
+			/*
+			JsonJavaFactory factory = JsonJavaFactory.instanceEx;
+			JsonJavaObject tmpNwHouse = (JsonJavaObject) JsonParser.fromJson(factory, reqStr);
+			Iterator<String> it = tmpNwHouse.getJsonProperties();
+			HouseModel nwHouse = new HouseModel();
+			nwHouse.setEditMode(true);
+			while( it.hasNext() ) {
+				String curProp = it.next();
+				String curVal = tmpNwHouse.getAsString(curProp);
+				nwHouse.setValue(curProp, curVal);
+				it.remove();
+			}
+			 */
+			
+			// GSON way
+			Gson g = new Gson();
+			/*
+			 * Direct reflection to the HouseModel breaks, as it
+			 * extends AbstractSmartDocumentModel.
+			 * 
+			 * This hacks around that issue, as I know that the House
+			 * model is really a bunch of String key to String value pairs.
+			 * The AbstractSmartDocumentModel class basically adds some helper
+			 * methods to wrap a Map<String,Object> (representing the Notes
+			 * Document) with things like an edit property, load (by unid) method,
+			 * and save (for the obvious).
+			 */
+			Map<String,Object> tmpNwHouse = new HashMap<String,Object>();
+			// suppressing just this warning throws an error on tmpNwHouse
+			tmpNwHouse = g.fromJson(reqStr, tmpNwHouse.getClass());
+			Iterator<Map.Entry<String,Object>> it = tmpNwHouse.entrySet().iterator();
+			HouseModel nwHouse = new HouseModel();
+			nwHouse.setEditMode(true);
+			while (it.hasNext()) {
+				Map.Entry<String,Object> pair = it.next();
+				String curProp = pair.getKey();
+				String curVal = (String) pair.getValue();
+				nwHouse.setValue(curProp, curVal);
+				it.remove();
+			}
+			
+			someMsg += "got my object; obj's house Name: "+nwHouse.getValue("name");
+			
+			boolean success = nwHouse.save();
+			someMsg += "save success: "+success;
+			unid = nwHouse.getUnid();
+			res.setStatus(201);
+			res.addHeader("Location", "/xsp/houses/"+unid);
+			out.print(someMsg);
+		}catch(Exception e) {
+			HashMap<String,Object> errOb = new HashMap<String,Object>();
+			errOb.put("error", true);
+			errOb.put("errorMessage",e.toString());
+			if(!someMsg.isEmpty()) {
+				errOb.put("additionalInfo", someMsg);
+			}
+			res.setStatus(500);
+			Gson g = new Gson();
+			out.print(g.toJson(errOb));
+		}
 		
 	}
 	
@@ -129,4 +199,5 @@ public class HouseCollection {
 		// res.addHeader("Allow", "GET, POST, PUT, DELTE");
 		res.addHeader("Allow", "GET, POST");
 	}
+	
 }
