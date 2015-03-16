@@ -141,8 +141,8 @@ public class HouseRecord {
 	 * @throws Exception
 	 */
 	public static void doDelete(String unid, HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+		FacesContext facesContext, ServletOutputStream out)
+		throws Exception {
 		
 		Session s = (Session) facesContext.getApplication().getVariableResolver().resolveVariable(facesContext, "session");
 		Document houseDoc = s.getCurrentDatabase().getDocumentByUNID(unid);

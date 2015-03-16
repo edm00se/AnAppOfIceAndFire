@@ -20,7 +20,7 @@ public class HouseServlet extends AbstractXSPServlet {
 		// Accommodate two requests, one for all resources, another for a
 		// specific resource
 		Pattern regExAllPattern = Pattern.compile("/houses");
-		Pattern regExIdPattern = Pattern.compile("/houses/([0-9a-zA-Z]{32})");
+		Pattern regExIdPattern = Pattern.compile("/houses/([0-9A-Za-z]{32})");
 		
 		// res.setContentType("text/plain");
 		res.setContentType("application/json");
@@ -29,25 +29,22 @@ public class HouseServlet extends AbstractXSPServlet {
 		res.setHeader("Access-Control-Allow-Origin", "*");
 		res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		
-		// regex parse pathInfo
-		Matcher matchCollection;
-		Matcher matchRecord;
-		
 		String pathInfo = req.getPathInfo();
+		
+		// regex parse pathInfo
+		Matcher matchRecord = regExIdPattern.matcher(pathInfo);
+		Matcher matchCollection = regExAllPattern.matcher(pathInfo);
 		
 		// Method invoking the URI
 		String reqMethod = req.getMethod();
-		
-		matchCollection = regExIdPattern.matcher(pathInfo);
-		matchRecord = regExAllPattern.matcher(pathInfo);
 		
 		/*
 		 * Specific Document, by UNID. Allowed are GET,
 		 * PUT, and DELETE.
 		 */
 		
-		if (matchCollection.find()) {
-			String unid = matchCollection.group(1);
+		if (matchRecord.find()) {
+			String unid = matchRecord.group(1); // .group(1);
 			if (reqMethod.equals("GET")) {
 				
 				// GET the single record
@@ -67,7 +64,7 @@ public class HouseServlet extends AbstractXSPServlet {
 				// unsupported request method
 				HouseRecord.handleUnexpectedVerb(req, res, facesContext, out);
 			}
-		} else if (matchRecord.find()) {
+		} else if (matchCollection.find()) {
 			/*
 			 * Collection, allows only GET for the View equivalent or POST for
 			 * creating a new Document

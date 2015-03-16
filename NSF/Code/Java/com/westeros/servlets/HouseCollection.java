@@ -106,17 +106,15 @@ public class HouseCollection {
 	 * @param out
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public static void doPost(HttpServletRequest req, HttpServletResponse res,
 					FacesContext facesContext, ServletOutputStream out)
 	throws Exception {
-		String someMsg = "";
 		try {
 			String unid;
 			
 			ServletInputStream is = req.getInputStream();
 			String reqStr = IOUtils.toString(is);
-			someMsg += "made it past the IOUtils.toString; ";
-			someMsg += "built string: "+reqStr;
 			
 			// com.ibm.commons way
 			/*
@@ -143,8 +141,8 @@ public class HouseCollection {
 			 * model is really a bunch of String key to String value pairs.
 			 * The AbstractSmartDocumentModel class basically adds some helper
 			 * methods to wrap a Map<String,Object> (representing the Notes
-			 * Document) with things like an edit property, load (by unid) method,
-			 * and save (for the obvious).
+			 * Document's Field to Value nature) with things like an edit
+			 * property, load (by unid) method, and save (for the obvious).
 			 */
 			Map<String,Object> tmpNwHouse = new HashMap<String,Object>();
 			// suppressing just this warning throws an error on tmpNwHouse
@@ -160,21 +158,15 @@ public class HouseCollection {
 				it.remove();
 			}
 			
-			someMsg += "got my object; obj's house Name: "+nwHouse.getValue("name");
-			
 			boolean success = nwHouse.save();
-			someMsg += "save success: "+success;
 			unid = nwHouse.getUnid();
 			res.setStatus(201);
 			res.addHeader("Location", "/xsp/houses/"+unid);
-			out.print(someMsg);
 		}catch(Exception e) {
 			HashMap<String,Object> errOb = new HashMap<String,Object>();
 			errOb.put("error", true);
 			errOb.put("errorMessage",e.toString());
-			if(!someMsg.isEmpty()) {
-				errOb.put("additionalInfo", someMsg);
-			}
+			
 			res.setStatus(500);
 			Gson g = new Gson();
 			out.print(g.toJson(errOb));
