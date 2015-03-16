@@ -33,6 +33,8 @@ import com.westeros.model.HouseModel;
  */
 public class HouseCollection {
 	
+	private static String colAllowMethods = "GET, POST";
+	
 	/**
 	 * GET method of actions to take against the Houses Servlet, across the
 	 * implementations.
@@ -88,9 +90,11 @@ public class HouseCollection {
 			out.print(g.toJson(myResponse));
 			
 			res.setStatus(200); // OK
+			res.addHeader("Allow", colAllowMethods);
 			
 		} catch (Exception e) {
 			res.setStatus(500); // your Intarwebs are clogged
+			res.addHeader("Allow", colAllowMethods);
 			out.print( "{error: true, errorMessage: \""+e.toString()+"\"}" );
 			//out.print(e.toString());
 		}
@@ -158,9 +162,11 @@ public class HouseCollection {
 				it.remove();
 			}
 			
-			boolean success = nwHouse.save();
+			//boolean success = nwHouse.save();
+			nwHouse.save();
 			unid = nwHouse.getUnid();
 			res.setStatus(201);
+			res.addHeader("Allow", colAllowMethods);
 			res.addHeader("Location", "/xsp/houses/"+unid);
 		}catch(Exception e) {
 			HashMap<String,Object> errOb = new HashMap<String,Object>();
@@ -168,6 +174,7 @@ public class HouseCollection {
 			errOb.put("errorMessage",e.toString());
 			
 			res.setStatus(500);
+			res.addHeader("Allow", colAllowMethods);
 			Gson g = new Gson();
 			out.print(g.toJson(errOb));
 		}
@@ -188,7 +195,6 @@ public class HouseCollection {
 					HttpServletResponse res, FacesContext facesContext,
 					ServletOutputStream out) throws Exception {
 		res.setStatus(405);
-		// res.addHeader("Allow", "GET, POST, PUT, DELTE");
 		res.addHeader("Allow", "GET, POST");
 	}
 	

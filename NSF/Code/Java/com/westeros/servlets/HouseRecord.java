@@ -1,6 +1,9 @@
 package com.westeros.servlets;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import lotus.domino.Document;
+import lotus.domino.NotesException;
 import lotus.domino.Session;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -27,6 +31,8 @@ import com.westeros.model.HouseModel;
  */
 public class HouseRecord {
 	
+	private static String recAllowedMethods = "GET, PUT, DELETE";
+	
 	/**
 	 * GET method of actions to take against the Houses Servlet, for
 	 * the specified House, by UNID.
@@ -39,8 +45,8 @@ public class HouseRecord {
 	 * @throws Exception
 	 */
 	public static void doGet(String unid, HttpServletRequest req, HttpServletResponse res,
-			FacesContext facesContext, ServletOutputStream out)
-			throws Exception {
+					FacesContext facesContext, ServletOutputStream out)
+	throws Exception {
 		
 		// create a House model object in memory and load its contents
 		HouseModel myHouse = new HouseModel();
@@ -59,6 +65,7 @@ public class HouseRecord {
 		out.print( g.toJson(myHouse) );
 		
 		res.setStatus(200);
+		res.addHeader("Allow", recAllowedMethods);
 		
 	}
 	
@@ -126,6 +133,7 @@ public class HouseRecord {
 		// out.print();
 		
 		res.setStatus(200);
+		res.addHeader("Allow", recAllowedMethods);
 		
 	}
 	
@@ -138,17 +146,30 @@ public class HouseRecord {
 	 * @param res HttpServletResponse
 	 * @param facesContext FacesContext
 	 * @param out ServletOutputStream
+	 * @throws IOException
 	 * @throws Exception
 	 */
 	public static void doDelete(String unid, HttpServletRequest req, HttpServletResponse res,
-		FacesContext facesContext, ServletOutputStream out)
-		throws Exception {
+					FacesContext facesContext, ServletOutputStream out) throws IOException {
 		
 		Session s = (Session) facesContext.getApplication().getVariableResolver().resolveVariable(facesContext, "session");
-		Document houseDoc = s.getCurrentDatabase().getDocumentByUNID(unid);
-		houseDoc.remove(true);
+		Document houseDoc;
+		try {
+			houseDoc = s.getCurrentDatabase().getDocumentByUNID(unid);
+			houseDoc.remove(true);
+			houseDoc.recycle();
+		} catch (NotesException e) {
+			res.setStatus(500);
+			Gson g = new Gson();
+			Map<String,Object> errData = new HashMap<String,Object>();
+			errData.put("error", true);
+			errData.put("errorMessage", e.toString());
+			errData.put("stackTrace", e.getStackTrace());
+			out.print(g.toJson(errData));
+		}
 		
 		res.setStatus(200);
+		res.addHeader("Allow", recAllowedMethods);
 		
 	}
 	
@@ -166,7 +187,7 @@ public class HouseRecord {
 					HttpServletResponse res, FacesContext facesContext,
 					ServletOutputStream out) throws Exception {
 		res.setStatus(405);
-		res.addHeader("Allow", "GET, PUT, DELETE");
+		res.addHeader("Allow", recAllowedMethods);
 	}
 	
 }
