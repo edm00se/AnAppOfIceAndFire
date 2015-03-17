@@ -1,5 +1,6 @@
 package com.westeros.servlets;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,11 +44,11 @@ public class HouseCollection {
 	 * @param res
 	 * @param facesContext
 	 * @param out ServletOutputStream
+	 * @throws IOException 
 	 * @throws Exception
 	 */
 	public static void doGet(HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+			FacesContext facesContext, ServletOutputStream out) throws IOException {
 		
 		try {
 			
@@ -69,6 +70,7 @@ public class HouseCollection {
 				curOb.put("name", colVals.get(0));
 				curOb.put("description", colVals.get(1));
 				curOb.put("words", colVals.get(2));
+				curOb.put("unid", colVals.get(3));
 				dataAr.add(curOb);
 				
 				ViewEntry tmpEnt = nav.getNext(ent);
@@ -108,12 +110,11 @@ public class HouseCollection {
 	 * @param res
 	 * @param facesContext
 	 * @param out
-	 * @throws Exception
+	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
 	public static void doPost(HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+		FacesContext facesContext, ServletOutputStream out) throws IOException {
 		try {
 			String unid;
 			
@@ -189,11 +190,10 @@ public class HouseCollection {
 	 * @param res
 	 * @param facesContext
 	 * @param out
-	 * @throws Exception
 	 */
 	public static void handleUnexpectedVerb(HttpServletRequest req,
-					HttpServletResponse res, FacesContext facesContext,
-					ServletOutputStream out) throws Exception {
+			HttpServletResponse res, FacesContext facesContext,
+			ServletOutputStream out) {
 		res.setStatus(405);
 		res.addHeader("Allow", "GET, POST");
 	}

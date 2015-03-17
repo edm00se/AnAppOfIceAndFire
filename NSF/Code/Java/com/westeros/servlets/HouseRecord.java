@@ -1,11 +1,12 @@
 package com.westeros.servlets;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +15,7 @@ import lotus.domino.Document;
 import lotus.domino.NotesException;
 import lotus.domino.Session;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 import com.westeros.model.HouseModel;
@@ -42,31 +42,41 @@ public class HouseRecord {
 	 * @param res HttpServletResponse
 	 * @param facesContext FacesContext
 	 * @param out ServletOutputStream
-	 * @throws Exception
+	 * @throws IOException
 	 */
 	public static void doGet(String unid, HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+					FacesContext facesContext, ServletOutputStream out) throws IOException {
 		
-		// create a House model object in memory and load its contents
-		HouseModel myHouse = new HouseModel();
-		myHouse.load(unid);
-		
-		//return the contents in JSON to the OutputStream
-		
-		// com.ibm.commons way
-		/*
-		 * out.print(JsonGenerator.toJson(JsonJavaFactory.instanceEx,
-		 * myHouse));
-		 */
-		
-		// GSON way
-		Gson g = new Gson();
-		out.print( g.toJson(myHouse) );
-		
-		res.setStatus(200);
-		res.addHeader("Allow", recAllowedMethods);
-		
+		try {
+			
+			// create a House model object in memory and load its contents
+			HouseModel myHouse = new HouseModel();
+			myHouse.load(unid);
+			
+			//return the contents in JSON to the OutputStream
+			
+			// com.ibm.commons way
+			/*
+			 * out.print(JsonGenerator.toJson(JsonJavaFactory.instanceEx,
+			 * myHouse));
+			 */
+			
+			// GSON way
+			Gson g = new Gson();
+			out.print( g.toJson(myHouse) );
+			
+			res.setStatus(200);
+			res.addHeader("Allow", recAllowedMethods);
+			
+		} catch(Exception e) {
+			res.setStatus(500);
+			res.addHeader("Allow", recAllowedMethods);
+			Map<String,Object> errOb = new HashMap<String,Object>();
+			errOb.put("error", true);
+			errOb.put("errorMsg", e.toString());
+			Gson g = new Gson();
+			out.print(g.toJson(errOb));
+		}
 	}
 	
 	/**
@@ -78,62 +88,56 @@ public class HouseRecord {
 	 * @param res HttpServletResponse
 	 * @param facesContext FacesContext
 	 * @param out ServletOutputStream
-	 * @throws Exception
+	 * @throws IOException
 	 */
+	@SuppressWarnings("unchecked")
 	public static void doPut(String unid, HttpServletRequest req, HttpServletResponse res,
-					FacesContext facesContext, ServletOutputStream out)
-	throws Exception {
+					FacesContext facesContext, ServletOutputStream out) throws IOException {
 		
-		// GET existing
-		HouseModel exHouse = new HouseModel();
-		exHouse.load(unid);
-		
-		StringBuilder sb = new StringBuilder();
-		String s;
-		while ((s = req.getReader().readLine()) != null) {
-			sb.append(s);
-		}
-		
-		// Reflection of the received JSON into an object via com.ibm.commons
-		/*
-		 * HouseModel nwHouseInfo = (HouseModel) JsonParser.fromJson(JsonJavaFactory.instanceEx, sb.toString());
-		 */
-		
-		// Reflection of the received JSON into an object via GSON
-		Gson g = new Gson();
-		HouseModel nwHouseInfo = g.fromJson(sb.toString(), HouseModel.class);
-		
-		// compare/update
-		
-		/**
-		 * Getting the Fields from the new obj using Apache Commons FieldUtils.
-		 * http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/reflect/FieldUtils.html#getAllFields(java.lang.Class)
-		 */
-		Field[] fields = FieldUtils.getAllFields(nwHouseInfo.getClass());
-		
-		
-		// this is where we can validate before committing
-		/**
-		 * Setting the Values..
-		 */
-		for (Field field : fields) {
-			String curFldName = field.getName();
-			if( BeanUtils.getProperty(nwHouseInfo, curFldName) !=
-				BeanUtils.getProperty(exHouse, curFldName)) {
-				// if the properties are not equal, the new one is an update
-				BeanUtils.setProperty(exHouse, curFldName,
-								BeanUtils.getProperty(nwHouseInfo, curFldName));
+		try {
+			
+			// GET existing
+			HouseModel exHouse = new HouseModel();
+			exHouse.load(unid);
+			
+			ServletInputStream is = req.getInputStream();
+			String reqStr = IOUtils.toString(is);
+			
+			Gson g = new Gson();
+			
+			// setting the keys/values into the tmpNwHouse Map
+			Map<String,Object> tmpNwHouse = new HashMap<String,Object>();
+			// suppressing just this warning throws an error on tmpNwHouse
+			tmpNwHouse = g.fromJson(reqStr, tmpNwHouse.getClass());
+			Iterator<Map.Entry<String,Object>> it = tmpNwHouse.entrySet().iterator();
+			HouseModel nwHouse = new HouseModel();
+			nwHouse.setEditMode(true);
+			// compare/update
+			while (it.hasNext()) {
+				Map.Entry<String,Object> pair = it.next();
+				String curProp = pair.getKey();
+				String curVal = (String) pair.getValue();
+				if( exHouse.getValue(curProp) != curVal ) {
+					exHouse.setValue(curProp, curVal);
+				}
+				it.remove();
 			}
+			
+			// done setting new values back into the existing object
+			exHouse.save();
+			
+			res.setStatus(200);
+			res.addHeader("Allow", recAllowedMethods);
+			
+		} catch(Exception e) {
+			res.setStatus(500);
+			res.addHeader("Allow", recAllowedMethods);
+			Map<String,Object> errOb = new HashMap<String,Object>();
+			errOb.put("error", true);
+			errOb.put("errorMsg", e.toString());
+			Gson g = new Gson();
+			out.print(g.toJson(errOb));
 		}
-		
-		// done setting new values back into the existing object
-		exHouse.save();
-		
-		// respond with anything?
-		// out.print();
-		
-		res.setStatus(200);
-		res.addHeader("Allow", recAllowedMethods);
 		
 	}
 	
@@ -147,7 +151,6 @@ public class HouseRecord {
 	 * @param facesContext FacesContext
 	 * @param out ServletOutputStream
 	 * @throws IOException
-	 * @throws Exception
 	 */
 	public static void doDelete(String unid, HttpServletRequest req, HttpServletResponse res,
 					FacesContext facesContext, ServletOutputStream out) throws IOException {
@@ -158,6 +161,8 @@ public class HouseRecord {
 			houseDoc = s.getCurrentDatabase().getDocumentByUNID(unid);
 			houseDoc.remove(true);
 			houseDoc.recycle();
+			res.setStatus(200);
+			res.addHeader("Allow", recAllowedMethods);
 		} catch (NotesException e) {
 			res.setStatus(500);
 			Gson g = new Gson();
@@ -167,9 +172,6 @@ public class HouseRecord {
 			errData.put("stackTrace", e.getStackTrace());
 			out.print(g.toJson(errData));
 		}
-		
-		res.setStatus(200);
-		res.addHeader("Allow", recAllowedMethods);
 		
 	}
 	
@@ -185,7 +187,7 @@ public class HouseRecord {
 	 */
 	public static void handleUnexpectedVerb(HttpServletRequest req,
 					HttpServletResponse res, FacesContext facesContext,
-					ServletOutputStream out) throws Exception {
+					ServletOutputStream out) {
 		res.setStatus(405);
 		res.addHeader("Allow", recAllowedMethods);
 	}
