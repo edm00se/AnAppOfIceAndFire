@@ -114,11 +114,14 @@ public class HouseCollection {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void doPost(HttpServletRequest req, HttpServletResponse res,
-		FacesContext facesContext, ServletOutputStream out) throws IOException {
+			FacesContext facesContext, ServletOutputStream out) throws IOException {
 		try {
 			String unid;
 			
 			ServletInputStream is = req.getInputStream();
+			// not that I'm using it, but the ServletRequestWrapper
+			// can be quite helpful
+			// ServletRequestWrapper srw = new ServletRequestWrapper(req);
 			String reqStr = IOUtils.toString(is);
 			
 			// com.ibm.commons way
@@ -163,6 +166,7 @@ public class HouseCollection {
 				it.remove();
 			}
 			
+			//HouseModel nwHouse = g.fromJson(reqStr, HouseModel.class);
 			//boolean success = nwHouse.save();
 			nwHouse.save();
 			unid = nwHouse.getUnid();
