@@ -14,8 +14,9 @@ Clone the _master_ branch of this repository into a directory of your choice. Th
 
 This application, as my blog series describes, requires some JAR files to be contained within the _<Domino install>/jvm/lib/ext/_ path.
 
-* GSON
-* several Apache Commons
+* [com.google.Gson](https://code.google.com/p/google-gson/)
+* [Apache Commons IOUtils](http://commons.apache.org/proper/commons-io/)
+* a notes.ini edit (add _HTTPEnableMethods=PUT,DELETE_ next to your local web preview port) OR adding PUT and DELETE as allowed methods in your Internet Site document for your server
 
 I've marked where I've used GSON in my Java classes and have almost entirely provided the working _com.ibm.commons.util.io.json_ equivalent. You can also manually work around the Apache Commons libraries, as they're mostly just helper utilities. I do recommend using them though, so if you can't access your server's file system, you can import them into the NSF.
 
