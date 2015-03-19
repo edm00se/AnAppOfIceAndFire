@@ -106,21 +106,18 @@ public class HouseRecord {
 			Gson g = new Gson();
 			
 			// setting the keys/values into the tmpNwHouse Map
-			Map<String,Object> tmpNwHouse = new HashMap<String,Object>();
+			Map<String,Object> tmpNwHouse = (Map) g.fromJson(reqStr, HashMap.class);
 			// suppressing just this warning throws an error on tmpNwHouse
 			tmpNwHouse = g.fromJson(reqStr, tmpNwHouse.getClass());
-			Iterator<Map.Entry<String,Object>> it = tmpNwHouse.entrySet().iterator();
 			HouseModel nwHouse = new HouseModel();
 			nwHouse.setEditMode(true);
 			// compare/update
-			while (it.hasNext()) {
-				Map.Entry<String,Object> pair = it.next();
+			for(Map.Entry<String, Object> pair : tmpNwHouse.entrySet() {
 				String curProp = pair.getKey();
 				String curVal = (String) pair.getValue();
 				if( exHouse.getValue(curProp) != curVal ) {
 					exHouse.setValue(curProp, curVal);
 				}
-				it.remove();
 			}
 			
 			// done setting new values back into the existing object
