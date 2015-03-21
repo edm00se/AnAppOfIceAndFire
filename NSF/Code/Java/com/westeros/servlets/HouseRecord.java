@@ -11,13 +11,16 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import lotus.domino.Database;
 import lotus.domino.Document;
 import lotus.domino.NotesException;
 import lotus.domino.Session;
 
 import org.apache.commons.io.IOUtils;
+import org.openntf.xsp.util.DominoUtil;
 
 import com.google.gson.Gson;
+import com.westeros.app.Utils;
 import com.westeros.model.HouseModel;
 
 /**
@@ -188,8 +191,34 @@ public class HouseRecord {
 	public static void handleUnexpectedVerb(HttpServletRequest req,
 					HttpServletResponse res, FacesContext facesContext,
 					ServletOutputStream out) {
-		res.setStatus(405);
+		res.setStatus(405); // method not allowed
 		res.addHeader("Allow", recAllowedMethods);
+	}
+	
+	public static void handleRecordNotFound(HttpServletRequest req,
+					HttpServletResponse res, FacesContext facesContext,
+					ServletOutputStream out) {
+		res.setStatus(404); // not found
+		res.addHeader("Allow", recAllowedMethods);
+	}
+	
+	/**
+	 * @param unid String
+	 * @return boolean
+	 */
+	public static boolean isValidUnid(String unid) {
+		boolean status = false;
+		Database db = Utils.getCurrentDatabase();
+		Document tmpDoc = null;
+		try {
+			tmpDoc = db.getDocumentByUNID(unid);
+			if((tmpDoc != null) && tmpDoc.isValid() && !tmpDoc.isDeleted()) {
+				status = true;
+			}
+		} catch (NotesException e) {}
+		DominoUtil.incinerate(db, tmpDoc);
+		return status;
+		
 	}
 	
 }
