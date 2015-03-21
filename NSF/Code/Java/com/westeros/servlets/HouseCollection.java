@@ -152,18 +152,13 @@ public class HouseCollection {
 			 * Document's Field to Value nature) with things like an edit
 			 * property, load (by unid) method, and save (for the obvious).
 			 */
-			Map<String,Object> tmpNwHouse = new HashMap<String,Object>();
-			// suppressing just this warning throws an error on tmpNwHouse
-			tmpNwHouse = g.fromJson(reqStr, tmpNwHouse.getClass());
-			Iterator<Map.Entry<String,Object>> it = tmpNwHouse.entrySet().iterator();
+			Map<String,Object> tmpNwHouse = (Map) g.fromJson(reqStr, HashMap.class);
 			HouseModel nwHouse = new HouseModel();
 			nwHouse.setEditMode(true);
-			while (it.hasNext()) {
-				Map.Entry<String,Object> pair = it.next();
+			for (Map.Entry<String, Object> pair : tmpNwHouse.entrySet()) {
 				String curProp = pair.getKey();
 				String curVal = (String) pair.getValue();
 				nwHouse.setValue(curProp, curVal);
-				it.remove();
 			}
 			
 			//HouseModel nwHouse = g.fromJson(reqStr, HouseModel.class);
