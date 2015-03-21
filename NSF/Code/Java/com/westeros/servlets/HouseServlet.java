@@ -45,25 +45,30 @@ public class HouseServlet extends AbstractXSPServlet {
 		
 		if (matchRecord.find()) {
 			String unid = matchRecord.group(1); // .group(1);
-			if (reqMethod.equals("GET")) {
-				
-				// GET the single record
-				HouseRecord.doGet(unid, req, res, facesContext, out);
-				
-			} else if (reqMethod.equals("PUT")) {
-				
-				// PUT to update, in whole or part, a single record
-				HouseRecord.doPut(unid, req, res, facesContext, out);
-				
-			} else if (reqMethod.equals("DELETE")) {
-				
-				// DELETE single record
-				HouseRecord.doDelete(unid, req, res, facesContext, out);
-				
+			if( HouseRecord.isValidUnid(unid) ) {
+				if (reqMethod.equals("GET")) {
+					
+					// GET the single record
+					HouseRecord.doGet(unid, req, res, facesContext, out);
+					
+				} else if (reqMethod.equals("PUT")) {
+					
+					// PUT to update, in whole or part, a single record
+					HouseRecord.doPut(unid, req, res, facesContext, out);
+					
+				} else if (reqMethod.equals("DELETE")) {
+					
+					// DELETE single record
+					HouseRecord.doDelete(unid, req, res, facesContext, out);
+					
+				} else {
+					// unsupported request method
+					HouseRecord.handleUnexpectedVerb(req, res, facesContext, out);
+				}
 			} else {
-				// unsupported request method
-				HouseRecord.handleUnexpectedVerb(req, res, facesContext, out);
+				HouseRecord.handleRecordNotFound(req, res, facesContext, out);
 			}
+			
 		} else if (matchCollection.find()) {
 			/*
 			 * Collection, allows only GET for the View equivalent or POST for
