@@ -2,7 +2,6 @@ package com.westeros.servlets;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
@@ -109,13 +108,13 @@ public class HouseRecord {
 			Gson g = new Gson();
 			
 			// setting the keys/values into the tmpNwHouse Map
-			Map<String,Object> tmpNwHouse = (Map) g.fromJson(reqStr, HashMap.class);
+			Map<String,Object> tmpNwHouse = g.fromJson(reqStr, HashMap.class);
 			// suppressing just this warning throws an error on tmpNwHouse
 			tmpNwHouse = g.fromJson(reqStr, tmpNwHouse.getClass());
 			HouseModel nwHouse = new HouseModel();
 			nwHouse.setEditMode(true);
 			// compare/update
-			for(Map.Entry<String, Object> pair : tmpNwHouse.entrySet() {
+			for(Map.Entry<String, Object> pair : tmpNwHouse.entrySet()) {
 				String curProp = pair.getKey();
 				String curVal = (String) pair.getValue();
 				if( exHouse.getValue(curProp) != curVal ) {
