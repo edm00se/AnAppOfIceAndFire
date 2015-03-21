@@ -3,7 +3,6 @@ package com.westeros.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
@@ -44,11 +43,11 @@ public class HouseCollection {
 	 * @param res
 	 * @param facesContext
 	 * @param out ServletOutputStream
-	 * @throws IOException 
+	 * @throws IOException
 	 * @throws Exception
 	 */
 	public static void doGet(HttpServletRequest req, HttpServletResponse res,
-			FacesContext facesContext, ServletOutputStream out) throws IOException {
+					FacesContext facesContext, ServletOutputStream out) throws IOException {
 		
 		try {
 			
@@ -114,7 +113,7 @@ public class HouseCollection {
 	 */
 	@SuppressWarnings("unchecked")
 	public static void doPost(HttpServletRequest req, HttpServletResponse res,
-			FacesContext facesContext, ServletOutputStream out) throws IOException {
+					FacesContext facesContext, ServletOutputStream out) throws IOException {
 		try {
 			String unid;
 			
@@ -152,7 +151,7 @@ public class HouseCollection {
 			 * Document's Field to Value nature) with things like an edit
 			 * property, load (by unid) method, and save (for the obvious).
 			 */
-			Map<String,Object> tmpNwHouse = (Map) g.fromJson(reqStr, HashMap.class);
+			Map<String,Object> tmpNwHouse = g.fromJson(reqStr, HashMap.class);
 			HouseModel nwHouse = new HouseModel();
 			nwHouse.setEditMode(true);
 			for (Map.Entry<String, Object> pair : tmpNwHouse.entrySet()) {
@@ -191,8 +190,8 @@ public class HouseCollection {
 	 * @param out
 	 */
 	public static void handleUnexpectedVerb(HttpServletRequest req,
-			HttpServletResponse res, FacesContext facesContext,
-			ServletOutputStream out) {
+					HttpServletResponse res, FacesContext facesContext,
+					ServletOutputStream out) {
 		res.setStatus(405);
 		res.addHeader("Allow", "GET, POST");
 	}
