@@ -115,7 +115,7 @@ public class HouseRecord {
 			HouseModel nwHouse = new HouseModel();
 			nwHouse.setEditMode(true);
 			// compare/update
-			for(Map.Entry<String, Object> pair : tmpNwHouse.entrySet() {
+			for(Map.Entry<String, Object> pair : tmpNwHouse.entrySet()) {
 				String curProp = pair.getKey();
 				String curVal = (String) pair.getValue();
 				if( exHouse.getValue(curProp) != curVal ) {
