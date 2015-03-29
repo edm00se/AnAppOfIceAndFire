@@ -19,7 +19,7 @@
     <![endif]-->
 </head>
 
-<body ng-app="houseApp" ng-controller="HouseCtrl">
+<body ng-app="houseApp">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <button class="navbar-toggle" target=".navbar-collapse" toggle="collapse" type="button">
@@ -28,134 +28,24 @@
             </button>
             <a href="/AnAppOfIceAndFire.nsf/" class="navbar-brand">An App of Ice and Fire</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" ng-controller="NavCtrl">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
-                    <a href="/AnAppOfIceAndFire.nsf/index.xsp"><i class="fa fa-list fa-lg"></i> Houses</a></li>
-                <li>
-                    <a href="/AnAppOfIceAndFire.nsf/house.xsp"><i class="fa fa-plus-square fa-lg"></i> New House</a></li>
+                <li ng-class="{active:isActive('/houses')}">
+                    <a ui-shref="houses"><i class="fa fa-list fa-lg"></i> Houses</a></li>
+                <li ng-class="{active:isActive('/new')}">
+                    <a ui-shref="new"><i class="fa fa-plus-square fa-lg"></i> New House</a></li>
             </ul>
         </div>
     </div>
-    <div id="uiContainer" class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Houses of the Seven Kingdoms of Westeros</h3></div>
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr ng-repeat="house in housesOfWesteros | startFrom : curPage*pageQty | limitTo:pageQty">
-                                <td>
-                                    <a href="#" title="house.unid">{{house.name}}</a>
-                                    <a href="#" class="btn btn-danger pull-right"><i class="fa fa-lg fa-trash-o"></i></a>
-                                    <br>{{house.words}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="panel-footer col-xs-12">
-                        <ul class="pager">
-                            <li class="previous" ng-class="{'disabled': curPage == 0}">
-                                <a ng-click="curPage = curPage - 1">
-                                    <span aria-hidden="true">&larr;</span> Previous</a>
-                            </li>
-                            <span ng-bind="(curPage+1) + '/' + numberOfPages()"></span>
-                            <li class="next" ng-class="{'disabled': curPage >= housesOfWesteros.length/pageQty-1}">
-                                <a ng-click="curPage = curPage + 1">Next <span aria-hidden="true">&rarr;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <div ui-view></div>
+    
     <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.min.js"></script>
-    <!--
-    <script type="text/javascript">
-    // for notification to the console
-    var cdnFallbackAr = [];
-    // handle on the head tag for appending resources
-    var hTag = document.getElementsByTagName('head')[0];
-
-    //Bootstrap CSS
-    function cssLoaded(href) {
-        var cssFound = false;
-        for (var i = 0; i < document.styleSheets.length; i++) {
-            var sheet = document.styleSheets[i];
-            if (
-                sheet['href'] == "http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" ||
-                sheet['href'] == "https://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-            ) {
-                cssFound = true;
-            }
-        };
-        return cssFound;
-    }
-    if (!cssLoaded('bootstrap.min.css')) {
-        local_bootstrap = new CustomEvent('link');
-        local_bootstrap.setAttribute("rel", "stylesheet");
-        local_bootstrap.setAttribute("href", "libs/bootstrap/dist/css/bootstrap.min.css");
-        document.getElementsByTagName("head")[0].appendChild(local_bootstrap);
-        cdnFallbackAr.push("Bootstrap CSS");
-    }
-
-    //jQuery
-    if(!window.jQuery){
-        var base = "libs/jquery/dist/";
-        var ang = document.createElement('script');
-        ang.src = base + "jquery.min.js";
-        hTag.appendChild(ang);
-        cdnFallbackAr.push("jQuery");
-    }
-    //Bootstrap JS
-    if(typeof($.fn.modal) === 'undefined'){
-        document.write('<script src="libs/bootstrap/dist/js/bootstrap.min.js"><\/script>');
-        cdnFallbackAr.push("Bootstrap JS");
-    }
-
-    //Font Awesome
-    (function($){
-        var $span = $('<span class="fa" style="display:none"></span>').appendTo('body');
-        if ($span.css('fontFamily') !== 'FontAwesome' ) {
-            // Fallback Link
-            $('head').append('<link href="libs/fontawesome/css/font-awesome.min.css" rel="stylesheet">');
-            cdnFallbackAr.push("Font Awesome");
-        }
-        $span.remove();
-    })(jQuery);
-
-    //AngularJS
-    if (!window.angular) {
-        var base = "libs/angular/";
-        var ang = document.createElement('script');
-        ang.src = base + "angular.min.js";
-        hTag.appendChild(ang);
-        cdnFallbackAr.push("AngularJS");
-
-        var bNgSan = true;
-        var bNgAn = false;
-
-        if (!!bNgSan) {
-            var ngSan = document.createElement('script');
-            ngSan.src = base + "angular-sanitize.min.js";
-            hTag.appendChild(ngSan);
-        }
-
-        if (!!bNgAn) {
-            var ngAn = document.createElement('script');
-            ngAn.src = base + "angular-animate.min.js";
-            hTag.appendChild(ngAn);
-        }
-    }
-    if (cdnFallbackAr.length > 0) {
-        console.log("CDN fallback activated, your library download went wrong for: \n - "+cdnFallbackAr.join('\n - '));
-    }
-    </script>
-    -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+    <!-- CDN fallback -->
     <script type="text/javascript" src="js/houseApp.js"></script>
 </body>
 
