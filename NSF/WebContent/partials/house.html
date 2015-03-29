@@ -2,7 +2,41 @@
     <div class="panel-heading">
         <h3 class="panel-title">A House of Westeros</h3>
     </div>
-    Content for a single house...
-    {{ item }}
-    <div class="panel-footer col-xs-12"></div>
+    <form>
+	    <div class="form-group">
+			<label
+				for="houseName">
+				Name</label>
+			<input
+				type="text"
+				class="form-control"
+				id="houseName"
+				ng-model="myHouse.values.name"
+				ng-disabled="!editForm" />
+		</div>
+		<div class="form-group">
+			<label
+				for="houseWords">
+				Words</label>
+			<input
+				type="text"
+				class="form-control"
+				id="houseWords"
+				ng-model="myHouse.values.words"
+				ng-disabled="!editForm" />
+		</div>
+		<div class="form-group">
+			<label
+				for="houseDescription">
+				Description</label>
+			<textarea
+				class="form-control"
+				id="houseDescription"
+				ng-model="myHouse.values.description"
+				rows="3"
+				ng-disabled="!editForm" />
+		</div>
+	</form>
+    <div
+    	class="panel-footer col-xs-12"></div>
 </div>

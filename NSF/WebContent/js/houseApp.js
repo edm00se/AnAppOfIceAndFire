@@ -82,11 +82,16 @@
 	})
 	
 	.controller('OneHouseCtrl', function($scope, $stateParams, houseFactory){
-		$scope.item = $stateParams.item;
+		$scope.editForm = false;
 		$scope.myHouse = {};
-		houseFactory($scope.item)
+		houseFactory($stateParams.item)
 			.success(function(data, status, headers, config) {
 				$scope.myHouse = data;
+				/*
+				if( data.editMode == true ){
+					$scope.editForm = true;
+				}
+				*/
 			})
 			.error(function(data, status, headers, config) {
 				console.log("status: "+status);
