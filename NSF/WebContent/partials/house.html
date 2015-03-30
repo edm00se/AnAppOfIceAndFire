@@ -1,42 +1,130 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">A House of Westeros</h3>
+        <h3 class="panel-title">House Details</h3>
     </div>
-    <form>
-	    <div class="form-group">
-			<label
-				for="houseName">
-				Name</label>
-			<input
-				type="text"
-				class="form-control"
-				id="houseName"
-				ng-model="myHouse.values.name"
-				ng-disabled="!editForm" />
-		</div>
-		<div class="form-group">
-			<label
-				for="houseWords">
-				Words</label>
-			<input
-				type="text"
-				class="form-control"
-				id="houseWords"
-				ng-model="myHouse.values.words"
-				ng-disabled="!editForm" />
-		</div>
-		<div class="form-group">
-			<label
-				for="houseDescription">
-				Description</label>
-			<textarea
-				class="form-control"
-				id="houseDescription"
-				ng-model="myHouse.values.description"
-				rows="3"
-				ng-disabled="!editForm" />
-		</div>
-	</form>
-    <div
-    	class="panel-footer col-xs-12"></div>
+	<div class="panel-body">
+	    <form>
+		    <div class="form-group">
+				<label
+					for="houseName">
+					Name</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseName"
+					ng-model="myHouse.values.name"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseDescription">
+					Description</label>
+				<textarea
+					class="form-control"
+					id="houseDescription"
+					ng-model="myHouse.values.description"
+					rows="3"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="coatOfArms">
+					Coat of Arms</label>
+				<input
+					type="text"
+					class="form-control"
+					id="coatOfArms"
+					ng-model="myHouse.values.coatOfArms"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseWords">
+					Words</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseWords"
+					ng-model="myHouse.values.words"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseSeat">
+					Seat</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseSeat"
+					ng-model="myHouse.values.seat"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseCurrentLord">
+					Current Lord</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseCurrentLord"
+					ng-model="myHouse.values.currentLord"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseRegion">
+					Region</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseRegion"
+					ng-model="myHouse.values.region"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseTitle">
+					Title</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseTitle"
+					ng-model="myHouse.values.title"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseHeir">
+					Heir</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseHeir"
+					ng-model="myHouse.values.heir"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="houseOverlord">
+					Overlord</label>
+				<input
+					type="text"
+					class="form-control"
+					id="houseOverlord"
+					ng-model="myHouse.values.overlord"
+					ng-disabled="!editForm" />
+			</div>
+			<button
+				class="pull-right btn-success btn"
+				type="button" id="buttonSaveGotHouse">
+				<i class="fa fa-lg fa-save"></i> Save</button>
+			<button
+				class="pull-right btn-default btn"
+				type="button" id="buttonEditGotHouse"
+				ng-disabled="!canEditForm"
+				ng-click="setFormEditable()">
+				<i class="fa fa-lg fa-pencil"></i> Edit</button>
+		</form>
+	</div>
+    <!-- <div class="panel-footer col-xs-12"></div> -->
 </div>

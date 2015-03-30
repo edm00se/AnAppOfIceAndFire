@@ -49,13 +49,8 @@
 									value="Description" />
 								<xp:inputTextarea
 									id="description"
-									value="#{gotHouse.description}" >
-									<xp:this.attrs>
-										<xp:attr
-											name="rows"
-											value="5">
-										</xp:attr>
-									</xp:this.attrs>
+									value="#{gotHouse.description}"
+									rows="3">
 								</xp:inputTextarea>
 							</div>
 							<div

@@ -83,15 +83,12 @@
 	
 	.controller('OneHouseCtrl', function($scope, $stateParams, houseFactory){
 		$scope.editForm = false;
+		$scope.canEditForm = false;
 		$scope.myHouse = {};
 		houseFactory($stateParams.item)
 			.success(function(data, status, headers, config) {
 				$scope.myHouse = data;
-				/*
-				if( data.editMode == true ){
-					$scope.editForm = true;
-				}
-				*/
+				$scope.canEditForm = true;
 			})
 			.error(function(data, status, headers, config) {
 				console.log("status: "+status);
@@ -99,6 +96,11 @@
 				console.log("headers: "+headers);
 				console.log("config: "+JSON.parse(config));
 			});
+		$scope.setFormEditable = function() {
+			if( $scope.canEditForm == true ){
+				$scope.editForm = true;
+			}
+		}
 	})
 	
 	// we already use the limitTo filter built-in to AngularJS,
