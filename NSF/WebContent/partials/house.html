@@ -120,8 +120,16 @@
 				<i class="fa fa-lg fa-save"></i> Save</button>
 			<button
 				class="pull-right btn-default btn"
+				type="button" id="buttonCancelGotHouse"
+				ng-show="editForm"
+				ng-really-message="Are you sure?"
+				ng-really-click="clearCancelForm()">
+				<i class="fa fa-lg fa-pencil"></i> Cancel</button>
+			<button
+				class="pull-right btn-default btn"
 				type="button" id="buttonEditGotHouse"
 				ng-disabled="!canEditForm"
+				ng-show="!editForm"
 				ng-click="setFormEditable()">
 				<i class="fa fa-lg fa-pencil"></i> Edit</button>
 		</form>

@@ -1,7 +1,7 @@
 (function(){
 	
 	//defines the AngularJS app as a module
-	angular.module('houseApp', ['ui.router'])
+	angular.module('houseApp', ['ui.router']) //'ngAnimate'
 
 	//ui-router config
 	.config(
@@ -21,6 +21,10 @@
 					controller: 'OneHouseCtrl'
 				});
 	})
+
+	/*
+	 *	Factories
+	 */
 	
 	//defines the $HTTP factory, one of the 3 service types
 	.factory('houseCollectionFactory', [ '$http', function($http) {
@@ -38,6 +42,10 @@
 			});
 		}
 	}])
+
+	/*
+	 *	Controllers
+	 */
 
 	//navigation controller
 	.controller('NavCtrl', function($scope, $location){
@@ -81,7 +89,7 @@
 		
 	})
 	
-	.controller('OneHouseCtrl', function($scope, $stateParams, houseFactory){
+	.controller('OneHouseCtrl', function($scope, $stateParams, $window, houseFactory){
 		$scope.editForm = false;
 		$scope.canEditForm = false;
 		$scope.myHouse = {};
@@ -101,7 +109,14 @@
 				$scope.editForm = true;
 			}
 		}
+		$scope.clearCancelForm = function() {
+			$window.location.href = '#/houses';
+		}
 	})
+
+	/*
+	 *	Filters
+	 */
 	
 	// we already use the limitTo filter built-in to AngularJS,
 	// this is a custom filter for startFrom
@@ -111,6 +126,11 @@
 			return input.slice(start);
 		}
 	})
+
+	/*
+	 *	Directives
+	 */
+
 	//This directive allows us to pass a function in on an enter key to do what we want.
 	.directive('ngEnter', function () {
 	    return function (scope, element, attrs) {
@@ -123,6 +143,24 @@
 	            }
 	        });
 	    };
-	});
+	})
+
+	/**
+	 * A generic confirmation for risky actions.
+	 * Usage: Add attributes: ng-really-message="Are you sure"? ng-really-click="takeAction()" function
+	 */
+	.directive('ngReallyClick', [function() {
+	    return {
+	        restrict: 'A',
+	        link: function(scope, element, attrs) {
+	            element.bind('click', function() {
+	                var message = attrs.ngReallyMessage;
+	                if (message && confirm(message)) {
+	                    scope.$apply(attrs.ngReallyClick);
+	                }
+	            });
+	        }
+	    }
+	}]);
 
 })();
