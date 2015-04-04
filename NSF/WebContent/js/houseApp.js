@@ -6,9 +6,9 @@
 	//ui-router config
 	.config(
 		function($stateProvider, $urlRouterProvider){
-
+			
 			$urlRouterProvider.otherwise('/houses');
-
+			
 			$stateProvider
 				.state('houses', {
 					url: '/houses',
