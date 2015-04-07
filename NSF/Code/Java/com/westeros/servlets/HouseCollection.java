@@ -62,6 +62,7 @@ public class HouseCollection {
 			ViewNavigator nav = vw.createViewNav();
 			@SuppressWarnings("unchecked")
 			Vector<String> colNames = vw.getColumnNames();
+			int numCols = colNames.size();
 			ViewEntry ent = nav.getFirstDocument();
 			while( ent != null ) {
 				
@@ -75,7 +76,7 @@ public class HouseCollection {
 				curOb.put("words", colVals.get(2));
 				curOb.put("unid", colVals.get(3));
 				 */
-				for( int i=0; i<colNames.size(); i++ ) {
+				for( int i=0; i<numCols; i++ ) {
 					curOb.put(colNames.get(i), colVals.get(i));
 				}
 				
@@ -170,12 +171,19 @@ public class HouseCollection {
 			}
 			
 			//HouseModel nwHouse = g.fromJson(reqStr, HouseModel.class);
-			//boolean success = nwHouse.save();
-			nwHouse.save();
-			unid = nwHouse.getUnid();
-			res.setStatus(201);
+			
+			boolean svSuccess = nwHouse.save();
+			if(svSuccess) {
+				unid = nwHouse.getUnid();
+				res.setStatus(201);
+				res.addHeader("Location", "/xsp/houses/"+unid);
+			} else {
+				res.setStatus(400);
+			}
+			
+			
 			res.addHeader("Allow", colAllowMethods);
-			res.addHeader("Location", "/xsp/houses/"+unid);
+			
 		}catch(Exception e) {
 			HashMap<String,Object> errOb = new HashMap<String,Object>();
 			errOb.put("error", true);

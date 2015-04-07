@@ -37,6 +37,8 @@ public class HouseModel extends AbstractSmartDocumentModel {
 	
 	@Override
 	protected boolean querySave() {
+		boolean success = false;
+		// VALIDATION REQUIREMENTS HERE!!!
 		return true;
 	}
 }
