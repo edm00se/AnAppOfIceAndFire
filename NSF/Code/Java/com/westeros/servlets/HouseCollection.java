@@ -60,16 +60,26 @@ public class HouseCollection {
 			Database db = Utils.getCurrentDatabase();
 			View vw = db.getView("houses");
 			ViewNavigator nav = vw.createViewNav();
+			@SuppressWarnings("unchecked")
+			Vector<String> colNames = vw.getColumnNames();
+			int numCols = colNames.size();
 			ViewEntry ent = nav.getFirstDocument();
 			while( ent != null ) {
 				
 				@SuppressWarnings("unchecked")
 				Vector<String> colVals = ent.getColumnValues();
 				HashMap<String,String> curOb = new HashMap<String,String>();
+				
+				/*
 				curOb.put("name", colVals.get(0));
 				curOb.put("description", colVals.get(1));
 				curOb.put("words", colVals.get(2));
 				curOb.put("unid", colVals.get(3));
+				 */
+				for( int i=0; i<numCols; i++ ) {
+					curOb.put(colNames.get(i), colVals.get(i));
+				}
+				
 				dataAr.add(curOb);
 				
 				ViewEntry tmpEnt = nav.getNext(ent);
@@ -161,12 +171,19 @@ public class HouseCollection {
 			}
 			
 			//HouseModel nwHouse = g.fromJson(reqStr, HouseModel.class);
-			//boolean success = nwHouse.save();
-			nwHouse.save();
-			unid = nwHouse.getUnid();
-			res.setStatus(201);
+			
+			boolean svSuccess = nwHouse.save();
+			if(svSuccess) {
+				unid = nwHouse.getUnid();
+				res.setStatus(201);
+				res.addHeader("Location", "/xsp/houses/"+unid);
+			} else {
+				res.setStatus(400);
+			}
+			
+			
 			res.addHeader("Allow", colAllowMethods);
-			res.addHeader("Location", "/xsp/houses/"+unid);
+			
 		}catch(Exception e) {
 			HashMap<String,Object> errOb = new HashMap<String,Object>();
 			errOb.put("error", true);
