@@ -3,7 +3,7 @@
         <h3 class="panel-title">House Details</h3>
     </div>
 	<div class="panel-body">
-	    <form>
+	    <form name="houseForm">
 		    <div class="form-group">
 				<label
 					for="houseName">
@@ -12,6 +12,7 @@
 					type="text"
 					class="form-control"
 					id="houseName"
+					name="name"
 					ng-model="myHouse.values.name"
 					ng-disabled="!editForm" />
 			</div>
@@ -22,6 +23,7 @@
 				<textarea
 					class="form-control"
 					id="houseDescription"
+					name="description"
 					ng-model="myHouse.values.description"
 					rows="3"
 					ng-disabled="!editForm" />
@@ -34,6 +36,7 @@
 					type="text"
 					class="form-control"
 					id="coatOfArms"
+					name="coatOfArms"
 					ng-model="myHouse.values.coatOfArms"
 					ng-disabled="!editForm" />
 			</div>
@@ -45,6 +48,7 @@
 					type="text"
 					class="form-control"
 					id="houseWords"
+					name="words"
 					ng-model="myHouse.values.words"
 					ng-disabled="!editForm" />
 			</div>
@@ -56,6 +60,7 @@
 					type="text"
 					class="form-control"
 					id="houseSeat"
+					name="seat"
 					ng-model="myHouse.values.seat"
 					ng-disabled="!editForm" />
 			</div>
@@ -67,6 +72,7 @@
 					type="text"
 					class="form-control"
 					id="houseCurrentLord"
+					name="currentLord"
 					ng-model="myHouse.values.currentLord"
 					ng-disabled="!editForm" />
 			</div>
@@ -78,6 +84,7 @@
 					type="text"
 					class="form-control"
 					id="houseRegion"
+					name="region"
 					ng-model="myHouse.values.region"
 					ng-disabled="!editForm" />
 			</div>
@@ -89,6 +96,7 @@
 					type="text"
 					class="form-control"
 					id="houseTitle"
+					name="title"
 					ng-model="myHouse.values.title"
 					ng-disabled="!editForm" />
 			</div>
@@ -100,6 +108,7 @@
 					type="text"
 					class="form-control"
 					id="houseHeir"
+					name="heir"
 					ng-model="myHouse.values.heir"
 					ng-disabled="!editForm" />
 			</div>
@@ -111,27 +120,31 @@
 					type="text"
 					class="form-control"
 					id="houseOverlord"
+					name="overlord"
 					ng-model="myHouse.values.overlord"
 					ng-disabled="!editForm" />
 			</div>
-			<button
-				class="pull-right btn-success btn"
-				type="button" id="buttonSaveGotHouse">
-				<i class="fa fa-lg fa-save"></i> Save</button>
-			<button
-				class="pull-right btn-default btn"
-				type="button" id="buttonCancelGotHouse"
-				ng-show="editForm"
-				ng-really-message="Are you sure?"
-				ng-really-click="clearCancelForm()">
-				<i class="fa fa-lg fa-pencil"></i> Cancel</button>
-			<button
-				class="pull-right btn-default btn"
-				type="button" id="buttonEditGotHouse"
-				ng-disabled="!canEditForm"
-				ng-show="!editForm"
-				ng-click="setFormEditable()">
-				<i class="fa fa-lg fa-pencil"></i> Edit</button>
+			<div class="btn-list pull-right">
+				<button
+					class="btn-default btn"
+					type="button" id="buttonCancelGotHouse"
+					ng-really-message="Are you sure?"
+					ng-really-click="clearCancelForm()">
+					<i class="fa fa-lg fa-pencil"></i> Cancel</button>
+				<button
+					class="btn-success btn"
+					type="button" id="buttonSaveGotHouse"
+					ng-show="editForm"
+					ng-click="saveHouseForm()">
+					<i class="fa fa-lg fa-save"></i> Save</button>
+				<button
+					class="btn-primary btn"
+					type="button" id="buttonEditGotHouse"
+					ng-disabled="!canEditForm"
+					ng-show="!editForm"
+					ng-click="setFormEditable()">
+					<i class="fa fa-lg fa-pencil"></i> Edit</button>
+			</div>
 		</form>
 	</div>
     <!-- <div class="panel-footer col-xs-12"></div> -->

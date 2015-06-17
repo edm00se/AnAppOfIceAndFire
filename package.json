@@ -1,0 +1,15 @@
+{
+  "name": "app-of-ice-and-fire_bak",
+  "version": "1.0.0",
+  "description": "an app of ice and fire",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@odin:thor/app-of-ice-and-fire.git"
+  },
+  "author": "edm00se",
+  "license": "ISC"
+}

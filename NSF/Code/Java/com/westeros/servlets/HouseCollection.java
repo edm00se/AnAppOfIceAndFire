@@ -39,6 +39,28 @@ public class HouseCollection {
 	 * GET method of actions to take against the Houses Servlet, across the
 	 * implementations.
 	 * 
+	 * 
+	 * 
+	 * @api {get} /houses/:id Request House entry
+	 * @apiName Houses
+	 * @apiGroup Houses
+	 *
+	 * @apiParam {Number} id Users unique ID.
+	 *
+	 * @apiSuccess {Boolean} editMode  Edit mode status of the House record.
+	 * @apiSuccess {String} unid  UNID of the House record.
+	 * @apiSuccess {String} values.form  Form of the House record.
+	 * @apiSuccess {String} values.coatOfArms  Coat of Arms the House record.
+	 * @apiSuccess {String} values.currentLord  Current Lord of the House record.
+	 * @apiSuccess {String} values.description  Description of the House record.
+	 * @apiSuccess {String} values.heir  Heir of the House record.
+	 * @apiSuccess {String} values.name  Name of the House record.
+	 * @apiSuccess {String} values.overlord  Overlord of the House record.
+	 * @apiSuccess {String} values.region  Region of the House record.
+	 * @apiSuccess {String} values.seat  Seat of the House record.
+	 * @apiSuccess {String} values.title  Title of the House record.
+	 * @apiSuccess {String} values.words  Words of the House record.
+	 * 
 	 * @param req
 	 * @param res
 	 * @param facesContext
@@ -114,6 +136,26 @@ public class HouseCollection {
 	/**
 	 * POST method of actions to take against the Houses Servlet, across the
 	 * implementations.
+	 * 
+	 * @api {post} /houses/:id Create House entry
+	 * @apiName Houses
+	 * @apiGroup Houses
+	 *
+	 * @apiParam {Number} id Users unique ID.
+	 *
+	 * @apiSuccess {Boolean} editMode  Edit mode status of the House record.
+	 * @apiSuccess {String} unid  UNID of the House record.
+	 * @apiSuccess {String} values.form  Form of the House record.
+	 * @apiSuccess {String} values.coatOfArms  Coat of Arms the House record.
+	 * @apiSuccess {String} values.currentLord  Current Lord of the House record.
+	 * @apiSuccess {String} values.description  Description of the House record.
+	 * @apiSuccess {String} values.heir  Heir of the House record.
+	 * @apiSuccess {String} values.name  Name of the House record.
+	 * @apiSuccess {String} values.overlord  Overlord of the House record.
+	 * @apiSuccess {String} values.region  Region of the House record.
+	 * @apiSuccess {String} values.seat  Seat of the House record.
+	 * @apiSuccess {String} values.title  Title of the House record.
+	 * @apiSuccess {String} values.words  Words of the House record.
 	 * 
 	 * @param req
 	 * @param res

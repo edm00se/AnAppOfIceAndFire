@@ -55,7 +55,7 @@
 	})
 	
 	//provies the controller to the app, which handles the interaction of data (model) with the view (a la MVC)
-	.controller('HouseListCtrl', function($scope, $filter, houseCollectionFactory) {
+	.controller('HouseListCtrl', function($scope, $state, $http, $filter, houseCollectionFactory) {
 		
 		//defines filter/search/etc. vars
 		$scope.pageQty = 5; //detectPhone() ? 10 : 30;
@@ -86,17 +86,49 @@
 			 .then( function(){
 				//angular.element('div.screenMask').css('visibility','hidden');
 			});
+
+		$scope.removeHouse = function(unid){
+			$http( {
+				method : 'DELETE',
+				url : 'houses/'+unid
+			})
+			.success( function(data, status, headers, config){
+				console.log("successfully deleted house with id: "+unid);
+			})
+			.error( function(data, status, headers, config){
+				//might as well say something
+				console.log("poop");
+			})
+			.then( function(){
+				$state.go('houses',{reload: true});
+			});
+		};
 		
 	})
 	
-	.controller('OneHouseCtrl', function($scope, $stateParams, $window, houseFactory){
+	.controller('OneHouseCtrl', function($scope, $state, $stateParams, $http, houseFactory){
+		// check for empty ID
+		var tmpItm = $stateParams.item;
+		console.log("unid: "+tmpItm);
+		var re = /^[0-9A-Za-z]{32}$/;
+		//var re = /\d/;
+		if( tmpItm == null || tmpItm == undefined || (!tmpItm || !tmpItm.trim()) || !re.test(tmpItm) ){
+			$state.go('houses');
+		}
+
 		$scope.editForm = false;
 		$scope.canEditForm = false;
 		$scope.myHouse = {};
+		var fieldNames = [];
 		houseFactory($stateParams.item)
 			.success(function(data, status, headers, config) {
 				$scope.myHouse = data;
 				$scope.canEditForm = true;
+				angular.forEach($scope.myHouse,function(value,key){
+					if( key!="unid" ){
+						fieldNames.push(key);
+					}
+				});
 			})
 			.error(function(data, status, headers, config) {
 				console.log("status: "+status);
@@ -110,8 +142,39 @@
 			}
 		}
 		$scope.clearCancelForm = function() {
-			$window.location.href = '#/houses';
+			$state.go('houses');
 		}
+
+		$scope.saveHouseForm = function(){
+			var tmpOb = { "unid": $scope.myHouse.unid };
+			//console.log("checking field names: "+fieldNames.toString());
+			angular.forEach(fieldNames, function(fldNm){
+				if( $scope.houseForm[fldNm].$dirty === true ){
+					var tmpVal = $scope.myHouse[fldNm];
+					//console.log("updated field: "+fldNm+" with value: "+tmpVal);
+					tmpOb[fldNm] = tmpVal;
+				}
+			});
+			
+			$http( {
+				method : 'PUT',
+				url : 'houses/'+$scope.myHouse.unid,
+				data: JSON.stringify(tmpOb)
+			})
+				.success( function(data, status, headers, config){
+					console.log("successfully updated house with unid: "+$scope.myHouse.unid);
+				})
+				.error( function(data, status, headers, config){
+					//might as well say something
+					console.log("poop");
+				})
+				.then( function(){
+					$state.go('houses',{reload: true});
+				});
+			
+			//console.log("Simulated PUT complete with object to send: "+JSON.stringify(tmpOb));
+		}
+
 	})
 
 	/*

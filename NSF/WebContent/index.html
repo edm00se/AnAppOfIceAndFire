@@ -25,16 +25,18 @@
         <div class="navbar-header">
             <button class="navbar-toggle" target=".navbar-collapse" toggle="collapse" type="button">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
-            <a href="/AnAppOfIceAndFire.nsf/" class="navbar-brand">An App of Ice and Fire</a>
+            <a href="#/" class="navbar-brand">An App of Ice and Fire</a>
         </div>
         <div class="collapse navbar-collapse" ng-controller="NavCtrl">
             <ul class="nav navbar-nav navbar-right">
                 <li ng-class="{active:isActive('/houses')}">
-                    <a href="#/houses"><i class="fa fa-list fa-lg"></i> Houses</a></li>
+                    <a ui-sref="houses" ui-sref-active="active"><i class="fa fa-list fa-lg"></i> Houses</a></li>
                 <li ng-class="{active:isActive('/new')}">
-                    <a href="#/new"><i class="fa fa-plus-square fa-lg"></i> New House</a></li>
+                    <a ui-sref="new" ui-sref-active="active"><i class="fa fa-plus-square fa-lg"></i> New House</a></li>
             </ul>
         </div>
     </div>
