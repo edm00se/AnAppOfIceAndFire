@@ -42,7 +42,6 @@ public class HouseServlet extends AbstractXSPServlet {
 		 * Specific Document, by UNID. Allowed are GET,
 		 * PUT, and DELETE.
 		 */
-		
 		if (matchRecord.find()) {
 			String unid = matchRecord.group(1); // .group(1);
 			if( HouseRecord.isValidUnid(unid) ) {

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <view name='houses' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.0'
- replicaid='88257E000001FF59' showinmenu='false' publicaccess='false' designerversion='8.5.3'
+ replicaid='88257E000001FF59' showinmenu='false' publicaccess='true' designerversion='8.5.3'
  unreadmarks='none' onopengoto='lastopened' onrefresh='displayindicator' headers='beveled'
  opencollapsed='false' showresponsehierarchy='true' showmargin='true' shrinkrows='false'
  extendlastcolumn='false' showhierarchies='false' unreadcolor='black' rowlinecount='1'
@@ -8,11 +8,11 @@
  boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
  allowcustomizations='false' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
  uniquekeys='false'>
-<noteinfo noteid='166' unid='045E775D8A3E562086257DB900789293' sequence='14'>
+<noteinfo noteid='166' unid='045E775D8A3E562086257DB900789293' sequence='37'>
 <created><datetime>20141225T155658,43-06</datetime></created>
-<modified><datetime dst='true'>20150316T150218,60-07</datetime></modified>
-<revised><datetime dst='true'>20150316T150218,59-07</datetime></revised>
-<lastaccessed><datetime dst='true'>20150316T150218,60-07</datetime></lastaccessed>
+<modified><datetime dst='true'>20150328T184536,27-07</datetime></modified>
+<revised><datetime dst='true'>20150328T184536,26-07</datetime></revised>
+<lastaccessed><datetime dst='true'>20150328T184536,27-07</datetime></lastaccessed>
 <addedtofile><datetime>20150305T162151,76-08</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
 <wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby><code
@@ -51,5 +51,26 @@
 <column hidedetailrows='false' itemname='$0' width='22.6250' resizable='true'
  separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
  title='unid'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
->@Text(@DocumentUniqueID)</formula></code></column></view>
+>@Text(@DocumentUniqueID)</formula></code></column>
+<column hidedetailrows='false' itemname='coatOfArms' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='coatOfArms'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='currentLord' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='currentLord'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='heir' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='heir'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='overlord' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='overlord'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='region' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='region'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='seat' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='seat'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='title' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='title'><font size='9pt' style='bold'/></columnheader></column></view>
 

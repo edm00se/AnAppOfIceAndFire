@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>An App of Ice and Fire</title>
+    <link rel="SHORTCUT ICON" href="/AnAppOfIceAndFire.nsf/%24icon">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css">
+    <!--<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/flatly/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/AnAppOfIceAndFire.nsf/AnAppOfIceAndFire.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/AnAppOfIceAndFire.nsf/css/animations.css"> -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="houseApp">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <button class="navbar-toggle" target=".navbar-collapse" toggle="collapse" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#/" class="navbar-brand">An App of Ice and Fire</a>
+        </div>
+        <div class="collapse navbar-collapse" ng-controller="NavCtrl">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{active:isActive('/houses')}">
+                    <a ui-sref="houses" ui-sref-active="active"><i class="fa fa-list fa-lg"></i> Houses</a></li>
+                <li ng-class="{active:isActive('/new')}">
+                    <a ui-sref="new" ui-sref-active="active"><i class="fa fa-plus-square fa-lg"></i> New House</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div ui-view></div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
+    <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script> -->
+    <!-- CDN fallback -->
+    <script type="text/javascript" src="js/houseApp.js"></script>
+</body>
+
+</html>
