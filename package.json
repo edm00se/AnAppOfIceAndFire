@@ -4,7 +4,8 @@
   "description": "an app of ice and fire",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "json-server --id unid housesDB.json --watch housesDB.json --routes routes.json"
   },
   "repository": {
     "type": "git",

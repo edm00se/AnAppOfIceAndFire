@@ -22,6 +22,9 @@ I've marked where I've used GSON in my Java classes and have almost entirely pro
 
 For reasoning on why I recommend placing those JARs on your server, please consult [my blog post on the subject](//edm00se.io/xpages/a-quick-note-on-JARs).
 
+## Run Without Domino Server
+To run without a Domino server (with no back-end logic by the *HTTPServet*s), you can use `json-server`. To do this, you can either install the dependencies specified in the _package.json_ file by running `npm install` or you can install `json-server` globally yourself, via `npm install -g json-server`. To start, from the project path, either run `json-server --id unid --watch housesDB.json --routes routes.json` or just use `npm start`. The _package.json_ file defines the same for the _start_ command that _npm_ will use.
+
 ## License
 
 As is my norm for my blog and my GitHub repositories, the work contained herein is licensed under a <a href="//creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. You may use, alter, and redistribute the code herein (with citation), while expecting no warranty for its use.
