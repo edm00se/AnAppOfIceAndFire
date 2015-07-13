@@ -8,8 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@odin:thor/app-of-ice-and-fire.git"
+    "url": "git@github.com:edm00se/AnAppOfIceAndFire.git"
   },
   "author": "edm00se",
-  "license": "ISC"
+  "license": "Creative Commons Attribution 3.0 Unported License",
+  "dependencies": {
+    "json-server": "^0.7.20"
+  }
 }

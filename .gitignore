@@ -1,2 +1,4 @@
 NSF/WebContent/libs/*
 .DS_Store
+node_modules/*
+public
