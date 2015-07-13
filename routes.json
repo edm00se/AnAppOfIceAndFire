@@ -1,0 +1,4 @@
+{
+  "/xsp/houses": "/houses",
+  "/xpp/:houses/:id": "/:houses/:id"
+}
