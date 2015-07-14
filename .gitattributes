@@ -1,2 +1,5 @@
-
-
+*.xsp linguist-language=XML
+*.form linguist-language=XML
+*.view linguist-language=XML
+*.xsp-config linguist-language=XML
+*.xsp.metadata linguist-language=XML
