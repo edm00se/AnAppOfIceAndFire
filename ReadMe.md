@@ -1,5 +1,9 @@
 ## Synopsis
 
+[![Join the chat at https://gitter.im/edm00se/AnAppOfIceAndFire](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/edm00se/AnAppOfIceAndFire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Join the chat at https://gitter.im/edm00se/AnAppOfIceAndFire](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/edm00se/AnAppOfIceAndFire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is the "IBM ConnectED 2015 App-That-Never-Was", as my session became a Chalk Talk.
 
 ## Motivation
@@ -22,6 +26,9 @@ This application, as my blog series describes, requires some JAR files to be con
 I've marked where I've used GSON in my Java classes and have almost entirely provided the working _com.ibm.commons.util.io.json_ equivalent. You can also manually work around the Apache Commons libraries, as they're mostly just helper utilities. I do recommend using them though, so if you can't access your server's file system, you can import them into the NSF.
 
 For reasoning on why I recommend placing those JARs on your server, please consult [my blog post on the subject](//edm00se.io/xpages/a-quick-note-on-JARs).
+
+## Run Without Domino Server
+To run without a Domino server (with no back-end logic by the *HTTPServet*s), you can use `json-server`. To do this, you can either install the dependencies specified in the _package.json_ file by running `npm install` or you can install `json-server` globally yourself, via `npm install -g json-server`. To start, from the project path, either run `json-server --id unid --watch housesDB.json --routes routes.json` or just use `npm start`. The _package.json_ file defines the same for the _start_ command that _npm_ will use.
 
 ## License
 
