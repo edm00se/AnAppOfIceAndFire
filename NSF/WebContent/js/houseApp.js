@@ -78,9 +78,12 @@
 		//the factory is returning the promise of the $http, so handle success/error here
 		houseCollectionFactory
 			.success( function(data, status, headers, config) {
-				$scope.housesOfWesteros = data.dataAr;
-				//$scope.predicate = "JobNum";
-				//$scope.reverse = false;
+				if( !data.hasOwnProperty("dataAr") ){
+					//loading by non-Domino method, probably json-server; just use the response
+					$scope.housesOfWesteros = data;
+				}else{
+					$scope.housesOfWesteros = data.dataAr;
+				}
 			}).error( function(data, status, headers, config) {
 				$scope.housesOfWesteros = null;
 				console.log("data: " + data);
@@ -127,7 +130,20 @@
 		var fieldNames = [];
 		houseFactory($stateParams.item)
 			.success(function(data, status, headers, config) {
-				$scope.myHouse = data;
+				if( !data.hasOwnProperty("values") ){
+					var values = {};
+					for( var prop in data ){
+						values[prop] = data[prop];
+					}
+					var tmpResp = {
+						"editMode": true,
+						"unid": data.unid,
+						"values": values
+					};
+					$scope.myHouse = tmpResp;
+				}else{
+					$scope.myHouse = data;
+				}
 				$scope.canEditForm = true;
 				angular.forEach($scope.myHouse,function(value,key){
 					if( key!="unid" ){
