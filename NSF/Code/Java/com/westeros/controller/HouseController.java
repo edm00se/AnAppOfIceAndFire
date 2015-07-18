@@ -22,6 +22,6 @@ public class HouseController implements Serializable {
 	public HouseController(){
 	}
 	
-	
+	//one day, something will go here
 	
 }

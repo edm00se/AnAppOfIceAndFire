@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<form name='character' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.4'
+ replicaid='88257E000001FF59' publicaccess='false' designerversion='8.5.3'
+ renderpassthrough='true'>
+<noteinfo noteid='144a' unid='7291AF21A4F1E2DB88257E86005A8F36' sequence='9'>
+<created><datetime dst='true'>20150718T092909,02-07</datetime></created>
+<modified><datetime dst='true'>20150718T104910,31-07</datetime></modified>
+<revised><datetime dst='true'>20150718T104910,30-07</datetime></revised>
+<lastaccessed><datetime dst='true'>20150718T104910,31-07</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20150718T092909,23-07</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
+<body><richtext>
+<pardef id='1'/>
+<par def='1'><field type='text' kind='editable' name='CharFirstName'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='6' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='CharLastName'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='computed' name='CharFullName_FL'><code
+ event='defaultvalue'><formula>CharFirstName+" "+CharLastName</formula></code></field><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'/>
+<par def='1'><field type='text' kind='editable' name='ActFirstName'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='ActLastName'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='computed' name='ActFullName_FL'><code
+ event='defaultvalue'><formula>ActFirstName+" "+ActLastName</formula></code></field><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'/>
+<par def='1'><field type='text' kind='editable' name='Title'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='House'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='Home'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' allowmultivalues='true' kind='editable' name='Abilities'
+ listinputseparators='comma semicolon' listdisplayseparator='semicolon'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'/>
+<par def='1'><field type='text' allowmultivalues='true' kind='editable' name='Parents'
+ listinputseparators='comma semicolon' listdisplayseparator='semicolon'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' allowmultivalues='true' kind='editable' name='Siblings'
+ listinputseparators='comma semicolon' listdisplayseparator='semicolon'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' allowmultivalues='true' kind='editable' name='Children'
+ listinputseparators='comma semicolon' listdisplayseparator='semicolon'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par>
+<par def='1'><field type='text' kind='editable' name='Spouse'/><compositedata
+ type='98' prevtype='65418' nexttype='222' afterparcount='5' containertype='65418'
+ aftercontainercount='1' afterbegincount='3'>
+Yg4BAIQAAAAAAAAAAAA=
+</compositedata></par></richtext></body>
+<item name='$$ScriptName' summary='false' sign='true'><text>character</text></item></form>
+

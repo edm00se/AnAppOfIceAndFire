@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="86257DB9000E2CB0" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="156" sequence="22" unid="549C0276D7E92E3E85257C50002415E6">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="152" sequence="127" unid="549C0276D7E92E3E85257C50002415E6">
 <created><datetime>20131229T013409,02-05</datetime></created>
-<modified><datetime>20141225T164840,37-06</datetime></modified>
-<revised><datetime>20141225T164840,36-06</datetime></revised>
-<lastaccessed><datetime>20141225T164840,36-06</datetime></lastaccessed>
-<addedtofile><datetime>20141224T203457,76-06</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
-<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby>
+<modified><datetime dst="true">20150718T093233,67-07</datetime></modified>
+<revised><datetime dst="true">20150718T093233,66-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150718T093233,67-07</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20150408T192417,15-07</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
 <item name="$Flags"><text>gC~4K</text></item>
 <item name="$TITLE"><text>index.xsp</text></item>
 
 
-
+<item name="$FileNames" sign="true"><text>index.xsp</text></item>
 <item name="$DesignerVersion"><text>8.5</text></item>
 
 
-<item name="$FileNames" sign="true"><text>index.xsp</text></item>
+
 
 </note>

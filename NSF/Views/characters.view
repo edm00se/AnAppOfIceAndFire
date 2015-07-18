@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='utf-8'?>
-<view name='houses' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.4'
- replicaid='88257E000001FF59' showinmenu='false' publicaccess='true' designerversion='8.5.3'
- unreadmarks='none' onopengoto='lastopened' onrefresh='displayindicator' headers='beveled'
- opencollapsed='false' showresponsehierarchy='true' showmargin='true' shrinkrows='false'
- extendlastcolumn='false' showhierarchies='false' unreadcolor='black' rowlinecount='1'
- headerlinecount='1' rowspacing='1' bgcolor='white' totalscolor='black' headerbgcolor='white'
- boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
- allowcustomizations='false' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
+<view name='characters' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.4'
+ replicaid='88257E000001FF59' showinmenu='false' noreplace='true' publicaccess='false'
+ designerversion='8.5.3' unreadmarks='none' onopengoto='lastopened' onrefresh='displayindicator'
+ headers='beveled' opencollapsed='false' showresponsehierarchy='true' showmargin='true'
+ shrinkrows='false' extendlastcolumn='false' showhierarchies='false' unreadcolor='black'
+ rowlinecount='1' headerlinecount='1' rowspacing='1' bgcolor='white' totalscolor='black'
+ headerbgcolor='white' boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
+ allowcustomizations='true' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
  uniquekeys='false'>
-<noteinfo noteid='166' unid='045E775D8A3E562086257DB900789293' sequence='51'>
-<created><datetime>20141225T155658,43-06</datetime></created>
-<modified><datetime dst='true'>20150718T104910,61-07</datetime></modified>
-<revised><datetime dst='true'>20150718T104910,60-07</datetime></revised>
-<lastaccessed><datetime dst='true'>20150718T104910,61-07</datetime></lastaccessed>
-<addedtofile><datetime>20150305T162151,76-08</datetime></addedtofile></noteinfo>
+<noteinfo noteid='144e' unid='6124A2BA2302588088257E86005AACA7' sequence='10'>
+<created><datetime dst='true'>20150718T093024,39-07</datetime></created>
+<modified><datetime dst='true'>20150718T104910,33-07</datetime></modified>
+<revised><datetime dst='true'>20150718T104910,32-07</datetime></revised>
+<lastaccessed><datetime dst='true'>20150718T104910,33-07</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20150718T093026,18-07</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
 <wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby><code
- event='selection'><formula>SELECT Form = "house"</formula></code>
+ event='selection'><formula>SELECT ((Form = "character"))</formula></code>
 <actionbar bgcolor='#f0f0f0' bordercolor='black'>
 <actionbuttonstyle bgcolor='#f0f0f0'/><font color='system'/><border style='solid'
- width='0px 0px 1px' color='system'/>
+ width='0px 0px 1px'/>
 <action title='Magic Button - Lite'><code event='click'><formula>targetField := @Prompt([OkCancelEditCombo]; "Select Field"; "Select a field to override:"; ""; @DocFields );
 updateTypes := "Text":"Number":"Time":"Delete Field";
 updateType := @Prompt([OkCancelList]; "Select Type"; "Choose a type or action:"; "Text"; updateTypes );
@@ -363,58 +363,50 @@ DocNavigationCount := DocNavigationCount + 1);
 
 @StatusBar( "Navigated through " + @Text( DocUpdateCount + DocNavigationCount ) + " documents." );
 @StatusBar( "Performed '" + DataType + "' for '" + @Implode( EditField ; ", " ) + "' field" + @If( @Elements( EditField ) &gt; 1; "s " ; " " ) + "on " + @Text( DocUpdateCount ) + " document" + @If( DocUpdateCount &gt; 1 ; "s" ; "" ) + "." )</formula></code><code
- event='hidewhen'><formula>@IsNotMember("[DatabaseAdmin]";@UserRoles)</formula></code></action></sharedactionref>
-<action title='Categori_ze' showinbar='false' systemcommand='categorize'/>
-<action title='_Edit Document' showinbar='false' systemcommand='edit'/>
-<action title='_Send Document' showinbar='false' systemcommand='send'/>
-<action title='_Forward' showinbar='false' systemcommand='forward'/>
-<action title='_Move To Folder...' showinbar='false' systemcommand='movetofolder'/>
-<action title='_Remove From Folder' showinbar='false' systemcommand='removefromfolder'/>
-<action title='_Read' showinbar='false' systemcommand='markread'/>
-<action title='_Unread' showinbar='false' systemcommand='markunread'/>
-<action title='_Open in New Window' showinbar='false' systemcommand='openinnewwindow'/>
-<action title='_Print...' showinbar='false' systemcommand='print'/>
-<action title='_Delete' showinbar='false' systemcommand='delete'/>
-<action title='_Document Properties' showinbar='false' systemcommand='properties'/>
-<action title='C_ut' showinbar='false' systemcommand='cut'/>
-<action title='_Copy' showinbar='false' systemcommand='copy'/>
-<action title='Copy as Document _Link' showinbar='false' systemcommand='copyasdoclink'/>
-<action title='Copy as _Table' showinbar='false' systemcommand='copyastable'/>
-<action title='P_aste' showinbar='false' systemcommand='paste'/>
-<action title='_Open' showinbar='false' systemcommand='open'/>
-<action title='Bookmark' showinbar='false' systemcommand='bookmark'/></actionbar>
-<column sort='ascending' hidedetailrows='false' itemname='name' width='10'
- resizable='true' separatemultiplevalues='false' sortnoaccent='true' sortnocase='true'
- showaslinks='false'><columnheader title='name'><font size='9pt' style='bold'/></columnheader></column>
-<column sort='ascending' hidedetailrows='false' itemname='description' width='20.2500'
- resizable='true' separatemultiplevalues='false' sortnoaccent='true' sortnocase='true'
- showaslinks='false'><columnheader title='description'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='words' width='16.6250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='words'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='$0' width='22.6250' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='unid'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
->@Text(@DocumentUniqueID)</formula></code></column>
-<column hidedetailrows='false' itemname='coatOfArms' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='coatOfArms'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='currentLord' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='currentLord'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='heir' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='heir'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='overlord' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='overlord'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='region' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='region'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='seat' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='seat'><font size='9pt' style='bold'/></columnheader></column>
-<column hidedetailrows='false' itemname='title' width='10' resizable='true'
- separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='title'><font size='9pt' style='bold'/></columnheader></column></view>
+ event='hidewhen'><formula>@IsNotMember("[DatabaseAdmin]";@UserRoles)</formula></code></action></sharedactionref></actionbar>
+<column sort='ascending' resort='both' hidedetailrows='false' itemname='CharFullName_FL'
+ width='10' resizable='true' separatemultiplevalues='false' sortnoaccent='false'
+ sortnocase='true' showaslinks='false'><columnheader title='Full Name'><font
+ size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='House' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='House'><font size='9pt' style='bold'/></columnheader></column>
+<column sort='ascending' resort='both' resort2='ascending' resort2column='0'
+ hidedetailrows='false' itemname='Title' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Title'><font size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='CalcSpouse' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Spouse'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>@If(Spouse!="-- Choose --";Spouse;"")</formula></code></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='ActFullName_FL' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Actor Name'><font size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='Home' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Home'><font size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='Abilities' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Abilities'><font size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='Parents' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Parents'><font size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='Siblings' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Siblings'><font size='9pt' style='bold'/></columnheader></column>
+<column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
+ itemname='Children' width='10' resizable='true' separatemultiplevalues='false'
+ sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='Children'><font size='9pt' style='bold'/></columnheader></column>
+<item name='$SelQuery' sign='true'>
+<rawitemdata type='f'>
+gQYAAAAAif8VAAAAAAABAAkAY2hhcmFjdGVyAA==
+</rawitemdata></item></view>
 

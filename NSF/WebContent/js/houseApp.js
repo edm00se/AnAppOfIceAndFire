@@ -15,6 +15,11 @@
 					templateUrl: 'partials/houseList.html',
 					controller: 'HouseListCtrl'
 				})
+				.state('new',{
+					url: '/houses/new',
+					templateUrl: 'partials/house.html',
+					controller: 'OneHouseCtrl'
+				})
 				.state('houses.item', {
 					url: '/:item',
 					templateUrl: 'partials/house.html',
