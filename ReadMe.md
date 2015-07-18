@@ -26,7 +26,7 @@ I've marked where I've used GSON in my Java classes and have almost entirely pro
 For reasoning on why I recommend placing those JARs on your server, please consult [my blog post on the subject](//edm00se.io/xpages/a-quick-note-on-JARs).
 
 ## Run Without Domino Server
-To run without a Domino server (with no back-end logic by the *HTTPServet*s), you can use `json-server`. To do this, you can either install the dependencies specified in the _package.json_ file by running `npm install` or you can install `json-server` globally yourself, via `npm install -g json-server`. To start, from the project path, either run `json-server --id unid --watch housesDB.json --routes routes.json` or just use `npm start`. The _package.json_ file defines the same for the _start_ command that _npm_ will use.
+To run without a Domino server (with no back-end logic by the *HTTPServet*s), you can use `json-server`. To do this, you can either install the dependencies specified in the _package.json_ file by running `npm install` or you can install `json-server` globally yourself, via `npm install -g json-server`. [Create a symlink](http://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/) to the NSF/WebContent path called 'public'; this is how `json-server` will identify the directory with the static assets. To start, from the project path, either run `json-server --id unid --watch housesDB.json --routes routes.json` or just use `npm start`. The _package.json_ file defines the same for the _start_ command that _npm_ will use.
 
 ## License
 
