@@ -208,7 +208,7 @@ public class HouseCollection {
 			nwHouse.setEditMode(true);
 			for (Map.Entry<String, Object> pair : tmpNwHouse.entrySet()) {
 				String curProp = pair.getKey();
-				String curVal = (String) pair.getValue();
+				Object curVal = pair.getValue();
 				nwHouse.setValue(curProp, curVal);
 			}
 			

@@ -123,9 +123,14 @@ public class HouseRecord {
 			}
 			
 			// done setting new values back into the existing object
-			exHouse.save();
+			boolean success = exHouse.save();
 			
-			res.setStatus(200);
+			if( success ) {
+				res.setStatus(200);
+			}else {
+				res.setStatus(400);
+			}
+			
 			res.addHeader("Allow", recAllowedMethods);
 			
 		} catch(Exception e) {
@@ -158,9 +163,13 @@ public class HouseRecord {
 		Document houseDoc;
 		try {
 			houseDoc = s.getCurrentDatabase().getDocumentByUNID(unid);
-			houseDoc.remove(true);
+			boolean success = houseDoc.remove(true);
 			houseDoc.recycle();
-			res.setStatus(200);
+			if( success ) {
+				res.setStatus(200);
+			}else {
+				res.setStatus(400);
+			}
 			res.addHeader("Allow", recAllowedMethods);
 		} catch (NotesException e) {
 			res.setStatus(500);
