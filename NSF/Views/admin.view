@@ -8,18 +8,18 @@
  headerbgcolor='white' boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
  allowcustomizations='true' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
  uniquekeys='false'>
-<noteinfo noteid='1462' unid='50B856B1A226BE6488257E86005FCBA2' sequence='6'>
+<noteinfo noteid='1462' unid='50B856B1A226BE6488257E86005FCBA2' sequence='9'>
 <created><datetime dst='true'>20150718T102620,50-07</datetime></created>
-<modified><datetime dst='true'>20150718T104909,95-07</datetime></modified>
-<revised><datetime dst='true'>20150718T104909,94-07</datetime></revised>
-<lastaccessed><datetime dst='true'>20150718T104909,95-07</datetime></lastaccessed>
+<modified><datetime dst='true'>20150719T204051,99-07</datetime></modified>
+<revised><datetime dst='true'>20150719T204051,98-07</datetime></revised>
+<lastaccessed><datetime dst='true'>20150719T204051,99-07</datetime></lastaccessed>
 <addedtofile><datetime dst='true'>20150718T102620,51-07</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
 <wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby><code
  event='selection'><formula>SELECT @All</formula></code>
 <actionbar bgcolor='#f0f0f0' bordercolor='black'>
-<actionbuttonstyle bgcolor='#f0f0f0'/><font color='system'/><border style='solid'
- width='0px 0px 1px'/>
+<actionbuttonstyle bgcolor='#f0f0f0'/><font size='9pt' color='system'/><border
+ style='solid' width='0px 0px 1px'/>
 <action title='Magic Button - Lite'><code event='click'><formula>targetField := @Prompt([OkCancelEditCombo]; "Select Field"; "Select a field to override:"; ""; @DocFields );
 updateTypes := "Text":"Number":"Time":"Delete Field";
 updateType := @Prompt([OkCancelList]; "Select Type"; "Choose a type or action:"; "Text"; updateTypes );

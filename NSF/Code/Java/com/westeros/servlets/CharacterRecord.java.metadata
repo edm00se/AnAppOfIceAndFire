@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1552" sequence="7" unid="D7A84435B9C3569488257E88000CFA2C">
+<created><datetime dst="true">20150719T192144,76-07</datetime></created>
+<modified><datetime dst="true">20150719T192157,11-07</datetime></modified>
+<revised><datetime dst="true">20150719T192157,10-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150719T192157,11-07</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20150719T192144,77-07</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+
+
+
+<item name="$TITLE"><text>com/westeros/servlets/CharacterRecord.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/westeros/servlets/CharacterRecord.java</text></item></note>

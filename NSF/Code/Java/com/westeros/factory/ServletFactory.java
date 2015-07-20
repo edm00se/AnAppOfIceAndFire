@@ -20,8 +20,8 @@ public class ServletFactory implements IServletFactory {
 		servletClasses.put("houses", "com.westeros.servlets.HouseServlet");
 		servletNames.put("houses", "Houses of Westeros");
 		
-		servletClasses.put("althouses", "com.westeros.servlets.HouseServletAlt");
-		servletNames.put("althouses", "Alt Houses of Westeros");
+		servletClasses.put("characters", "com.westeros.servlets.CharacterServlet");
+		servletNames.put("characters", "Characters of Westeros");
 		
 		this.module = module;
 	}

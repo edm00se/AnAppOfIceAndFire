@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="86257DB9000E2CB0" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="1ba" sequence="10" unid="E45CC137ED8E97DF85257C3B00148606">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1b2" sequence="56" unid="E45CC137ED8E97DF85257C3B00148606">
 <created><datetime>20131207T224410,30-05</datetime></created>
-<modified><datetime>20141225T154409,98-06</datetime></modified>
-<revised><datetime>20141225T154409,97-06</datetime></revised>
-<lastaccessed><datetime>20141225T154409,97-06</datetime></lastaccessed>
-<addedtofile><datetime>20141224T203504,31-06</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
-<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby>
+<modified><datetime dst="true">20150719T175612,25-07</datetime></modified>
+<revised><datetime dst="true">20150719T175612,24-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150719T175612,25-07</datetime></lastaccessed>
+<addedtofile><datetime>20150305T162153,44-08</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
 <item name="$Flags"><text>34567Cg~[</text></item>
 <item name="$TITLE"><text>org/openntf/xsp/util/DominoUtil.java</text></item>
+
+
+
 <item name="$DesignerVersion"><text>8.5.3</text></item>
 
 
-<item name="$FileNames" sign="true"><text>org/openntf/xsp/util/DominoUtil.java</text></item>
-
-
-</note>
+<item name="$FileNames" sign="true"><text>org/openntf/xsp/util/DominoUtil.java</text></item></note>

@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="86257DB9000E2CB0" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="1be" sequence="10" unid="96A7184D0C48C9C485257C4E0072CD1C">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1b6" sequence="55" unid="96A7184D0C48C9C485257C4E0072CD1C">
 <created><datetime>20131227T155356,12-05</datetime></created>
-<modified><datetime>20141225T154410,08-06</datetime></modified>
-<revised><datetime>20141225T154410,07-06</datetime></revised>
-<lastaccessed><datetime>20141225T154410,07-06</datetime></lastaccessed>
-<addedtofile><datetime>20141224T203504,55-06</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
-<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby>
+<modified><datetime dst="true">20150719T190025,77-07</datetime></modified>
+<revised><datetime dst="true">20150719T190025,76-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150719T190025,77-07</datetime></lastaccessed>
+<addedtofile><datetime>20150305T162153,50-08</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
 <item name="$Flags"><text>34567Cg~[</text></item>
 <item name="$TITLE"><text>org/openntf/xsp/model/AbstractSmartDocumentModel.java</text></item>
 <item name="$DesignerVersion"><text>8.5.3</text></item>

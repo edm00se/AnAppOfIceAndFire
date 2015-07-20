@@ -1,5 +1,6 @@
 package com.westeros.model;
 
+import org.apache.commons.validator.GenericValidator;
 import org.openntf.xsp.model.AbstractSmartDocumentModel;
 
 /**
@@ -39,6 +40,12 @@ public class HouseModel extends AbstractSmartDocumentModel {
 	protected boolean querySave() {
 		boolean success = false;
 		// VALIDATION REQUIREMENTS HERE!!!
-		return true;
+		boolean nameGood = !GenericValidator.isBlankOrNull(name);
+		boolean currentLordGood = !GenericValidator.isBlankOrNull(currentLord);
+		boolean overlordGood = !GenericValidator.isBlankOrNull(overlord);
+		if( nameGood && currentLordGood && overlordGood ) {
+			success = true;
+		}
+		return success;
 	}
 }

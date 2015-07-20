@@ -8,18 +8,18 @@
  headerbgcolor='white' boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
  allowcustomizations='true' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
  uniquekeys='false'>
-<noteinfo noteid='144e' unid='6124A2BA2302588088257E86005AACA7' sequence='10'>
+<noteinfo noteid='144e' unid='6124A2BA2302588088257E86005AACA7' sequence='15'>
 <created><datetime dst='true'>20150718T093024,39-07</datetime></created>
-<modified><datetime dst='true'>20150718T104910,33-07</datetime></modified>
-<revised><datetime dst='true'>20150718T104910,32-07</datetime></revised>
-<lastaccessed><datetime dst='true'>20150718T104910,33-07</datetime></lastaccessed>
+<modified><datetime dst='true'>20150719T204052,37-07</datetime></modified>
+<revised><datetime dst='true'>20150719T204052,36-07</datetime></revised>
+<lastaccessed><datetime dst='true'>20150719T204052,37-07</datetime></lastaccessed>
 <addedtofile><datetime dst='true'>20150718T093026,18-07</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
 <wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby><code
  event='selection'><formula>SELECT ((Form = "character"))</formula></code>
 <actionbar bgcolor='#f0f0f0' bordercolor='black'>
 <actionbuttonstyle bgcolor='#f0f0f0'/><font color='system'/><border style='solid'
- width='0px 0px 1px'/>
+ width='0px 0px 1px' color='system'/>
 <action title='Magic Button - Lite'><code event='click'><formula>targetField := @Prompt([OkCancelEditCombo]; "Select Field"; "Select a field to override:"; ""; @DocFields );
 updateTypes := "Text":"Number":"Time":"Delete Field";
 updateType := @Prompt([OkCancelList]; "Select Type"; "Choose a type or action:"; "Text"; updateTypes );
@@ -362,12 +362,11 @@ DocNavigationCount := DocNavigationCount + 1);
 "" );
 
 @StatusBar( "Navigated through " + @Text( DocUpdateCount + DocNavigationCount ) + " documents." );
-@StatusBar( "Performed '" + DataType + "' for '" + @Implode( EditField ; ", " ) + "' field" + @If( @Elements( EditField ) &gt; 1; "s " ; " " ) + "on " + @Text( DocUpdateCount ) + " document" + @If( DocUpdateCount &gt; 1 ; "s" ; "" ) + "." )</formula></code><code
- event='hidewhen'><formula>@IsNotMember("[DatabaseAdmin]";@UserRoles)</formula></code></action></sharedactionref></actionbar>
-<column sort='ascending' resort='both' hidedetailrows='false' itemname='CharFullName_FL'
+@StatusBar( "Performed '" + DataType + "' for '" + @Implode( EditField ; ", " ) + "' field" + @If( @Elements( EditField ) &gt; 1; "s " ; " " ) + "on " + @Text( DocUpdateCount ) + " document" + @If( DocUpdateCount &gt; 1 ; "s" ; "" ) + "." )</formula></code></action></sharedactionref></actionbar>
+<column sort='ascending' resort='both' hidedetailrows='false' itemname='$0'
  width='10' resizable='true' separatemultiplevalues='false' sortnoaccent='false'
  sortnocase='true' showaslinks='false'><columnheader title='Full Name'><font
- size='9pt' style='bold'/></columnheader></column>
+ size='9pt' style='bold'/></columnheader><code event='value'><formula>charFirstName+" "+charLastName</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
  itemname='House' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
@@ -382,9 +381,10 @@ DocNavigationCount := DocNavigationCount + 1);
  title='Spouse'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
 >@If(Spouse!="-- Choose --";Spouse;"")</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='ActFullName_FL' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='$1' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Actor Name'><font size='9pt' style='bold'/></columnheader></column>
+ title='Actor Name'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>actFirstName+" "+actLastName</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
  itemname='Home' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
