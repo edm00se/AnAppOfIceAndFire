@@ -1,4 +1,6 @@
 {
   "/xsp/houses": "/houses",
-  "/xsp/:houses/:id": "/:houses/:id"
+  "/xsp/:houses/:id": "/:houses/:id",
+  "/xsp/characters": "/characters",
+  "/xsp/:characters/:id": "/:characters/:id"
 }
