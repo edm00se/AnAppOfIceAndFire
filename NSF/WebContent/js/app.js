@@ -7,9 +7,13 @@
 	.config(
 		function($stateProvider, $urlRouterProvider){
 			
-			$urlRouterProvider.otherwise('/houses');
+			$urlRouterProvider.otherwise('/about');
 			
 			$stateProvider
+				.state('about', {
+					url: '/about',
+					templateUrl: 'partials/about.html'
+				})
 				.state('houses', {
 					url: '/houses',
 					templateUrl: 'partials/houseList.html',

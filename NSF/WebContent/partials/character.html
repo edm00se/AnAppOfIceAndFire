@@ -40,20 +40,31 @@
 					ng-model="myCharacter.values.title"
 					ng-disabled="!editForm" />
 			</div>
-			<!--
 			<div class="form-group">
 				<label
-					for="characterDescription">
-					Description</label>
-				<textarea
+					for="actorFirstName">
+					Actor's First Name</label>
+				<input
+					type="text"
 					class="form-control"
-					id="characterDescription"
-					name="description"
-					ng-model="myCharacter.values.description"
-					rows="3"
+					id="actorFirstName"
+					name="name"
+					ng-model="myCharacter.values.actFirstName"
 					ng-disabled="!editForm" />
 			</div>
-			-->
+			<div class="form-group">
+				<label
+					for="actorLastName">
+					Actor's Last Name</label>
+				<input
+					type="text"
+					class="form-control"
+					id="actorLastName"
+					name="name"
+					ng-model="myCharacter.values.actLastName"
+					ng-disabled="!editForm" />
+			</div>
+			<!-- more fields, need to handle multi-select, select2? -->
 			<div class="btn-list pull-right">
 				<button
 					class="btn-default btn"
