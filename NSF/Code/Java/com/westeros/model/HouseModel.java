@@ -38,11 +38,11 @@ public class HouseModel extends AbstractSmartDocumentModel {
 	
 	@Override
 	protected boolean querySave() {
-		boolean success = false;
 		// VALIDATION REQUIREMENTS HERE!!!
-		boolean nameGood = !GenericValidator.isBlankOrNull(name);
-		boolean currentLordGood = !GenericValidator.isBlankOrNull(currentLord);
-		boolean overlordGood = !GenericValidator.isBlankOrNull(overlord);
+		boolean success = false;
+		boolean nameGood = !GenericValidator.isBlankOrNull((String) this.getValue("name"));
+		boolean currentLordGood = !GenericValidator.isBlankOrNull((String) this.getValue("currentLord"));
+		boolean overlordGood = !GenericValidator.isBlankOrNull((String) this.getValue("overlord"));
 		if( nameGood && currentLordGood && overlordGood ) {
 			success = true;
 		}
