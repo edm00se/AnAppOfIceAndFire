@@ -461,6 +461,21 @@
 	    };
 	})
 
+	.directive('tooltip', function(){
+	    return {
+	        restrict: 'A',
+	        link: function(scope, element, attrs){
+	            angular.element(element).hover(function(){
+	                // on mouseenter
+	                angular.element(element).tooltip('show');
+	            }, function(){
+	                // on mouseleave
+	                angular.element(element).tooltip('hide');
+	            });
+	        }
+	    };
+	})
+
 	/**
 	 * A generic confirmation for risky actions.
 	 * Usage: Add attributes: ng-really-message="Are you sure"? ng-really-click="takeAction()" function
