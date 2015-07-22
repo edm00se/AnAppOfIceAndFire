@@ -170,7 +170,7 @@
       "title": "Lady",
       "actFirstName": "Maisie",
       "home": "Winterfell",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -197,14 +197,14 @@
       "title": "Lord",
       "actFirstName": "Isaac",
       "home": "Winterfell",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
       "charFirstName": "Bronn",
       "abilities": "Swordplay",
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Flynn",
       "unid": "9D5DA6F0FF3947F088257E86005FE48A",
       "spouse": "",
@@ -212,7 +212,7 @@
       "title": "Sellsword",
       "actFirstName": "Jerome",
       "home": "Stokeworth",
-      "children": ""
+      "children": []
     },
     {
       "house": "Tully",
@@ -307,8 +307,8 @@
         "Cunning",
         "Battle"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Cunningham",
       "unid": "16CE4935053985FC88257E86005FE466",
       "spouse": "",
@@ -330,8 +330,8 @@
       "house": "Targaryen",
       "charFirstName": "Doreah",
       "abilities": "",
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "McKee",
       "unid": "0AA4F097302156CA88257E86005FE471",
       "spouse": "",
@@ -339,7 +339,7 @@
       "title": "Servant",
       "actFirstName": "Roxanne",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Other",
@@ -349,8 +349,8 @@
         "Command",
         "Swordplay"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Momoa",
       "unid": "422337AA16319FEE88257E86005FE45C",
       "spouse": "Daenerys Targaryen",
@@ -358,7 +358,7 @@
       "title": "Khal",
       "actFirstName": "Jason",
       "home": "Dothraki Sea",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -404,7 +404,7 @@
       "title": "Blacksmith",
       "actFirstName": "",
       "home": "Brotherhood Without Banners",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -413,8 +413,8 @@
         "Strength",
         "Loyalty"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Naim",
       "unid": "2443C6E5001D123488257E86005FE48C",
       "spouse": "",
@@ -422,7 +422,7 @@
       "title": "Hodor",
       "actFirstName": "Kristian",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Baratheon",
@@ -431,8 +431,8 @@
         "Swordplay",
         "Death"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Johnson",
       "unid": "B3A633C4444743D188257E86005FE46B",
       "spouse": "",
@@ -440,14 +440,14 @@
       "title": "The King's Justice",
       "actFirstName": "Wilko",
       "home": "King's Landing",
-      "children": ""
+      "children": []
     },
     {
       "house": "Targaryen",
       "charFirstName": "Irri",
       "abilities": "Language",
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Acharia",
       "unid": "0EC21951E741E6A088257E86005FE45D",
       "spouse": "",
@@ -455,7 +455,7 @@
       "title": "Servant",
       "actFirstName": "Amrita",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "KingsGuard",
@@ -493,8 +493,8 @@
         "Command",
         "Warfare"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Cosmo",
       "unid": "F281851E3357A6FD88257E86005FE490",
       "spouse": "",
@@ -508,8 +508,8 @@
       "house": "Targaryen",
       "charFirstName": "Jhiqui",
       "abilities": "Language",
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Piotrowski",
       "unid": "3D2FBF902288958D88257E86005FE478",
       "spouse": "",
@@ -517,7 +517,7 @@
       "title": "Servant",
       "actFirstName": "Sarita",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -541,7 +541,7 @@
       "title": "Prince",
       "actFirstName": "Jack",
       "home": "Casterly Rock",
-      "children": ""
+      "children": []
     },
     {
       "house": "Arryn",
@@ -591,7 +591,7 @@
       "title": "Lord",
       "actFirstName": "Kit",
       "home": "Castle Black",
-      "children": ""
+      "children": []
     },
     {
       "house": "Radical",
@@ -604,7 +604,7 @@
         "Jeor",
         ""
       ],
-      "siblings": "",
+      "siblings": [],
       "actLastName": "Glen",
       "unid": "3A2BDA78FC2B91BB88257E86005FE460",
       "spouse": "",
@@ -612,7 +612,7 @@
       "title": "Ser",
       "actFirstName": "Iain",
       "home": "Bear Island",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -662,7 +662,7 @@
       "title": "Ser",
       "actFirstName": "Eugene",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Tyrell",
@@ -684,7 +684,7 @@
       "title": "Ser",
       "actFirstName": "Finn",
       "home": "Highgarden",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -696,8 +696,8 @@
         "Wisdom",
         "Peace"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Sumpter",
       "unid": "CAA381E0F7479D5888257E86005FE48E",
       "spouse": "",
@@ -705,7 +705,7 @@
       "title": "Maester",
       "actFirstName": "Donald",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Tully",
@@ -748,7 +748,7 @@
       "title": "Lady",
       "actFirstName": "natalie",
       "home": "Highgarden",
-      "children": ""
+      "children": []
     },
     {
       "house": "Baratheon",
@@ -757,8 +757,8 @@
         "Magic",
         "Shadow Children"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "van  Houten",
       "unid": "BEC6FAEF1824061088257E86005FE482",
       "spouse": "",
@@ -766,7 +766,7 @@
       "title": "Red Priestess",
       "actFirstName": "Carice",
       "home": "Asshai",
-      "children": ""
+      "children": []
     },
     {
       "house": "KingsGuard",
@@ -775,8 +775,8 @@
         "Swordplay",
         "Amorality"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Beattie",
       "unid": "A4B15F5B6519894388257E86005FE465",
       "spouse": "",
@@ -784,7 +784,7 @@
       "title": "Ser",
       "actFirstName": "Ian",
       "home": "The Stormlands",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -808,7 +808,7 @@
       "title": "Princess",
       "actFirstName": "Aimee",
       "home": "King's Landing",
-      "children": ""
+      "children": []
     },
     {
       "house": "Wildling",
@@ -817,8 +817,8 @@
         "Fighting",
         "Surviving"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Tena",
       "unid": "FD840D7BD2EFA2E388257E86005FE464",
       "spouse": "",
@@ -826,7 +826,7 @@
       "title": "Spearwife",
       "actFirstName": "Natalia",
       "home": "North of the Wall",
-      "children": ""
+      "children": []
     },
     {
       "house": "Radical",
@@ -836,7 +836,7 @@
         "Money Handling"
       ],
       "parents": "Alayne",
-      "siblings": "",
+      "siblings": [],
       "actLastName": "Gillen",
       "unid": "D2D88D224592C31988257E86005FE480",
       "spouse": "",
@@ -844,7 +844,7 @@
       "title": "Lord",
       "actFirstName": "Aidan",
       "home": "The Fingers",
-      "children": ""
+      "children": []
     },
     {
       "house": "Baratheon",
@@ -853,8 +853,8 @@
         "Cunning",
         "Speech"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Glover",
       "unid": "5FB670CFEEB4EFA888257E86005FE483",
       "spouse": "",
@@ -862,7 +862,7 @@
       "title": "Grand Maester",
       "actFirstName": "Julian",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Targaryen",
@@ -871,8 +871,8 @@
         "Horse riding",
         "Fighting"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Gabel",
       "unid": "D9C22FC459610B1D88257E86005FE485",
       "spouse": "",
@@ -880,7 +880,7 @@
       "title": "",
       "actFirstName": "Elyes",
       "home": "The Dothraki Sea",
-      "children": ""
+      "children": []
     },
     {
       "house": "Baratheon",
@@ -904,7 +904,7 @@
       "title": "King",
       "actFirstName": "Gethin",
       "home": "Storm's End",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -928,7 +928,7 @@
       "title": "Lord",
       "actFirstName": "Art",
       "home": "Winterfell",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -955,7 +955,7 @@
       "title": "King in the North",
       "actFirstName": "Richard",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Baratheon",
@@ -989,8 +989,8 @@
         "Swordplay",
         "Master at Arms"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Donachie",
       "unid": "2B597A5EA02032DC88257E86005FE491",
       "spouse": "",
@@ -998,7 +998,7 @@
       "title": "Ser",
       "actFirstName": "Ron",
       "home": "Winterfell",
-      "children": ""
+      "children": []
     },
     {
       "house": "NightsWatch",
@@ -1019,7 +1019,7 @@
       "title": "Lord",
       "actFirstName": "John",
       "home": "Horn Hill",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -1028,7 +1028,7 @@
         "Swordplay",
         "Savagery"
       ],
-      "parents": "",
+      "parents": [],
       "siblings": "Gregor Clegane",
       "actLastName": "McCann",
       "unid": "3A8F228B54C5F2A088257E86005FE462",
@@ -1037,7 +1037,7 @@
       "title": "Dog",
       "actFirstName": "Rory",
       "home": "Clegane's Keep",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
@@ -1061,7 +1061,7 @@
       "title": "Lady",
       "actFirstName": "Sophie",
       "home": "Winterfell",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -1070,8 +1070,8 @@
         "Cunning",
         "Sex"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Kekilli",
       "unid": "E8367A52B2BE8DB988257E86005FE48B",
       "spouse": "",
@@ -1079,7 +1079,7 @@
       "title": "",
       "actFirstName": "Sibel",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Baratheon",
@@ -1089,7 +1089,7 @@
         "Claim to the Iron Throne",
         "Red Woman"
       ],
-      "parents": "",
+      "parents": [],
       "siblings": [
         "Robert",
         "Renly"
@@ -1101,14 +1101,14 @@
       "title": "King",
       "actFirstName": "Stephen",
       "home": "Eastwatch",
-      "children": ""
+      "children": []
     },
     {
       "house": "Stark",
       "charFirstName": "Talisa",
       "abilities": "Love",
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Chaplin",
       "unid": "52955299F4E4062888257E86005FE461",
       "spouse": "Robb Stark",
@@ -1116,7 +1116,7 @@
       "title": "",
       "actFirstName": "Oona",
       "home": "",
-      "children": ""
+      "children": []
     },
     {
       "house": "Greyjoy",
@@ -1138,7 +1138,7 @@
       "title": "Lord",
       "actFirstName": "Alfie",
       "home": "Iron Islands",
-      "children": ""
+      "children": []
     },
     {
       "house": "Other",
@@ -1148,7 +1148,7 @@
         "Fighter"
       ],
       "parents": "Timett",
-      "siblings": "",
+      "siblings": [],
       "actLastName": "Winter",
       "unid": "215CFB1A465DE1B888257E86005FE484",
       "spouse": "",
@@ -1156,7 +1156,7 @@
       "title": "Ruler of the Burned Men",
       "actFirstName": "Tobias",
       "home": "The Mountains of the Moon",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -1177,7 +1177,7 @@
       "title": "Prince",
       "actFirstName": "Callum",
       "home": "King's Landing",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -1198,7 +1198,7 @@
       "title": "Lord",
       "actFirstName": "Peter",
       "home": "Casterly Rock",
-      "children": ""
+      "children": []
     },
     {
       "house": "Lannister",
@@ -1207,8 +1207,8 @@
         "Battle Planning",
         "Cunning"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Dance",
       "unid": "D64026623448F9D588257E86005FE47E",
       "spouse": "",
@@ -1229,8 +1229,8 @@
         "Cunning",
         "Spycraft"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Hill",
       "unid": "AA01411880EE7DE788257E86005FE46D",
       "spouse": "",
@@ -1238,7 +1238,7 @@
       "title": "Master of Whisperers",
       "actFirstName": "Conleth",
       "home": "Kings Landing",
-      "children": ""
+      "children": []
     },
     {
       "house": "Targaryen",
@@ -1262,7 +1262,7 @@
       "title": "Beggar King",
       "actFirstName": "Harry",
       "home": "Dragonstone",
-      "children": ""
+      "children": []
     },
     {
       "house": "Wildling",
@@ -1271,8 +1271,8 @@
         "Swordplay",
         "Allegience"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Leslie",
       "unid": "9E87017316F754BC88257E86005FE46A",
       "spouse": "Jon Snow",
@@ -1280,7 +1280,7 @@
       "title": "Spearwife",
       "actFirstName": "Rose",
       "home": "North of the Wall",
-      "children": ""
+      "children": []
     },
     {
       "house": "NightsWatch",
@@ -1289,8 +1289,8 @@
         "Speech",
         "Fighting"
       ],
-      "parents": "",
-      "siblings": "",
+      "parents": [],
+      "siblings": [],
       "actLastName": "Magee",
       "unid": "1649342F381366F188257E86005FE474",
       "spouse": "",
@@ -1298,7 +1298,7 @@
       "title": "",
       "actFirstName": "Francis",
       "home": "Castle Black",
-      "children": ""
+      "children": []
     }
   ]
 }

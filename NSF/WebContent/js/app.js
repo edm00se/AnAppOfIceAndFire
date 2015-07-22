@@ -361,6 +361,14 @@
 		$scope.myCharacter = {};
 		var fieldNames = [];
 
+		// for the ng-tags-input values to be held in temp, prior to array literal transform
+		var tmpVals = {
+						abilities: [],
+						parents: [],
+						siblings: [],
+						children: []
+					};
+
 		characterFactory($stateParams.item)
 			.success(function(data, status, headers, config) {
 				if( !data.hasOwnProperty("values") ){
