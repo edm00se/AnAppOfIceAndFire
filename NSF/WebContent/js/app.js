@@ -1,7 +1,7 @@
 (function(){
 	
 	//defines the AngularJS app as a module
-	angular.module('houseApp', ['ui.router']) //'ngAnimate'
+	angular.module('houseApp', ['ui.router','ngTagsInput','ngMessages']) //'ngAnimate'
 
 	//ui-router config
 	.config(
