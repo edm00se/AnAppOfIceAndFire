@@ -17,3 +17,7 @@ div[role=navigation] > span > span > span {
 	position: relative;
 	float: right;
 }
+
+.list-inline>li {
+	margin-left: 5px;
+}

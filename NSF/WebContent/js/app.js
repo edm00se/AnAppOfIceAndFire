@@ -343,7 +343,7 @@
 
 	})
 
-	.controller('OneCharacterCtrl', function($scope, $state, $stateParams, $http, characterFactory){
+	.controller('OneCharacterCtrl', function($scope, $state, $stateParams, $http, $filter, characterFactory){
 		// check for empty ID
 		var tmpItm = $stateParams.item;
 		console.log("unid: "+tmpItm);
@@ -360,14 +360,6 @@
 		$scope.canEditForm = false;
 		$scope.myCharacter = {};
 		var fieldNames = [];
-
-		// for the ng-tags-input values to be held in temp, prior to array literal transform
-		var tmpVals = {
-						abilities: [],
-						parents: [],
-						siblings: [],
-						children: []
-					};
 
 		characterFactory($stateParams.item)
 			.success(function(data, status, headers, config) {
@@ -398,20 +390,44 @@
 				console.log("headers: "+headers);
 				console.log("config: "+JSON.parse(config));
 			});
+
+		$scope.loadAbilityTags = function(query){
+			//ideally return a searched set from $http w/ query val, etc.
+	        //function returns array of object results
+	        return $http.get('/tags/abilities.json');
+		};
+
 		$scope.setFormEditable = function() {
 			if( $scope.canEditForm == true ){
 				$scope.editForm = true;
 			}
-		}
+		};
+
 		$scope.clearCancelForm = function() {
 			$state.go('characters');
-		}
+		};
 
 		$scope.saveCharacterForm = function(){
+
+			// the ng-tags-input values need to be returned to array of literals (strings)
+			var multiValueFields = ["abilities","siblings","parents","children"];
+			//TODO: transform abilities, siblings, parents, children fields
+			angular.forEach(multiValuesFields,function(fldAr){
+				var nwAr = [];
+				angular.forEach($scope.characterForm[fldAr],function(fld){
+					angular.forEach(fld,function(ob){
+						debugger;
+			            nwAr.push(ob.text);
+			        });
+				});
+				console.log("my new value array: ["+nwAr.join(',')+"]");
+			});
+
+			/*
 			var tmpOb = { "unid": $scope.myCharacter.unid };
 			//console.log("checking field names: "+fieldNames.toString());
 			angular.forEach(fieldNames, function(fldNm){
-				if( $scope.characterForm[fldNm].$dirty === true ){
+				if( $scope.characterForm[fldNm].$dirty === true && !isInArray(fldNm,multiValueFields) ){ //ignore multi-value fields
 					var tmpVal = $scope.myHouse[fldNm];
 					//console.log("updated field: "+fldNm+" with value: "+tmpVal);
 					tmpOb[fldNm] = tmpVal;
@@ -433,8 +449,9 @@
 				.then( function(){
 					$state.go('characters',{},{reload: true});
 				});
+			*/
 			
-		}
+		};
 
 	})
 
@@ -448,6 +465,27 @@
 		return function(input, start) {
 			start = +start; //parse to int
 			return input.slice(start);
+		}
+	})
+
+	// filters array of objects by property, src: http://stackoverflow.com/a/18186947/1720082
+	.filter('orderObjectBy', function(){
+		return function(input, attribute) {
+			if (!angular.isObject(input)){
+				return input;
+			}
+
+			var array = [];
+			for(var objectKey in input) {
+			    array.push(input[objectKey]);
+			}
+
+			array.sort(function(a, b){
+			    a = parseInt(a[attribute]);
+			    b = parseInt(b[attribute]);
+			    return a - b;
+			});
+			return array;
 		}
 	})
 
@@ -493,10 +531,16 @@
 	        restrict: 'A',
 	        link: function(scope, element, attrs) {
 	            element.bind('click', function() {
-	                var message = attrs.ngReallyMessage;
-	                if (message && confirm(message)) {
-	                    scope.$apply(attrs.ngReallyClick);
-	                }
+	            	//fails over should editForm not be in scope
+	            	//confirmed: http://jsfiddle.net/edm00se/5t4rhmcf/show/
+	            	if( !!scope.editForm && scope.editForm ){
+		                var message = attrs.ngReallyMessage;
+		                if (message && confirm(message)) {
+		                    scope.$apply(attrs.ngReallyClick);
+		                }
+	            	}else{
+	            		scope.$apply(attrs.ngReallyClick);
+	            	}
 	            });
 	        }
 	    }

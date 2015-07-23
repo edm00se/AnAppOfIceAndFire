@@ -50,3 +50,7 @@ function detectPhone() {
 		return false;
 	}
 }
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}

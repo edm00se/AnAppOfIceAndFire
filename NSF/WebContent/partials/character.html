@@ -65,11 +65,35 @@
 					ng-disabled="!editForm" />
 			</div>
 			<!-- getting complex -->
-			<!--
-			<tags-input ng-model="myCharacter.tmpVals.abilities">
-	            <auto-complete source="main.loadAbilityTags($query)"></auto-complete>
-	        </tags-input>
-	    	-->
+			
+			<!-- Abilities -->
+			<div class="form-group">
+				<label
+					for="charAbilities">
+					Abilities</label>
+				<tags-input
+					ng-model="myCharacter.values.abilities"
+					ng-show="editForm"
+					name="charAbilities"
+					placeholder="Add an ability...">
+		            <auto-complete
+		            	source="loadAbilityTags($query)"
+						min-length="0"
+						load-on-down-arrow="true"></auto-complete>
+		        </tags-input>
+		        <ul class="list -group list-inline"
+		        	ng-show="!editForm"
+		        	name="charAbilities">
+		        	<li class="list-group-item" ng-repeat="ability in myCharacter.values.abilities | orderBy:'text'">{{ability.text}}</li>
+		        </ul>
+	    	</div>
+
+	        <!-- Siblings -->
+
+	        <!-- Parents -->
+
+	        <!-- Children -->
+	    	
 			<!-- more fields, need to handle multi-select, select2? -->
 
 			<div class="btn-list pull-right">
@@ -78,7 +102,7 @@
 					type="button" id="buttonCancelGotCharacter"
 					ng-really-message="Are you sure?"
 					ng-really-click="clearCancelForm()">
-					<i class="fa fa-lg fa-pencil"></i> Cancel</button>
+					<i class="fa fa-lg fa-times"></i> Cancel</button>
 				<button
 					class="btn-success btn"
 					type="button" id="buttonSaveGotCharacter"
