@@ -37,7 +37,7 @@
 				.state('newCharacter', {
 					url: '/:item',
 					templateUrl: 'partials/character.html',
-					controller: 'NewHouseCtrl'
+					controller: 'NewCharacterCtrl'
 				})
 				.state('characters.item', {
 					url: '/:item',
@@ -427,36 +427,30 @@
 
 			// the ng-tags-input values need to be returned to array of literals (strings)
 			var multiValueFields = ["abilities","siblings","parents","children"];
-			// transforms multi-value fields abilities, siblings, parents, children into string arrays
-
-			for( var i=0; i<multiValueFields.length; i++ ){
-				var tmpAr = [];
-				var fld = multiValueFields[i];
-				for( var n=0; n<$scope.myCharacter.values[fld].length; n++ ){
-					var ob = $scope.myCharacter.values[fld][n];
-					tmpAr.push(ob.text);
-				}
-				$scope.myCharacter.values[fld] = tmpAr; //overwrites object array to string array
-			};
-			//console.log("my new value array: ["+tmpAr.join(',')+"]");
-
-			//console.log($scope.myCharacter);
 
 			var tmpOb = { "unid": $scope.myCharacter.unid };
 			//console.log("checking field names: "+fieldNames.toString());
 			angular.forEach(fieldNames, function(fldNm){
-				debugger;
 				var nmG2g = fldNm!="unid";
-				var multiG2g = !isInArray(fldNm,multiValueFields);
-				var dirtyG2g = !!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty === true;
-				if( nmG2g && multiG2g && dirtyG2g ){ //ignore multi-value fields
-					var tmpVal = $scope.myHouse[fldNm];
-					//console.log("updated field: "+fldNm+" with value: "+tmpVal);
-					tmpOb[fldNm] = tmpVal;
+				var dirtyG2g = !!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty == true;
+				if( nmG2g && dirtyG2g ){ //ignore multi-value fields
+					var isMulti = isInArray(fldNm,multiValueFields);
+					if( isMulti ){
+						//handle multi-value fields by converting to simple string array
+						var tmpAr = [];
+						for( var i=0; i<$scope.myCharacter.values[fld].length; i++ ){
+							var ob = $scope.myCharacter.values[fld][i];
+							tmpAr.push(ob.text);
+						}
+						tmpOb[fldNm] = tmpAr;
+					}else{
+						tmpOb[fldNm] = $scope.myCharacter.values[fldNm];
+					}
 				}
+				//done with tmpOb
+				debugger;
 			});
 			
-			debugger;
 			$http( {
 				method : 'PUT',
 				url : 'characters/'+$scope.myCharacter.unid,
@@ -472,7 +466,6 @@
 				.then( function(){
 					$state.go('characters',{},{reload: true});
 				});
-			
 		};
 
 	})
