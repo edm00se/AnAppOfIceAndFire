@@ -8,18 +8,18 @@
  headerbgcolor='white' boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
  allowcustomizations='true' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
  uniquekeys='false'>
-<noteinfo noteid='144e' unid='6124A2BA2302588088257E86005AACA7' sequence='10'>
+<noteinfo noteid='144e' unid='6124A2BA2302588088257E86005AACA7' sequence='24'>
 <created><datetime dst='true'>20150718T093024,39-07</datetime></created>
-<modified><datetime dst='true'>20150718T104910,33-07</datetime></modified>
-<revised><datetime dst='true'>20150718T104910,32-07</datetime></revised>
-<lastaccessed><datetime dst='true'>20150718T104910,33-07</datetime></lastaccessed>
+<modified><datetime dst='true'>20150720T201201,69-07</datetime></modified>
+<revised><datetime dst='true'>20150720T201201,68-07</datetime></revised>
+<lastaccessed><datetime dst='true'>20150720T201201,69-07</datetime></lastaccessed>
 <addedtofile><datetime dst='true'>20150718T093026,18-07</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
 <wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby><code
  event='selection'><formula>SELECT ((Form = "character"))</formula></code>
 <actionbar bgcolor='#f0f0f0' bordercolor='black'>
 <actionbuttonstyle bgcolor='#f0f0f0'/><font color='system'/><border style='solid'
- width='0px 0px 1px'/>
+ width='0px 0px 1px' color='system'/>
 <action title='Magic Button - Lite'><code event='click'><formula>targetField := @Prompt([OkCancelEditCombo]; "Select Field"; "Select a field to override:"; ""; @DocFields );
 updateTypes := "Text":"Number":"Time":"Delete Field";
 updateType := @Prompt([OkCancelList]; "Select Type"; "Choose a type or action:"; "Text"; updateTypes );
@@ -362,49 +362,67 @@ DocNavigationCount := DocNavigationCount + 1);
 "" );
 
 @StatusBar( "Navigated through " + @Text( DocUpdateCount + DocNavigationCount ) + " documents." );
-@StatusBar( "Performed '" + DataType + "' for '" + @Implode( EditField ; ", " ) + "' field" + @If( @Elements( EditField ) &gt; 1; "s " ; " " ) + "on " + @Text( DocUpdateCount ) + " document" + @If( DocUpdateCount &gt; 1 ; "s" ; "" ) + "." )</formula></code><code
- event='hidewhen'><formula>@IsNotMember("[DatabaseAdmin]";@UserRoles)</formula></code></action></sharedactionref></actionbar>
-<column sort='ascending' resort='both' hidedetailrows='false' itemname='CharFullName_FL'
+@StatusBar( "Performed '" + DataType + "' for '" + @Implode( EditField ; ", " ) + "' field" + @If( @Elements( EditField ) &gt; 1; "s " ; " " ) + "on " + @Text( DocUpdateCount ) + " document" + @If( DocUpdateCount &gt; 1 ; "s" ; "" ) + "." )</formula></code></action></sharedactionref></actionbar>
+<column sort='ascending' resort='both' hidedetailrows='false' itemname='charFirstName'
  width='10' resizable='true' separatemultiplevalues='false' sortnoaccent='false'
- sortnocase='true' showaslinks='false'><columnheader title='Full Name'><font
+ sortnocase='true' showaslinks='false'><columnheader title='charFirstName'><font
  size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='charLastName' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='charLastName'><font size='9pt' style='bold'/></columnheader><code
+ event='value'><formula>CharLastName</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='House' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='house' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='House'><font size='9pt' style='bold'/></columnheader></column>
+ title='house'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>House</formula></code></column>
 <column sort='ascending' resort='both' resort2='ascending' resort2column='0'
- hidedetailrows='false' itemname='Title' width='10' resizable='true' separatemultiplevalues='false'
+ hidedetailrows='false' itemname='title' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Title'><font size='9pt' style='bold'/></columnheader></column>
+ title='title'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>Title</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='CalcSpouse' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='$2' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Spouse'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
->@If(Spouse!="-- Choose --";Spouse;"")</formula></code></column>
+ title='spouse'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>@If(spouse!="-- Choose --";spouse;"")</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='ActFullName_FL' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='actFirstName' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Actor Name'><font size='9pt' style='bold'/></columnheader></column>
+ title='actFirstName'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='actLastName' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='actLastName'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>ActLastName</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='Home' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='home' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Home'><font size='9pt' style='bold'/></columnheader></column>
+ title='home'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>Home</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='Abilities' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='abilities' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Abilities'><font size='9pt' style='bold'/></columnheader></column>
+ title='abilities'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>Abilities</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='Parents' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='parents' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Parents'><font size='9pt' style='bold'/></columnheader></column>
+ title='parents'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>Parents</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='Siblings' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='siblings' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Siblings'><font size='9pt' style='bold'/></columnheader></column>
+ title='siblings'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>Siblings</formula></code></column>
 <column resort='both' resort2='ascending' resort2column='0' hidedetailrows='false'
- itemname='Children' width='10' resizable='true' separatemultiplevalues='false'
+ itemname='children' width='10' resizable='true' separatemultiplevalues='false'
  sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
- title='Children'><font size='9pt' style='bold'/></columnheader></column>
+ title='children'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>Children</formula></code></column>
+<column hidedetailrows='false' itemname='unid' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='unid'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>@Text(@DocumentUniqueID)</formula></code></column>
 <item name='$SelQuery' sign='true'>
 <rawitemdata type='f'>
 gQYAAAAAif8VAAAAAAABAAkAY2hhcmFjdGVyAA==

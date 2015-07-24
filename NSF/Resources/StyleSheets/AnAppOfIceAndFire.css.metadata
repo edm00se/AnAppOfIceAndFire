@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><stylesheetresource charset="UTF-8" designerversion="8.5.3" maintenanceversion="1.0" name="AnAppOfIceAndFire.css" publicaccess="false" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="1a2" sequence="7" unid="199A39BBB71753CB85257C560013A430">
+<?xml version="1.0" encoding="UTF-8"?><stylesheetresource charset="UTF-8" designerversion="8.5.3" maintenanceversion="1.4" name="AnAppOfIceAndFire.css" publicaccess="false" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1a2" sequence="50" unid="199A39BBB71753CB85257C560013A430">
 <created><datetime>20140103T223432,16-05</datetime></created>
-<modified><datetime>20150305T192501,90-08</datetime></modified>
-<revised><datetime>20150305T192501,89-08</datetime></revised>
-<lastaccessed><datetime>20150305T192501,90-08</datetime></lastaccessed>
+<modified><datetime dst="true">20150719T204052,01-07</datetime></modified>
+<revised><datetime dst="true">20150719T204052,00-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150719T204052,01-07</datetime></lastaccessed>
 <addedtofile><datetime>20150305T162153,20-08</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby></stylesheetresource>

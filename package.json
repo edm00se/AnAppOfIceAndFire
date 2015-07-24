@@ -1,11 +1,11 @@
 {
-  "name": "app-of-ice-and-fire_bak",
+  "name": "app-of-ice-and-fire",
   "version": "1.0.0",
   "description": "an app of ice and fire",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "json-server --id unid housesDB.json --watch --routes routes.json"
+	"start": "json-server --id unid db.json --watch --routes routes.json"
   },
   "repository": {
     "type": "git",

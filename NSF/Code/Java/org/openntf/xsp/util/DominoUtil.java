@@ -71,7 +71,7 @@ public class DominoUtil {
 			}
 		}
 	}
-
+	
 	public static Document next(final Document current, final DocumentCollection collection) {
 		Document result = null;
 		try {
@@ -83,7 +83,7 @@ public class DominoUtil {
 		}
 		return result;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public static Object restoreState(final Document doc, final String itemName) throws Throwable {
 		Session session = ExtLibUtil.getCurrentSession();
@@ -112,7 +112,7 @@ public class DominoUtil {
 		// Serializable, and StateHolder, distinguished by type or header
 		if (entity.getContentSubType().equals("x-java-externalized-object")) {
 			Class<Externalizable> externalizableClass = (Class<Externalizable>) Class.forName(entity.getNthHeader("X-Java-Class")
-					.getHeaderVal());
+							.getHeaderVal());
 			Externalizable restored = externalizableClass.newInstance();
 			restored.readExternal(objectStream);
 			result = restored;
@@ -121,14 +121,14 @@ public class DominoUtil {
 			// But wait! It might be a StateHolder object or Collection!
 			MIMEHeader storageScheme = entity.getNthHeader("X-Storage-Scheme");
 			MIMEHeader originalJavaClass = entity.getNthHeader("X-Original-Java-Class");
-			if (storageScheme != null && storageScheme.getHeaderVal().equals("StateHolder")) {
+			if ((storageScheme != null) && storageScheme.getHeaderVal().equals("StateHolder")) {
 				Class<?> facesContextClass = Class.forName("javax.faces.context.FacesContext");
 				Method getCurrentInstance = facesContextClass.getMethod("getCurrentInstance");
 				Class<?> stateHoldingClass = Class.forName(originalJavaClass.getHeaderVal());
 				Method restoreStateMethod = stateHoldingClass.getMethod("restoreState", facesContextClass, Object.class);
 				result = stateHoldingClass.newInstance();
 				restoreStateMethod.invoke(result, getCurrentInstance.invoke(null), restored);
-			} else if (originalJavaClass != null && originalJavaClass.getHeaderVal().endsWith(".domino.DocumentCollection")) {
+			} else if ((originalJavaClass != null) && originalJavaClass.getHeaderVal().endsWith(".domino.DocumentCollection")) {
 				/*
 				 * WARNING: Nathan says this bit might still be buggy...
 				 */
@@ -143,7 +143,7 @@ public class DominoUtil {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			} else if (originalJavaClass != null && originalJavaClass.getHeaderVal().endsWith(".domino.NoteCollection")) {
+			} else if ((originalJavaClass != null) && originalJavaClass.getHeaderVal().endsWith(".domino.NoteCollection")) {
 				String[] unids = (String[]) restored;
 				Database db = doc.getParentDatabase();
 				NoteCollection noteCollection = db.createNoteCollection(false);
@@ -159,13 +159,13 @@ public class DominoUtil {
 		session.setConvertMime(convertMime);
 		return result;
 	}
-
+	
 	public static void saveState(final Serializable object, final Document doc, final String itemName) throws Throwable {
 		saveState(object, doc, itemName, true, null);
 	}
-
+	
 	public static void saveState(final Serializable object, final Document doc, final String itemName, final boolean compress,
-			final Map<String, String> headers) throws Throwable {
+					final Map<String, String> headers) throws Throwable {
 		if (object == null) {
 			System.out.println("Ignoring attempt to save MIMEBean value of null");
 			return;
@@ -175,7 +175,7 @@ public class DominoUtil {
 		session.setConvertMime(false);
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
 		ObjectOutputStream objectStream = compress ? new ObjectOutputStream(new GZIPOutputStream(byteStream)) : new ObjectOutputStream(
-				byteStream);
+						byteStream);
 		String contentType = null;
 		// Prefer externalization if available
 		if (object instanceof Externalizable) {
@@ -240,7 +240,7 @@ public class DominoUtil {
 		mimeStream.recycle();
 		session.setConvertMime(convertMime);
 	}
-
+	
 	protected static Vector<Object> toDominoFriendly(final Collection<?> values, final Document context) throws IllegalArgumentException {
 		java.util.Vector<Object> result = new java.util.Vector<Object>();
 		for (Object value : values) {
@@ -248,19 +248,19 @@ public class DominoUtil {
 		}
 		return result;
 	}
-
+	
 	public static Object toDominoFriendly(final Object value) {
 		/*
-		 * A weak subset of the auto-conversion done by the OpenNTF Domino API: http
-		 * ://github.com/OpenNTF/org.openntf.domino/blob/master/org.openntf. domino
+		 * A weak subset of the auto-conversion done by the OpenNTF Domino API:
+		 * http://github.com/OpenNTF/org.openntf.domino/blob/master/org.openntf.domino
 		 */
 		if (value == null) {
 			return "";
 		}
-		if (value instanceof DateTime || value instanceof DateRange || value instanceof Item) {
+		if ((value instanceof DateTime) || (value instanceof DateRange) || (value instanceof Item)) {
 			// already safe to store
 			return value;
-		} else if (value instanceof Integer || value instanceof Double || value instanceof String) {
+		} else if ((value instanceof Integer) || (value instanceof Double) || (value instanceof String)) {
 			// already safe to store
 			return value;
 		} else if (value instanceof Boolean) {

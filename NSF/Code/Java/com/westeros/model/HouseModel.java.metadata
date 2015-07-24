@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.0" replicaid="86257DB9000E2CB0" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="1e6" sequence="20" unid="30D27E5398121CE186257DB900786A90">
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="88257E000001FF59" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1c6" sequence="116" unid="30D27E5398121CE186257DB900786A90">
 <created><datetime>20141225T155516,00-06</datetime></created>
-<modified><datetime>20141225T164512,52-06</datetime></modified>
-<revised><datetime>20141225T164512,51-06</datetime></revised>
-<lastaccessed><datetime>20141225T164512,51-06</datetime></lastaccessed>
-<addedtofile><datetime>20141225T155516,00-06</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Eric McCormick/O=Boldt</name></updatedby>
-<wassignedby><name>CN=Eric McCormick/O=Boldt</name></wassignedby>
+<modified><datetime dst="true">20150719T140400,96-07</datetime></modified>
+<revised><datetime dst="true">20150719T140400,95-07</datetime></revised>
+<lastaccessed><datetime dst="true">20150719T140400,96-07</datetime></lastaccessed>
+<addedtofile><datetime>20150305T162153,74-08</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name></updatedby>
+<wassignedby><name>CN=Eric McCormick/O=Eric McCormick</name></wassignedby>
 <item name="$Flags"><text>34567Cg~[</text></item>
 <item name="$TITLE"><text>com/westeros/model/HouseModel.java</text></item>
 

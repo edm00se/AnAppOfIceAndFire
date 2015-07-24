@@ -101,6 +101,7 @@ public class HouseRecord {
 			// GET existing
 			HouseModel exHouse = new HouseModel();
 			exHouse.load(unid);
+			exHouse.setEditMode(true);
 			
 			ServletInputStream is = req.getInputStream();
 			String reqStr = IOUtils.toString(is);
@@ -108,24 +109,30 @@ public class HouseRecord {
 			Gson g = new Gson();
 			
 			// setting the keys/values into the tmpNwHouse Map
-			Map<String,Object> tmpNwHouse = g.fromJson(reqStr, HashMap.class);
-			// suppressing just this warning throws an error on tmpNwHouse
-			tmpNwHouse = g.fromJson(reqStr, tmpNwHouse.getClass());
-			HouseModel nwHouse = new HouseModel();
-			nwHouse.setEditMode(true);
+			Map<String, String> tmpNwHouse = g.fromJson(reqStr, HashMap.class);
 			// compare/update
-			for(Map.Entry<String, Object> pair : tmpNwHouse.entrySet()) {
+			for(Map.Entry<String, String> pair : tmpNwHouse.entrySet()) {
 				String curProp = pair.getKey();
-				String curVal = (String) pair.getValue();
+				String curVal = pair.getValue();
 				if( exHouse.getValue(curProp) != curVal ) {
 					exHouse.setValue(curProp, curVal);
 				}
 			}
 			
 			// done setting new values back into the existing object
-			exHouse.save();
+			boolean success = exHouse.save();
 			
-			res.setStatus(200);
+			if( success ) {
+				res.setStatus(200);
+			}else {
+				res.setStatus(400);
+				if( tmpNwHouse!=null ) {
+					out.println("{\"error\":true,\"errorMsg\":\"WTF?\",\"receivedData\":\""+tmpNwHouse.toString()+"\"}");
+				}else {
+					out.println("{\"error\":true,\"errorMsg\":\"WTF?\"}");
+				}
+			}
+			
 			res.addHeader("Allow", recAllowedMethods);
 			
 		} catch(Exception e) {
@@ -158,9 +165,13 @@ public class HouseRecord {
 		Document houseDoc;
 		try {
 			houseDoc = s.getCurrentDatabase().getDocumentByUNID(unid);
-			houseDoc.remove(true);
+			boolean success = houseDoc.remove(true);
 			houseDoc.recycle();
-			res.setStatus(200);
+			if( success ) {
+				res.setStatus(200);
+			}else {
+				res.setStatus(400);
+			}
 			res.addHeader("Allow", recAllowedMethods);
 		} catch (NotesException e) {
 			res.setStatus(500);
