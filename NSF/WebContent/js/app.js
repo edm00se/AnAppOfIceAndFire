@@ -442,13 +442,13 @@
 							var ob = $scope.myCharacter.values[fld][i];
 							tmpAr.push(ob.text);
 						}
+						//set string array back to tmp object
 						tmpOb[fldNm] = tmpAr;
 					}else{
+						//set new value back to the tmp object
 						tmpOb[fldNm] = $scope.myCharacter.values[fldNm];
 					}
 				}
-				//done with tmpOb
-				debugger;
 			});
 			
 			$http( {
