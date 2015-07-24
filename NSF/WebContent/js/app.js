@@ -378,7 +378,7 @@
 					$scope.myCharacter = data;
 				}
 				$scope.canEditForm = true;
-				angular.forEach($scope.myCharacter,function(value,key){
+				angular.forEach($scope.myCharacter.values,function(value,key){
 					if( key!="unid" ){
 						fieldNames.push(key);
 					}
@@ -397,6 +397,22 @@
 	        return $http.get('/tags/abilities.json');
 		};
 
+		// reusable char list with first + last names only
+		$scope.peopleAr = [];
+		var tmpCharAr = $scope.$parent.charactersOfWesteros;
+		for( var i=0; i<tmpCharAr.length; i++ ){
+			var myChar = tmpCharAr[i];
+			$scope.peopleAr.push(myChar.charFirstName+" "+myChar.charLastName);
+		}
+
+		$scope.loadSiblingTags = function(query){
+			return $scope.peopleAr;
+		};
+
+		$scope.loadParentTags = function(query){
+			return $scope.peopleAr;
+		};
+
 		$scope.setFormEditable = function() {
 			if( $scope.canEditForm == true ){
 				$scope.editForm = true;
@@ -411,36 +427,43 @@
 
 			// the ng-tags-input values need to be returned to array of literals (strings)
 			var multiValueFields = ["abilities","siblings","parents","children"];
-			//TODO: transform abilities, siblings, parents, children fields
-			angular.forEach(multiValuesFields,function(fldAr){
-				var nwAr = [];
-				angular.forEach($scope.characterForm[fldAr],function(fld){
-					angular.forEach(fld,function(ob){
-						debugger;
-			            nwAr.push(ob.text);
-			        });
-				});
-				console.log("my new value array: ["+nwAr.join(',')+"]");
-			});
+			// transforms multi-value fields abilities, siblings, parents, children into string arrays
 
-			/*
+			for( var i=0; i<multiValueFields.length; i++ ){
+				var tmpAr = [];
+				var fld = multiValueFields[i];
+				for( var n=0; n<$scope.myCharacter.values[fld].length; n++ ){
+					var ob = $scope.myCharacter.values[fld][n];
+					tmpAr.push(ob.text);
+				}
+				$scope.myCharacter.values[fld] = tmpAr; //overwrites object array to string array
+			};
+			//console.log("my new value array: ["+tmpAr.join(',')+"]");
+
+			//console.log($scope.myCharacter);
+
 			var tmpOb = { "unid": $scope.myCharacter.unid };
 			//console.log("checking field names: "+fieldNames.toString());
 			angular.forEach(fieldNames, function(fldNm){
-				if( $scope.characterForm[fldNm].$dirty === true && !isInArray(fldNm,multiValueFields) ){ //ignore multi-value fields
+				debugger;
+				var nmG2g = fldNm!="unid";
+				var multiG2g = !isInArray(fldNm,multiValueFields);
+				var dirtyG2g = !!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty === true;
+				if( nmG2g && multiG2g && dirtyG2g ){ //ignore multi-value fields
 					var tmpVal = $scope.myHouse[fldNm];
 					//console.log("updated field: "+fldNm+" with value: "+tmpVal);
 					tmpOb[fldNm] = tmpVal;
 				}
 			});
 			
+			debugger;
 			$http( {
 				method : 'PUT',
 				url : 'characters/'+$scope.myCharacter.unid,
 				data: JSON.stringify(tmpOb)
 			})
 				.success( function(data, status, headers, config){
-					console.log("successfully updated character with unid: "+$scope.myHouse.unid);
+					console.log("successfully updated character with unid: "+$scope.myCharacter.unid);
 				})
 				.error( function(data, status, headers, config){
 					//might as well say something
@@ -449,7 +472,6 @@
 				.then( function(){
 					$state.go('characters',{},{reload: true});
 				});
-			*/
 			
 		};
 

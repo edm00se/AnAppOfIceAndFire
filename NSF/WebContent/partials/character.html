@@ -12,7 +12,7 @@
 					type="text"
 					class="form-control"
 					id="characterFirstName"
-					name="name"
+					name="charFirstName"
 					ng-model="myCharacter.values.charFirstName"
 					ng-disabled="!editForm" />
 			</div>
@@ -24,7 +24,7 @@
 					type="text"
 					class="form-control"
 					id="characterLastName"
-					name="name"
+					name="charLastName"
 					ng-model="myCharacter.values.charLastName"
 					ng-disabled="!editForm" />
 			</div>
@@ -35,10 +35,35 @@
 				<input
 					type="text"
 					class="form-control"
-					id="characterTitle"
-					name="name"
+					id="charTitle"
+					name="title"
 					ng-model="myCharacter.values.title"
 					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="characterHouse">
+					House</label>
+				<input
+					type="text"
+					class="form-control"
+					id="charHouse"
+					name="house"
+					ng-model="myCharacter.values.house"
+					ng-disabled="!editForm" />
+			</div>
+			<div class="form-group">
+				<label
+					for="characterSpouse">
+					Spouse</label>
+				<select
+					class="form-control"
+					id="characterSpouse"
+					name="spuose"
+					ng-model="myCharacter.values.spouse"
+					ng-disabled="!editForm">
+					<option ng-repeat="person in peopleAr" value="{{person}}">{{person}}</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label
@@ -48,7 +73,7 @@
 					type="text"
 					class="form-control"
 					id="actorFirstName"
-					name="name"
+					name="actorFirstName"
 					ng-model="myCharacter.values.actFirstName"
 					ng-disabled="!editForm" />
 			</div>
@@ -60,7 +85,7 @@
 					type="text"
 					class="form-control"
 					id="actorLastName"
-					name="name"
+					name="actorLastName"
 					ng-model="myCharacter.values.actLastName"
 					ng-disabled="!editForm" />
 			</div>
@@ -69,12 +94,12 @@
 			<!-- Abilities -->
 			<div class="form-group">
 				<label
-					for="charAbilities">
+					for="abilities">
 					Abilities</label>
 				<tags-input
 					ng-model="myCharacter.values.abilities"
 					ng-show="editForm"
-					name="charAbilities"
+					name="abilities"
 					placeholder="Add an ability...">
 		            <auto-complete
 		            	source="loadAbilityTags($query)"
@@ -83,16 +108,76 @@
 		        </tags-input>
 		        <ul class="list -group list-inline"
 		        	ng-show="!editForm"
-		        	name="charAbilities">
+		        	name="abilities">
 		        	<li class="list-group-item" ng-repeat="ability in myCharacter.values.abilities | orderBy:'text'">{{ability.text}}</li>
 		        </ul>
 	    	</div>
 
 	        <!-- Siblings -->
+	        <div class="form-group">
+				<label
+					for="siblings">
+					Siblings</label>
+				<tags-input
+					ng-model="myCharacter.values.siblings"
+					ng-show="editForm"
+					name="siblings"
+					placeholder="Add a sibling...">
+		            <auto-complete
+		            	source="loadSiblingTags($query)"
+						min-length="0"
+						load-on-down-arrow="true"></auto-complete>
+		        </tags-input>
+		        <ul class="list -group list-inline"
+		        	ng-show="!editForm"
+		        	name="siblings">
+		        	<li class="list-group-item" ng-repeat="sibling in myCharacter.values.siblings | orderBy:'text'">{{sibling.text}}</li>
+		        </ul>
+	    	</div>
 
 	        <!-- Parents -->
+	        <div class="form-group">
+				<label
+					for="parents">
+					Parents</label>
+				<tags-input
+					ng-model="myCharacter.values.parents"
+					ng-show="editForm"
+					name="parents"
+					placeholder="Add a parent...">
+		            <auto-complete
+		            	source="loadParentTags($query)"
+						min-length="0"
+						load-on-down-arrow="true"></auto-complete>
+		        </tags-input>
+		        <ul class="list -group list-inline"
+		        	ng-show="!editForm"
+		        	name="parents">
+		        	<li class="list-group-item" ng-repeat="parent in myCharacter.values.parents | orderBy:'text'">{{parent.text}}</li>
+		        </ul>
+	    	</div>
 
 	        <!-- Children -->
+	        <div class="form-group">
+				<label
+					for="children">
+					Children</label>
+				<tags-input
+					ng-model="myCharacter.values.children"
+					ng-show="editForm"
+					name="children"
+					placeholder="Add a child...">
+		            <auto-complete
+		            	source="loadChildrenTags($query)"
+						min-length="0"
+						load-on-down-arrow="true"></auto-complete>
+		        </tags-input>
+		        <ul class="list -group list-inline"
+		        	ng-show="!editForm"
+		        	name="children">
+		        	<li class="list-group-item" ng-repeat="child in myCharacter.values.children | orderBy:'text'">{{child.text}}</li>
+		        </ul>
+	    	</div>
 	    	
 			<!-- more fields, need to handle multi-select, select2? -->
 
@@ -107,7 +192,7 @@
 					class="btn-success btn"
 					type="button" id="buttonSaveGotCharacter"
 					ng-show="editForm"
-					ng-click="saveHouseForm()">
+					ng-click="saveCharacterForm()">
 					<i class="fa fa-lg fa-save"></i> Save</button>
 				<button
 					class="btn-primary btn"

@@ -202,7 +202,9 @@
     {
       "house": "Lannister",
       "charFirstName": "Bronn",
-      "abilities": "Swordplay",
+      "abilities": [
+        "Swordplay"
+      ],
       "parents": [],
       "siblings": [],
       "actLastName": "Flynn",
@@ -217,7 +219,9 @@
     {
       "house": "Tully",
       "charFirstName": "Catelyn",
-      "abilities": "Allegience",
+      "abilities": [
+        "Allegience"
+      ],
       "parents": [
         "Hoster Tully",
         "Minisa Whent"
@@ -329,7 +333,9 @@
     {
       "house": "Targaryen",
       "charFirstName": "Doreah",
-      "abilities": "",
+      "abilities": [
+        ""
+      ],
       "parents": [],
       "siblings": [],
       "actLastName": "McKee",
@@ -394,7 +400,9 @@
     {
       "house": "Other",
       "charFirstName": "Gendry",
-      "abilities": "Smith",
+      "abilities": [
+        "Smith"
+      ],
       "parents": "Robert Baratheon",
       "siblings": "countless bastards",
       "actLastName": "",
@@ -445,7 +453,9 @@
     {
       "house": "Targaryen",
       "charFirstName": "Irri",
-      "abilities": "Language",
+      "abilities": [
+        "Language"
+      ],
       "parents": [],
       "siblings": [],
       "actLastName": "Acharia",
@@ -507,7 +517,9 @@
     {
       "house": "Targaryen",
       "charFirstName": "Jhiqui",
-      "abilities": "Language",
+      "abilities": [
+        "Language"
+      ],
       "parents": [],
       "siblings": [],
       "actLastName": "Piotrowski",
@@ -645,7 +657,9 @@
     {
       "house": "Lannister",
       "charFirstName": "Lancel",
-      "abilities": "",
+      "abilities": [
+        ""
+      ],
       "parents": [
         "Kevan Lannister",
         "Dorna Swyft"
@@ -667,7 +681,9 @@
     {
       "house": "Tyrell",
       "charFirstName": "Loras",
-      "abilities": "Swordplay",
+      "abilities": [
+        "Swordplay"
+      ],
       "parents": [
         "Mace Tyrell",
         "Alerie Hightower"
@@ -710,7 +726,9 @@
     {
       "house": "Tully",
       "charFirstName": "Lysa",
-      "abilities": "Cunning",
+      "abilities": [
+        "Cunning"
+      ],
       "parents": [
         "Hoster Tully",
         "Minisa Whent"
@@ -731,7 +749,9 @@
     {
       "house": "Other",
       "charFirstName": "Margaery",
-      "abilities": "Cunning",
+      "abilities": [
+        "Cunning"
+      ],
       "parents": [
         "Mace Tyrell",
         "Aleries Hightower"
@@ -909,7 +929,9 @@
     {
       "house": "Stark",
       "charFirstName": "Rickon",
-      "abilities": "",
+      "abilities": [
+        ""
+      ],
       "parents": [
         "Eddard Stark",
         "Catelyn Tully"
@@ -1003,7 +1025,9 @@
     {
       "house": "NightsWatch",
       "charFirstName": "Samwell",
-      "abilities": "Cunning",
+      "abilities": [
+        "Cunning"
+      ],
       "parents": [
         "Randyll Tarly",
         "Melessa Florent"
@@ -1042,7 +1066,9 @@
     {
       "house": "Stark",
       "charFirstName": "Sansa",
-      "abilities": "Charm",
+      "abilities": [
+        "Charm"
+      ],
       "parents": [
         "Eddard Stark",
         "Catelyn Tulley"
@@ -1106,7 +1132,9 @@
     {
       "house": "Stark",
       "charFirstName": "Talisa",
-      "abilities": "Love",
+      "abilities": [
+        "Love"
+      ],
       "parents": [],
       "siblings": [],
       "actLastName": "Chaplin",
@@ -1161,7 +1189,9 @@
     {
       "house": "Lannister",
       "charFirstName": "Tommen",
-      "abilities": "Compassion",
+      "abilities": [
+        "Compassion"
+      ],
       "parents": [
         "Cersei Lannister",
         "Jaime Lannister"
@@ -1182,7 +1212,9 @@
     {
       "house": "Lannister",
       "charFirstName": "Tyrion",
-      "abilities": "Cunning",
+      "abilities": [
+        "Cunning"
+      ],
       "parents": [
         "Tywin",
         "Joanna"

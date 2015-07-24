@@ -19,12 +19,12 @@
                 <div class="panel-footer col-xs-12">
                     <nav>
                         <ul class="pager">
-                            <li class="previous" ng-class="{'disabled': curPage == 0}">
-                                <a ng-click="curPage = curPage - 1" href=""><span aria-hidden="true">&larr;</span> Previous</a>
+                            <li class="previous" ng-class="{'disabled': curPage <= 0}">
+                                <a ng-click="curPage = curPage - 1" ng-disabled="curPage <= 0" href=""><span aria-hidden="true">&larr;</span> Previous</a>
                             </li>
                             <span ng-bind="(curPage+1) + '/' + numberOfPages()"></span>
                             <li class="next" ng-class="{'disabled': curPage >= charactersOfWesteros.length/pageQty-1}">
-                                <a ng-click="curPage = curPage + 1" href="">Next <span aria-hidden="true">&rarr;</span></a>
+                                <a ng-click="curPage = curPage + 1" ng-disabled="curPage >= charactersOfWesteros.length/pageQty-1" href="">Next <span aria-hidden="true">&rarr;</span></a>
                             </li>
                         </ul>
                     </nav>
