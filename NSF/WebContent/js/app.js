@@ -366,7 +366,18 @@
 				if( !data.hasOwnProperty("values") ){
 					var values = {};
 					for( var prop in data ){
-						values[prop] = data[prop];
+						if( prop.indexOf("_FL") > -1 ){
+							//do nothing
+						}else{
+							var tmpAr = prop.split("");
+							if( tmpAr[0] == tmpAr[0].toUpperCase() ){
+								tmpAr[0] = tmpAr[0].toLowerCase();
+								var nwProp = tmpAr.join("");
+								values[nwProp] = data[prop];
+							}else{
+								values[prop] = data[prop];
+							}
+						}
 					}
 					var tmpResp = {
 						"editMode": true,
