@@ -396,8 +396,6 @@
 						"values": values
 					};
 					$scope.myCharacter = tmpResp;
-				}else{
-					$scope.myCharacter = data;
 				}
 				$scope.canEditForm = true;
 				angular.forEach($scope.myCharacter.values,function(value,key){
