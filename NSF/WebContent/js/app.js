@@ -366,6 +366,17 @@
 				if( !data.hasOwnProperty("values") ){
 					var values = {};
 					for( var prop in data ){
+						values[prop] = data[prop];
+					}
+					var tmpResp = {
+						"editMode": true,
+						"unid": data.unid,
+						"values": values
+					};
+					$scope.myCharacter = tmpResp;
+				}else{
+					var values = {};
+					for( var prop in data.values ){
 						if( prop.indexOf("_FL") > -1 ){
 							//do nothing
 						}else{
@@ -373,9 +384,9 @@
 							if( tmpAr[0] == tmpAr[0].toUpperCase() ){
 								tmpAr[0] = tmpAr[0].toLowerCase();
 								var nwProp = tmpAr.join("");
-								values[nwProp] = data[prop];
+								values[nwProp] = data.values[prop];
 							}else{
-								values[prop] = data[prop];
+								values[prop] = data.values[prop];
 							}
 						}
 					}
