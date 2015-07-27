@@ -35,7 +35,7 @@
 					controller: 'CharacterListCtrl'
 				})
 				.state('newCharacter', {
-					url: '/:item',
+					url: '/newCharacter',
 					templateUrl: 'partials/character.html',
 					controller: 'NewCharacterCtrl'
 				})
@@ -234,6 +234,12 @@
 			
 		}
 
+		$scope.$on("$locationChangeStart", function(event) {
+        	if ($scope.form!=undefined && $scope.form.$dirty && !confirm('Abandon unsaved changes?')){
+            	event.preventDefault();
+        	}
+        });
+
 	})
 	
 	.controller('NewHouseCtrl', function($scope, $state, $stateParams, $http){
@@ -285,6 +291,12 @@
 				});
 			
 		}
+
+		$scope.$on("$locationChangeStart", function(event) {
+        	if ($scope.form!=undefined && $scope.form.$dirty && !confirm('Abandon unsaved changes?')){
+            	event.preventDefault();
+        	}
+        });
 
 	})
 
@@ -487,6 +499,117 @@
 					$state.go('characters',{},{reload: true});
 				});
 		};
+
+		$scope.$on("$locationChangeStart", function(event) {
+        	if ($scope.form.$dirty && !confirm('Abandon unsaved changes?')){
+            	event.preventDefault();
+        	}
+        });
+
+	})
+
+	.controller('NewCharacterCtrl', function($scope, $state, $stateParams, $http, $filter, characterFactory, characterCollectionFactory){
+
+		$scope.editForm = true;
+		$scope.canEditForm = true;
+		$scope.myCharacter = {};
+		var fieldNames = [];
+
+		$scope.loadAbilityTags = function(query){
+			//ideally return a searched set from $http w/ query val, etc.
+	        //function returns array of object results
+	        return $http.get('/tags/abilities.json');
+		};
+
+		// reusable char list with first + last names only
+		$scope.peopleAr = [];
+		var tmpCharAr = [];
+		characterCollectionFactory
+			.success( function(data, status, headers, config) {
+				if( !data.hasOwnProperty("dataAr") ){
+					//loading by non-Domino method, probably json-server; just use the response
+					tmpCharAr = data;
+				}else{
+					tmpCharAr = data.dataAr;
+				}
+				for( var i=0; i<tmpCharAr.length; i++ ){
+					var myChar = tmpCharAr[i];
+					$scope.peopleAr.push(myChar.charFirstName+" "+myChar.charLastName);
+				}
+			}).error( function(data, status, headers, config){
+				console.log("status: "+status);
+				console.log("data: "+data);
+				console.log("headers: "+headers);
+				console.log("config: "+JSON.parse(config));
+			});
+
+		$scope.loadSiblingTags = function(query){
+			return $scope.peopleAr;
+		};
+
+		$scope.loadParentTags = function(query){
+			return $scope.peopleAr;
+		};
+
+		$scope.setFormEditable = function() {
+			if( $scope.canEditForm == true ){
+				$scope.editForm = true;
+			}
+		};
+
+		$scope.clearCancelForm = function() {
+			$state.go('characters');
+		};
+
+		$scope.saveCharacterForm = function(){
+
+			// the ng-tags-input values need to be returned to array of literals (strings)
+			var multiValueFields = ["abilities","siblings","parents","children"];
+
+			//console.log("checking field names: "+fieldNames.toString());
+			angular.forEach(fieldNames, function(fldNm){
+				var nmG2g = fldNm!="unid";
+				var dirtyG2g = !!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty == true;
+				if( nmG2g && dirtyG2g ){ //ignore multi-value fields
+					var isMulti = isInArray(fldNm,multiValueFields);
+					if( isMulti ){
+						//handle multi-value fields by converting to simple string array
+						var tmpAr = [];
+						for( var i=0; i<$scope.myCharacter.values[fld].length; i++ ){
+							var ob = $scope.myCharacter.values[fld][i];
+							tmpAr.push(ob.text);
+						}
+						//set string array back to tmp object
+						tmpOb[fldNm] = tmpAr;
+					}else{
+						//set new value back to the tmp object
+						tmpOb[fldNm] = $scope.myCharacter.values[fldNm];
+					}
+				}
+			});
+			
+			$http( {
+				method : 'POST',
+				url : 'characters',
+				data: JSON.stringify(tmpOb)
+			})
+				.success( function(data, status, headers, config){
+					console.log("successfully updated character with unid: "+data.unid);
+				})
+				.error( function(data, status, headers, config){
+					//might as well say something
+					console.log("poop");
+				})
+				.then( function(){
+					$state.go('characters',{},{reload: true});
+				});
+		};
+
+		$scope.$on("$locationChangeStart", function(event) {
+        	if ($scope.form!=undefined && $scope.form.$dirty && !confirm('Abandon unsaved changes?')){
+            	event.preventDefault();
+        	}
+        });
 
 	})
 
