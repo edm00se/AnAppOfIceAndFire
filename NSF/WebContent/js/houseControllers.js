@@ -121,31 +121,44 @@
 		}
 
 		$scope.saveHouseForm = function(){
-			var tmpOb = { "unid": $scope.myHouse.unid };
-			//console.log("checking field names: "+fieldNames.toString());
-			angular.forEach(fieldNames, function(fldNm){
-				if( $scope.houseForm[fldNm].$dirty === true ){
-					var tmpVal = $scope.myHouse[fldNm];
-					//console.log("updated field: "+fldNm+" with value: "+tmpVal);
-					tmpOb[fldNm] = tmpVal;
-				}
-			});
-			
-			$http( {
-				method : 'PUT',
-				url : 'houses/'+$scope.myHouse.unid,
-				data: JSON.stringify(tmpOb)
-			})
-				.success( function(data, status, headers, config){
-					console.log("successfully updated house with unid: "+$scope.myHouse.unid);
-				})
-				.error( function(data, status, headers, config){
-					//might as well say something
-					console.log("poop");
-				})
-				.then( function(){
-					$state.go('houses',{},{reload: true});
+			if( houseForm.$valid ){
+				
+				var tmpOb = { "unid": $scope.myHouse.unid };
+				//console.log("checking field names: "+fieldNames.toString());
+				angular.forEach(fieldNames, function(fldNm){
+					if( $scope.houseForm[fldNm].$dirty === true ){
+						var tmpVal = $scope.myHouse[fldNm];
+						//console.log("updated field: "+fldNm+" with value: "+tmpVal);
+						tmpOb[fldNm] = tmpVal;
+					}
 				});
+				
+				$http( {
+					method : 'PUT',
+					url : 'houses/'+$scope.myHouse.unid,
+					data: JSON.stringify(tmpOb)
+				})
+					.success( function(data, status, headers, config){
+						console.log("successfully updated house with unid: "+$scope.myHouse.unid);
+					})
+					.error( function(data, status, headers, config){
+						//might as well say something
+						console.log("poop");
+					})
+					.then( function(){
+						$state.go('houses',{},{reload: true});
+					});
+				
+			}else{
+				var tmpFldAr = [];
+				angular.forEach($scope.houseForm, function(value, key){
+					if( key.indexOf("$") < 0 ){ //only look at the fields
+						tmpFldAr.push(key);
+						angular.element(houseForm[key]).blur();
+					}
+				});
+				alert("The form shows that there are fields which need to be fixed before you can save.\n\nPlease review the form, correct any validation requirements, and try again.");
+			}
 			
 		}
 
@@ -176,35 +189,47 @@
 		}
 
 		$scope.saveHouseForm = function(){
+			if( houseForm.$valid ){
 
-			var nwUnid = null;
-			
-			$http( {
-				method : 'POST',
-				url : 'houses',
-				data: JSON.stringify($scope.myHouse.values)
-			})
-				.success( function(data, status, headers, config){
-					var rawUnid = headers('Location'); // ex: /xsp/houses/:unid
-					if( rawUnid == null ){ //running json-server
-						nwUnid = data.unid;
-						console.log("successfully saved new house with unid: "+nwUnid );
-					}else{
-						nwUnid = rawUnid.split("/")[3];
-						console.log("successfully saved new house with unid: "+nwUnid );
-					}
+				var nwUnid = null;
+				
+				$http( {
+					method : 'POST',
+					url : 'houses',
+					data: JSON.stringify($scope.myHouse.values)
 				})
-				.error( function(data, status, headers, config){
-					//might as well say something
-					console.log("error: "+data);
-				})
-				.then( function(){
-					if( nwUnid!=null ){
-						$state.go('houses.item',{item: nwUnid},{reload: true});
-					}else{
-						$state.go('houses',{},{reload: true});
+					.success( function(data, status, headers, config){
+						var rawUnid = headers('Location'); // ex: /xsp/houses/:unid
+						if( rawUnid == null ){ //running json-server
+							nwUnid = data.unid;
+							console.log("successfully saved new house with unid: "+nwUnid );
+						}else{
+							nwUnid = rawUnid.split("/")[3];
+							console.log("successfully saved new house with unid: "+nwUnid );
+						}
+					})
+					.error( function(data, status, headers, config){
+						//might as well say something
+						console.log("error: "+data);
+					})
+					.then( function(){
+						if( nwUnid!=null ){
+							$state.go('houses.item',{item: nwUnid},{reload: true});
+						}else{
+							$state.go('houses',{},{reload: true});
+						}
+					});
+
+			}else{
+				var tmpFldAr = [];
+				angular.forEach($scope.houseForm, function(value, key){
+					if( key.indexOf("$") < 0 ){ //only look at the fields
+						tmpFldAr.push(key);
+						angular.element(houseForm[key]).blur();
 					}
 				});
+				alert("The form shows that there are fields which need to be fixed before you can save.\n\nPlease review the form, correct any validation requirements, and try again.");
+			}
 			
 		}
 
