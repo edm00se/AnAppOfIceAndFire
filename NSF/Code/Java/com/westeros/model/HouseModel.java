@@ -8,7 +8,7 @@ import org.openntf.xsp.model.AbstractSmartDocumentModel;
  * This is the primary House Model, for how to structure a House, be it great or
  * small, in the Seven Kingdoms of Westeros... or at least this application.
  * 
- * @author Eric McCormik, @edm00se
+ * @author Eric McCormick, @edm00se
  * 
  */
 @SuppressWarnings("unused")
