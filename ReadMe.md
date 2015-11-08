@@ -30,4 +30,4 @@ To run without a Domino server (with no back-end logic by the *HTTPServet*s), yo
 
 ## License
 
-As is my norm for my blog and my GitHub repositories, the work contained herein is licensed under a <a href="//creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. You may use, alter, and redistribute the code herein (with citation), while expecting no warranty for its use.
+As is my norm for my blog and my GitHub repositories, the work contained herein is licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution 4.0 ShareAlike 4.0 International License</a>. You may use, alter, and redistribute the code herein (with citation), while expecting no warranty for its use.
