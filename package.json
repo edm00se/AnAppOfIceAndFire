@@ -5,15 +5,27 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "json-server --id unid db.json --watch --routes routes.json"
+    "start": "json-server --id unid db.json --watch --routes routes.json"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:edm00se/AnAppOfIceAndFire.git"
   },
   "author": "edm00se",
-  "license": "Creative Commons Attribution 3.0 Unported License",
+  "license": "CC-BY-SA-4.0",
   "dependencies": {
     "json-server": "^0.7.20"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-json-server": "^0.1.1"
   }
 }
