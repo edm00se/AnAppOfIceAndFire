@@ -31,6 +31,9 @@
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^1.12.0",
     "gulp-json-srv": "0.0.7",
+    "gulp-livereload": "^3.8.1",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "jshint-stylish": "^2.0.1"
