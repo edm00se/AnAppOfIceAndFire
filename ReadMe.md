@@ -6,7 +6,7 @@ This version of the repository differs in that it contains both the separate dat
 ## More Info
 I should be blogging about this in the near future. Check out my blog for more.
 
-### [edm00se.io](//edm00se.io)
+### [edm00se.io](https://edm00se.io/)
 
 ## Mock the Domino HTTPServlets (for UI-only editing)
 To run without a Domino server (with no back-end logic by the *HTTPServet*s), you can use `json-server`. To do this, you can either install the dependencies specified in the _package.json_ file by running `npm install` or you can install `json-server` globally yourself, via `npm install -g json-server`. [Create a symlink](//www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/) to the NSF/WebContent path called 'public'; this is how `json-server` will identify the directory with the static assets. To start, from the project path, either run `json-server --id unid --watch housesDB.json --routes routes.json` or just use `npm start`. The _package.json_ file defines the same for the _start_ command that _npm_ will use.
