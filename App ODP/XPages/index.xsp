@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:eventHandler event="onClientLoad" submit="true" refreshMode="norefresh">
+		<xp:this.action>
+			<xp:executeScript>
+				<xp:this.script><![CDATA[#{javascript:facesContext.getExternalContext().redirect("index.html");}]]></xp:this.script>
+			</xp:executeScript>
+		</xp:this.action>
+	</xp:eventHandler>
+</xp:view>

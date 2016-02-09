@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="86257EDA00047802" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="6ee" sequence="84" unid="2ADD81E40875DE5D86257ED7007DBA4D">
+<created><datetime dst="true">20151007T175316,93-05</datetime></created>
+<modified><datetime dst="true">20151012T192801,95-05</datetime></modified>
+<revised><datetime dst="true">20151012T192801,94-05</datetime></revised>
+<lastaccessed><datetime dst="true">20151012T192801,95-05</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20151009T194856,16-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/westeros/config/AppUtil.java</text></item>
+
+
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/westeros/config/AppUtil.java</text></item></note>

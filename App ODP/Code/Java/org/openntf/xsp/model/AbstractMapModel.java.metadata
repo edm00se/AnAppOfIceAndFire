@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="86257EDA00047802" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="196" sequence="95" unid="8875F5D9BFB71D9085257C3B0012A4E8">
+<created><datetime>20131207T222338,64-05</datetime></created>
+<modified><datetime dst="true">20151009T194849,36-05</datetime></modified>
+<revised><datetime dst="true">20150928T212709,23-05</datetime></revised>
+<lastaccessed><datetime dst="true">20151009T194849,36-05</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20151009T194849,36-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>org/openntf/xsp/model/AbstractMapModel.java</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>org/openntf/xsp/model/AbstractMapModel.java</text></item>
+
+
+</note>

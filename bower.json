@@ -1,6 +1,6 @@
 {
-  "name": "an app of ice and fire",
-  "version": "0.0.1",
+  "name": "Bluemix App of Ice and Fire",
+  "version": "0.0.2",
   "dependencies": {
     "bootstrap": "latest",
     "fontawesome": "latest",

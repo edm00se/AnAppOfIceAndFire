@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='utf-8'?>
+<agent name='fixFieldNames' xmlns='http://www.lotus.com/dxl' version='9.0'
+ maintenanceversion='1.4' replicaid='86257EDA00047802' hide='v3' publicaccess='false'
+ designerversion='8.5.3'>
+<noteinfo noteid='632' unid='56B34C7D16B8864288257E88000AC2B8' sequence='37'>
+<created><datetime dst='true'>20150719T185732,08-07</datetime></created>
+<modified><datetime dst='true'>20151009T194855,22-05</datetime></modified>
+<revised><datetime dst='true'>20150928T212703,13-05</datetime></revised>
+<lastaccessed><datetime dst='true'>20151009T194855,22-05</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20151009T194855,22-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<designchange><datetime dst='true'>20150928T212702,63-05</datetime></designchange>
+<trigger type='actionsmenu'/>
+<documentset type='runonce'/><code event='action'><javaproject class='JavaAgent.class'
+ codepath='c:\Program Files (x86)\IBM\Notes\Data'><java name='JavaAgent.java'>import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import lotus.domino.AgentBase;
+import lotus.domino.Base;
+import lotus.domino.Database;
+import lotus.domino.Document;
+import lotus.domino.Session;
+import lotus.domino.View;
+import lotus.domino.ViewNavigator;
+
+public class JavaAgent extends AgentBase {
+	
+	@Override
+	public void NotesMain() {
+		
+		try {
+			Session session = getSession();
+			//AgentContext agentContext = session.getAgentContext();
+			
+			Database db = session.getCurrentDatabase();
+			View vw = db.getView("characters");
+			ViewNavigator nav = vw.createViewNav();
+			Document first = (Document) nav.getFirstDocument();
+			while(first!=null) {
+				/*
+				first.replaceItemValue("charFirstName", first.getItemValueString("CharFirstName"));
+				first.replaceItemValue("charLastName", first.getItemValueString("CharLastName"));
+				first.removeItem("CharFullName_FL");
+				first.replaceItemValue("actFirstName", first.getItemValueString("ActFirstName"));
+				first.replaceItemValue("actLastName", first.getItemValueString("ActLastName"));
+				first.removeItem("ActFullName_FL");
+				first.replaceItemValue("title", first.getItemValueString("Title"));
+				first.replaceItemValue("house", first.getItemValueString("House"));
+				first.replaceItemValue("home", first.getItemValueString("Home"));
+				first.replaceItemValue("abilities", first.getItemValue("Abilities"));
+				first.replaceItemValue("parents", first.getItemValue("Parents"));
+				first.replaceItemValue("siblings", first.getItemValue("Siblings"));
+				first.replaceItemValue("children", first.getItemValue("Children"));
+				first.replaceItemValue("spouse", first.getItemValue("Spouse"));
+				 */
+				first.computeWithForm(true, false);
+				first.save();
+				
+				
+				Document tmpNext = (Document) nav.getNextDocument();
+				incinerate(first);
+				first = tmpNext;
+				
+			}
+			incinerate(first, nav, vw, db);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static void incinerate(final Object... objects) {
+		for (Object eachObject : objects) {
+			if (eachObject != null) {
+				if (eachObject instanceof Base) {
+					Base dominoObject = (Base) eachObject;
+					try {
+						dominoObject.recycle();
+					} catch (Exception e) {
+					}
+				} else if (eachObject instanceof Map) {
+					Set&lt;Map.Entry&gt; entries = ((Map) eachObject).entrySet();
+					for (Map.Entry&lt;?, ?&gt; entry : entries) {
+						incinerate(entry.getKey(), entry.getValue());
+					}
+				} else if (eachObject instanceof Collection) {
+					Iterator i = ((Collection) eachObject).iterator();
+					while (i.hasNext()) {
+						Object obj = i.next();
+						incinerate(obj);
+					}
+				} else if (eachObject.getClass().isArray()) {
+					try {
+						Object[] objs = (Object[]) eachObject;
+						for (Object ao : objs) {
+							incinerate(ao);
+						}
+					} catch (Throwable t) {
+						// who cares?
+					}
+				}
+			}
+		}
+	}
+	
+}</java></javaproject></code>
+<item name='$JavaCompilerSource'><text>1.5</text></item>
+<item name='$JavaCompilerTarget'><text>1.5</text></item></agent>
+

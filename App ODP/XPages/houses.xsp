@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:this.data>
+		<xp:dominoView
+			var="houses"
+			viewName="houses">
+			<xp:this.databaseName><![CDATA[#{javascript:// return (bluemixContext.isRunningOnBluemix()? bluemixContext.getDataService().findDatabaseName() : context.getProperty("xsp.local.iceandfire.data"));
+// return context.getProperty("xsp.local.iceandfire.data");
+return confBean.getCustDbAppPath();}]]></xp:this.databaseName>
+		</xp:dominoView>
+	</xp:this.data>
+	<xc:navbar />
+	<xp:div
+		id="uiContainer"
+		styleClass="container">
+		<div
+			class="row">
+			<div
+				class="col-md-4">
+				<div
+					class="panel panel-default">
+					<div
+						class="panel-heading">
+						<h3
+							class="panel-title">
+							<xp:text
+								value="Houses of the Seven Kingdoms of Westeros" />
+						</h3>
+					</div>
+					<table
+						class="table table-striped">
+						<tbody>
+							<xp:repeat
+								id="houseRepeat"
+								var="eachHouse"
+								value="#{houses}"
+								rows="5">
+								<tr>
+									<td>
+										<xp:link
+											text="#{eachHouse.name}"
+											value="/house.xsp">
+											<xp:this.parameters>
+												<xp:parameter
+													name="action"
+													value="openDocument">
+												</xp:parameter>
+												<xp:parameter
+													name="documentId"
+													value="#{javascript:return eachHouse.getUniversalID();}">
+												</xp:parameter>
+											</xp:this.parameters>
+										</xp:link>
+										<xp:link
+											styleClass="btn btn-danger pull-right">
+											<xp:eventHandler
+												event="onclick"
+												action="#{javascript:eachHouse.getDocument().remove(true);}"
+												refreshMode="partial"
+												refreshId="uiContainer" />
+											<i
+												class="fa fa-lg fa-trash-o" />
+										</xp:link>
+										<br />
+										<xp:text
+											value="#{eachHouse.words}">
+										</xp:text>
+									</td>
+								</tr>
+							</xp:repeat>
+						</tbody>
+					</table>
+					<div
+						class="panel-footer">
+						<ul
+							class="nav nav-pills nav-justified">
+							<li>
+								<xp:pager
+									id="pager1"
+									for="houseRepeat"
+									partialRefresh="true">
+									<xp:pagerControl
+										type="Previous"
+										id="pagerControl1"
+										value="Previous" />
+								</xp:pager>
+							</li>
+							<li>
+								<xp:pager
+									layout="Group"
+									partialRefresh="true"
+									id="pager3"
+									for="houseRepeat" />
+							</li>
+							<li>
+								<xp:pager
+									id="pager2"
+									for="houseRepeat"
+									partialRefresh="true">
+									<xp:pagerControl
+										type="Next"
+										id="pagerControl2"
+										value="Next" />
+								</xp:pager>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xp:div>
+</xp:view>

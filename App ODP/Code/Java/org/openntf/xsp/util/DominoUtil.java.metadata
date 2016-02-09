@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="86257EDA00047802" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="18e" sequence="112" unid="E45CC137ED8E97DF85257C3B00148606">
+<created><datetime>20131207T224410,30-05</datetime></created>
+<modified><datetime dst="true">20151009T194849,32-05</datetime></modified>
+<revised><datetime dst="true">20151007T180105,19-05</datetime></revised>
+<lastaccessed><datetime dst="true">20151009T194849,32-05</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20151009T194849,32-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>org/openntf/xsp/util/DominoUtil.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>org/openntf/xsp/util/DominoUtil.java</text></item>
+
+</note>

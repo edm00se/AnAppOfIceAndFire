@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:label
+		value="runningOnBluemix:" />
+	<xp:text
+		value="#{myApp.runningOnBluemix}" />
+	<xp:br />
+	<xp:label
+		value="DB Server Name:" />
+	<xp:text
+		value="#{myApp.dbServerName}" />
+	<xp:br />
+	<xp:label
+		value="DB App Path:" />
+	<xp:text
+		value="#{myApp.dbAppPath}" />
+</xp:view>

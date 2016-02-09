@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="86257EDA00047802" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1ca" sequence="659" unid="41BEA28D0129200088257E020059D4CE">
+<created><datetime dst="true">20150308T092111,82-07</datetime></created>
+<modified><datetime dst="true">20151012T213758,25-05</datetime></modified>
+<revised><datetime dst="true">20151012T213758,24-05</datetime></revised>
+<lastaccessed><datetime dst="true">20151012T213758,25-05</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20151009T194849,62-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>com/westeros/servlets/HouseCollection.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>com/westeros/servlets/HouseCollection.java</text></item>
+
+</note>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core">
+	<style
+		type="text/css">
+		<![CDATA[
+		
+		]]>
+	</style>
+	<xp:panel>
+		<xp:label
+			value="DB Server Name:" />
+		<xp:text
+			value="#{confBean.server}" />
+	</xp:panel>
+	<xp:panel>
+		<xp:label
+			value="DB App Path:" />
+		<xp:text
+			value="#{confBean.dbPath}" />
+	</xp:panel>
+</xp:view>

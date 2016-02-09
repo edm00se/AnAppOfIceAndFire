@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="86257EDA00047802" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="6d6" sequence="2" unid="EACA3A5EBAD4D91186257ED3007464D9">
+<created><datetime dst="true">20151003T161119,93-05</datetime></created>
+<modified><datetime dst="true">20151009T194856,04-05</datetime></modified>
+<revised><datetime dst="true">20151003T161119,99-05</datetime></revised>
+<lastaccessed><datetime dst="true">20151009T194856,04-05</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20151009T194856,04-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
+<item name="$TITLE"><text>commons-beanutils-1.8.3.jar</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+<item name="$Flags"><text>34567Cg~,</text></item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<item name="$FileNames" sign="true"><text>commons-beanutils-1.8.3.jar</text></item></note>

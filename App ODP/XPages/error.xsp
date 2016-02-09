@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ibm.com/xsp/core xsdxp://localhost/xsp~core.xsd"
+	pageTitle="${javascript:database.getTitle() + ' | Error'}">
+	<style
+		type="text/css"><![CDATA[
+    body {
+      background-color: lightblue;
+    }
+    form {
+      width: 1000px !important;
+      margin: 0 auto !important;
+      background-color: white !important;
+      margin-top: 2rem !important;
+      padding: 0.5rem !important;
+      height: auto;
+    }
+    .xspTextLabel {
+      font-weight: bold !important;
+    }
+    pre {
+      overflow-x: auto;
+    }
+  ]]></style>
+	<img
+		class="logo-simple"
+		src="//placehold.it/124x32" />
+	<xp:panel>
+		<xp:br />
+		<xp:br />
+		<xp:label
+			style="font-weight:bold;font-size:12pt"
+			value="An Unexpected Error Has Occurred:">
+		</xp:label>
+		<xp:br />
+		<xp:br />
+		<xp:label
+			value="Error:"></xp:label>
+		<xp:br />
+		<xp:text
+			escape="false">
+			<xp:this.value><![CDATA[#{javascript:var output = (requestScope.error.toString() || null)+"<br /><br />";
+if(requestScope.error instanceof com.ibm.xsp.exception.XSPExceptionInfo){
+  var codeSnippet = requestScope.error.getErrorText(); 
+  var control = requestScope.error.getErrorComponentId();
+  var cause = requestScope.error.getCause();
+  output += "In the control : " + control + "<br /><br />";
+  if(cause instanceof com.ibm.jscript.InterpretException){
+    var errorLine = cause.getErrorLine();
+    var errorColumn = cause.getErrorCol();
+    output += "At line " + errorLine;
+    output += ", column " + errorColumn + " of:<br />";
+  }else{
+    output += "In the script:<br />";
+  }
+  if( @Contains(codeSnippet,"#{javascript:") ){
+    var snipAr = codeSnippet.split("#{javascript:");
+    var tmpSnip = snipAr[1];
+    var nwSnip = tmpSnip.substring(0, tmpSnip.length - 1);
+    output += "#{javascript:<br /><pre class=\"prettyprint\">"+nwSnip+"</pre>}"
+  }else{
+    output += "<pre class=\"prettyprint\">"+codeSnippet+"</pre>";
+  }
+}
+return output;}]]></xp:this.value>
+		</xp:text>
+		<xp:br />
+		<xp:br />
+		<xp:label
+			value="Stack Trace:" />
+		<xp:br />
+		<xp:text
+			escape="false"
+			style="font-size:10pt">
+			<xp:this.value><![CDATA[#{javascript:if( !!requestScope.error ){
+    var stackTrace = "";
+    var trace = (requestScope.error.getStackTrace() || null);
+    if(trace != null){
+      for(var i = 0; i < trace.length; i++){
+        stackTrace += trace[i] + "<br/>";
+      }
+      return "<pre class=\"prettyprint\">"+stackTrace+"</pre>";
+    }else{
+      return "nothing";
+    }
+  }else{
+    return "";
+  }}]]></xp:this.value>
+		</xp:text>
+	</xp:panel>
+	<script
+		type="text/javascript"
+		src="//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+	<xp:text
+		escape="true"
+		id="executeOnAjax"
+		tagName="img">
+		<xp:this.attrs>
+			<xp:attr
+				name="src"
+				value="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
+			<xp:attr
+				name="onload"
+				value="var h=document.getElementsByTagName('head')[0],s=document.createElement('script');h.src=''//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert',h.appendChild(s);this.parentNode.removeChild(this);" />
+		</xp:this.attrs>
+		<xp:this.rendered>
+      <![CDATA[#{javascript:var ex = facesContext.getExternalContext();
+var pMap = com.ibm.xsp.util.TypedUtil().getRequestParameterMap(ex);
+var refreshId = pMap.get("$$ajaxid");
+refreshId?true:false;}]]>
+		</xp:this.rendered>
+	</xp:text>
+</xp:view>

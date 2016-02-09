@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view
+	xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:label
+		value="runningOnBluemix:" />
+	<xp:text>
+		<xp:this.value><![CDATA[#{javascript:try{
+	return myApp.getRunningOnBluemix();
+}catch(e){
+	return e.toString();
+}}]]></xp:this.value>
+	</xp:text>
+	<xp:br />
+	SSJS:
+	<xp:text
+		escape="true"
+		id="computedField1"
+		value="#{javascript:return bluemixContext.isRunningOnBluemix();}">
+	</xp:text>
+</xp:view>

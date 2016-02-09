@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='utf-8'?>
+<view name='houses' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.4'
+ replicaid='88257ECC005D32D9' showinmenu='false' publicaccess='true' designerversion='8.5.3'
+ unreadmarks='none' onopengoto='lastopened' onrefresh='displayindicator' headers='beveled'
+ opencollapsed='false' showresponsehierarchy='true' showmargin='true' shrinkrows='false'
+ extendlastcolumn='false' showhierarchies='false' unreadcolor='black' rowlinecount='1'
+ headerlinecount='1' rowspacing='1' bgcolor='white' totalscolor='black' headerbgcolor='white'
+ boldunreadrows='false' evaluateactions='false' allownewdocuments='false'
+ allowcustomizations='false' hidemarginborder='false' marginwidth='0px' marginbgcolor='white'
+ uniquekeys='false'>
+<noteinfo noteid='14a' unid='045E775D8A3E562086257DB900789293' sequence='70'>
+<created><datetime>20141225T155658,43-06</datetime></created>
+<modified><datetime dst='true'>20150928T212708,99-05</datetime></modified>
+<revised><datetime dst='true'>20150928T212708,98-05</datetime></revised>
+<lastaccessed><datetime dst='true'>20150928T212708,99-05</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20150926T095758,96-07</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby><code
+ event='selection'><formula>SELECT Form = "house"</formula></code>
+<actionbar bgcolor='#f0f0f0' bordercolor='black'>
+<actionbuttonstyle bgcolor='#f0f0f0'/><font size='9pt' color='system'/><border
+ style='solid' width='0px 0px 1px' color='system'/>
+<action title='Magic Button - Lite'><code event='click'><formula>targetField := @Prompt([OkCancelEditCombo]; "Select Field"; "Select a field to override:"; ""; @DocFields );
+updateTypes := "Text":"Number":"Time":"Delete Field";
+updateType := @Prompt([OkCancelList]; "Select Type"; "Choose a type or action:"; "Text"; updateTypes );
+@If(updateType = "Delete Field"; @Return(@SetField(targetField;@DeleteField)); "" );
+newValue := @Prompt([OkCancelEdit];"New Value";"Enter the new value:"; @Text(@GetField(targetField )));
+newTypeValue := @Select(@TextToNumber(@Replace(updateType; @Subset(updateTypes;3);"1":"2":"3" )); newValue; @TextToNumber(newValue); @TextToTime(newValue));
+@SetField(targetField; newTypeValue)</formula></code></action>
+<sharedactionref id='108'>
+<action title='Magic Button' showinrightbuttonmenu='true'><code event='click'><formula
+>REM {Edit Document Fields 6.0.0 by Chad Schelfhout.};
+REM {Visit http://www.chadsmiley.com/EditDocumentFields for the latest updates};
+
+REM {Changable constants};
+cEnableConfirmation := @True;
+cFieldHistoryValues := 10;
+cStandardSeparators := ":" : ";" : " ";
+cPromptTitle := @DbTitle + " - " + @ViewTitle;
+
+REM {Unchangable constants};
+cProfileName := "ChadSmiley Tools";
+cEditLastField := "edfLastField";
+cEditLastFieldDataType := "edfLastFieldDataType";
+cEditLastFieldDataTypeValue := "edfLastFieldDataTypeValue";
+cEditLastSeparator := "%~%";
+cValueListSeparator := "^";
+cFromRawValueSeparator := "%@%";
+cSemicolonReplace := "#SC#";
+cMaxSearchForSelectedDocs := 5520;
+cMaxUpdatedDocuments := 1000;
+cArraySeparator := ";";
+cNoteEntryLength := 11;
+cPromptNewLineOne := @Char(13);
+cPromptNewLineTwo := cPromptNewLineOne + cPromptNewLineOne;
+cPromptTab := @Char(9);
+cCategoryNoteID := "NT00000000";
+cTextExtractList := "Text Left":"Text Left Back":"Text Right":"Text Right Back";
+cNoPromptList := cTextExtractList:"Remove Field":"Unique":"Sort Ascending":"Sort Descending":"Implode":"Explode":"Proper Case Text":"Proper Case Text Multi Value":"Lower Case Text":"Lower Case Text Multi Value":"Upper Case Text":"Upper Case Text Multi Value":"Password Convert":"Trim":"Trim then Unique";
+cErrorCheckCode := "@Implode( @Unique( @Explode( NoteIDList : ErrorNoteID ; cArraySeparator ; @False ) ) )";
+cErrorInformation := "\"Error documents: \" + @Implode( @Unique( @Explode( ErrorNoteIDList ; cArraySeparator ; @False ) ) ; \", \" ) + cPromptNewLineOne + \"Not updated documents: \" + @Implode( @Unique( @Explode( ErrorNoteIDList ; cArraySeparator ; @False ) ) ; \", \" )";
+
+
+REM {Data types|@Function execution};
+DataTypesCombo := @Explode(
+"Integer|@TextToNumber( RawValue )$"+
+"Integer Multi Value|@TextToNumber( @Explode( RawValue ; Separator; @True) )$"+
+"Date|@ToTime( RawValue )$"+
+"Date Multi Value|@ToTime( @Explode( RawValue ; Separator; @True) )$"+
+"Text|@Text( RawValue )$"+
+"Text Multi Value|@Text( @Explode( RawValue ; Separator; @True) )$"+
+"Text Left|@Left( @Text( @GetField( EditField[ef] ) ) ; ExtractValue )$"+
+"Text Left Back|@LeftBack( @Text( @GetField( EditField[ef] ) ) ; ExtractValue )$"+
+"Text Right|@Right( @Text( @GetField( EditField[ef] ) ) ; ExtractValue )$"+
+"Text Right Back|@RightBack( @Text( @GetField( EditField[ef] ) ) ; ExtractValue )$"+
+"Trim|@Trim( @Text( @GetField( EditField[ef] ) ) )$"+
+"Trim then Unique|@Unique(@Trim( @Text( @GetField( EditField[ef] ) ) ) )$"+
+"Name|RawValue$"+
+"Name Multi Value|RawValue$"+
+"Common Name|@Name( [CN]; RawValue )$"+
+"Common Name Multi Value|@Name( [CN]; @Explode( RawValue ; \":\"; @True ) )$"+
+"Upper Case Text|@UpperCase( @Implode( @Text( @GetField( EditField[ef] ) ) ) )$"+
+"Lower Case Text|@LowerCase( @Implode( @Text( @GetField( EditField[ef] ) ) ) )$"+
+"Proper Case Text|@ProperCase( @Implode( @Text( @GetField( EditField[ef] ) ) ) )$"+
+"Upper Case Text Multi Value|@UpperCase( @Explode( @Text( @GetField( EditField[ef] ) ) ; Separator; @True ))$"+
+"Lower Case Text Multi Value|@LowerCase( @Explode( @Text( @GetField( EditField[ef] ) ) ; Separator; @True) )$"+
+"Proper Case Text Multi Value|@ProperCase( @Explode( @Text( @GetField( EditField[ef] ) ) ; Separator; @True) )$"+
+"Replace Substring|@ReplaceSubstring( @GetField( EditField[ef] ); FromRawValue ; RawValue )$"+
+"Replace|@Explode( @Replace( @GetField( EditField[ef] ) ; FromRawValue ; RawValue ) ; Separator ; @True )$"+
+"Implode|@Implode( @Text( @GetField( EditField[ef] ) ) ; Separator )$"+
+"Explode|@Explode( @Text( @GetField( EditField[ef] ) ) ; Separator; @True )$"+
+"Formula|@Eval( RawValue )$"+
+"Abbreviate Name|@Name([Abbreviate]; RawValue )$"+
+"Abbreviate Name Multi Value|@Name( [Abbreviate]; @Explode( RawValue ; Separator; @True ) )$"+
+"Password Set|@Password( RawValue )$"+
+"Password Convert|@Password( @GetField( EditField[ef] ) )$"+
+"Remove Field|@DeleteField$"+
+"Unique|@Unique(@GetField( EditField[ef]))$"+
+"+ Append Values|@If(" +
+" @GetField(EditField[ef]) = \"\"; RawValue;" +
+" @Contains(DefaultDataType; \"Date\");" +
+" @If( @IsError( @ToTime( RawValue ) ) ;" +
+" \"\" ;" +
+" @SetField( EditField[ef] ; @GetField(EditField[ef]) : @TextToTime( @Explode( RawValue ; Separator ) ) ) ) ;" +
+" @Contains(DefaultDataType; \"Integer\" );" +
+" @If( @IsError( @TextToNumber( @Explode( RawValue ; Separator ) ) ) ;" +
+" \"\" ;" +
+" @SetField( EditField[ef] ; @GetField(EditField[ef]) : @TextToNumber( @Explode( RawValue ; Separator ) ) ) ) ;" +
+" @SetField( EditField[ef] ; @GetField(EditField[ef]) : @Explode( RawValue ; Separator ) ) )$"+
+"Sort Ascending|@Sort(@GetField(EditField[ef]) ; [Ascending] )$"+
+"Sort Descending|@Sort(@GetField(EditField[ef]); [Descending])" ; "$" );
+
+DataTypes := @Word( DataTypesCombo ; "|" ; 1 );
+DataTypesAction := @Word( DataTypesCombo ; "|" ; 2 );
+
+REM {Get a listing of all the fields on the current document};
+List := @Sort( @DocFields );
+
+REM {Look for last field modified in Profile Doc};
+FieldList := @Explode( @GetProfileField( cProfileName ; cEditLastField ; @UserName ) ; cArraySeparator ; @True ) ;
+
+REM {Get the list of forms and field that was updated using Edit Document Fields};
+FieldListForms := @Word( FieldList ; cEditLastSeparator ; 1 );
+FieldListField := @Word( FieldList ; cEditLastSeparator ; 2 );
+FieldListLastIndex := @Member( Form; FieldListForms );
+REM {If the FieldListLastIndex is greater than zero then set the last field to the what was in the profile document};
+@If( FieldListLastIndex &gt; 0;
+@Do( LastField := FieldListField[ FieldListLastIndex ];
+FieldList := @ReplaceSubstring( FieldList ; FieldList[ FieldListLastIndex ] ; "" ) );
+LastField :="" );
+
+REM {Prompt for which field needs to be updated. Loop until a field is selected or 'Cancel' is selected};
+@DoWhile(
+EditField := @Prompt( [OkCancelEditCombo] ; cPromptTitle ; "Select the field you wish to alter or enter a new field to add:" ; LastField ; @Trim( @Unique( List : LastField ) ) );
+EditField = "" );
+EditFieldPromptTitle := "Change '" + EditField + "' in " + cPromptTitle;
+
+REM {This will allow the retrieval of the data type of the field that was last selected. Data is stored like Form+Field%~%DataType.};
+FormFieldList := @Explode( @GetProfileField( cProfileName ; cEditLastFieldDataType ; @UserName ) ; cArraySeparator ; @True ) ;
+FormFieldListFormField := @Word( FormFieldList ; cEditLastSeparator ; 1 );
+FormFieldListDataType := @Word( FormFieldList ; cEditLastSeparator ; 2 );
+FormFieldListFormulaCode := @ReplaceSubstring( @Word( FormFieldList ; cEditLastSeparator ; 3 ) ; cSemicolonReplace ; ";" );
+FormFieldListIndex := @Member( Form + EditField; FormFieldListFormField );
+@If( FormFieldListIndex &gt; 0;
+@Do( DefaultDataType := FormFieldListDataType[ FormFieldListIndex ];
+FormFieldListFormulaCode := FormFieldListFormulaCode[ FormFieldListIndex ];
+FormFieldList := @ReplaceSubstring( FormFieldList ; FormFieldList[ FormFieldListIndex ] ; "" ) );
+DefaultDataType :="" );
+
+REM {If there was no data type used for the field on the form the try to determine the data type};
+DefaultDataType :=
+@If( DefaultDataType != "" ;
+DefaultDataType ;
+@If(
+@IsNumber( @GetField( EditField ) ) ;
+@If( @Count( @GetField( EditField ) ) &gt; 1 ;
+"Integer Multi Value" ;
+"Integer" ) ;
+@IsTime( @GetField( EditField ) ) ;
+@If( @Count( @GetField( EditField ) ) &gt; 1 ;
+"Date Mult iValue" ;
+"Date" ) ;
+@If( @Count( @GetField( EditField ) ) &gt; 1 ;
+"Text Multi Value" ;
+"Text" )
+)
+);
+
+REM {If the data type is a type of error then select the data type of text};
+DefaultDataType := @IfError( DefaultDataType ; "Text" );
+
+REM {Prompt for which data type you would like the data to be. This needs to be done before value prompt to determine if the Picklist or any prompting needs to be used.};
+DataType := @Prompt( [OkCancelList] ; EditFieldPromptTitle; "Please select the correct data type or action for field: " + EditField + "."; DefaultDataType ; DataTypes );
+
+REM {The DataTypeAction will contain the formula that will be executed to retrieve the new value};
+DataTypeAction := DataTypesAction[ @Member( DataType ; DataTypes ) ];
+
+REM {If formula was used on this field then use that instead of the fields value. Format the original value as text because the @Prompt command requires text.};
+OriginalValue := @If( DataType = "Formula" &amp; DefaultDataType = "Formula" &amp; FormFieldListFormulaCode != "" ;
+FormFieldListFormulaCode ;
+@If( @Contains( DefaultDataType ; MultiValue ) ;
+@Implode( @Text( @GetField( EditField ) ) ; cArraySeparator );
+@Text( @GetField( EditField ) ) )
+);
+
+REM {This will allow the retrieval of history of values of the field. Data is stored like Form+Field+DataType%~%ValueList.};
+FormFieldListDataTypeValues := @Explode( @GetProfileField( cProfileName ; cEditLastFieldDataTypeValue ; @UserName ) ; cArraySeparator ; @True ) ;
+FormFieldListFormFieldDataType := @Word( FormFieldListDataTypeValues ; cEditLastSeparator ; 1 ) ;
+FormFieldListValuesLists := @Word( FormFieldListDataTypeValues ; cEditLastSeparator ; 2 ) ;
+FormFieldListDTIndex := @Member( Form + EditField + DataType; FormFieldListFormFieldDataType );
+@If( FormFieldListDTIndex &gt; 0;
+@Do( FormFieldListValuesList := FormFieldListDataTypeValues[ FormFieldListDTIndex ];
+FormFieldListValuesList := @ReplaceSubstring( @Trim( @Explode( FormFieldListValuesLists[ FormFieldListDTIndex ] ; cValueListSeparator ; @False ) ) ; cSemicolonReplace; ";" );
+FormFieldListDataTypeValues := @ReplaceSubstring( FormFieldListDataTypeValues ; FormFieldListDataTypeValues[ FormFieldListDTIndex ] ; "" ) );
+FormFieldListValuesList :="" );
+
+REM {Prompt for additional fields and determine the string that they are searching for.};
+@If( DataType = ("Replace Substring":"Replace" ) ;
+@Do( EditField := @Unique( EditField : @Prompt( [OkCancelListMult] ; cPromptTitle ; "Select any addtional fields you wish to alter:" ; EditField ; List ) );
+FromRawValue := @Prompt( [OkCancelEditCombo] ; EditFieldPromptTitle ; "Enter or select the text (case sensitive) to search for in: " + @Implode( EditField ; ", " ) + "." ; "" ; @Unique( @Word( FormFieldListValuesList ; cFromRawValueSeparator ; 2 ) ) ) );
+@Do( EditField := EditField;
+FromRawValue := "" )
+);
+
+REM { With the Edit combo there will be a list of standard seperators to choose from.};
+Separator := @If( DataType = ("Implode":"Explode" ) ;
+@Prompt( [OkCancelEditCombo] ; cPromptTitle ; "Enter or select the " + @If( DataType = "Implode" ; "separator" ; "separators" ) + ":" ; "" ; @Unique( @If( FormFieldListValuesList = "" ; cStandardSeparators ; FormFieldListValuesList : cStandardSeparators ) ) );
+cArraySeparator );
+
+REM {Determine the string to search for};
+ExtractValue := @If( DataType = cTextExtractList ;
+@Prompt( [OkCancelEditCombo] ; cPromptTitle ; "Enter or select the search string or string length:" ; @Subset( FormFieldListValuesList ; 1 ) ; @Unique( FormFieldListValuesList ) );
+"" );
+
+REM {Based on what type of data is being entered different prompts will happen if any at all.};
+RawValue := @If(
+@Contains( DataType ; "Name Multi Value" ) ; @PickList( [Name] );
+@Contains( DataType ; "Name" ) ; @PickList( [Name] : [Single] );
+DataType = ( cNoPromptList ) ; "" ;
+@Contains( DataType ; "Multi Value" ) ; @Prompt( [OkCancelEditCombo] ; EditFieldPromptTitle; "Enter or select the new desired value for: " + @Implode( EditField ; ", " ) + "." + cPromptNewLineTwo + "Seperated with ; for each value." ; OriginalValue ; @Unique( OriginalValue : FormFieldListValuesList ) ) ;
+@Contains( DataType ; "+ Append Values" ) ; @Prompt( [OkCancelEditCombo] ; EditFieldPromptTitle; "Enter or select values to append: " + @Implode( EditField ; ", " ) + "." + cPromptNewLineTwo + "Seperated with ; for each value." ; "" ; @Unique( FormFieldListValuesList ) ) ;
+DataType = ("Replace Substring":"Replace" ) ; @Prompt( [OkCancelEditCombo] ; EditFieldPromptTitle ; "Enter or select the text to repalce with in: " + EditField + "." ; "" ; @Unique( @Word( FormFieldListValuesList ; cFromRawValueSeparator ; 1 ) ) ) ;
+DataType = "Formula" ; @Do( @DoWhile(
+OriginalValue := @Prompt( [OkCancelEditCombo] ; EditFieldPromptTitle ; "Enter or select the new desired formula for: " + EditField + "." ; OriginalValue ; @Unique( OriginalValue : FormFieldListValuesList ) );
+tempReturnCheck := @CheckFormulaSyntax( OriginalValue );
+@If( tempReturnCheck != "1"; @Prompt( [Ok] ; "Invalid Formula - " + EditFieldPromptTitle ;
+"Invalid Formula entered: " +
+cPromptNewLineTwo + cPromptTab + "Error: " + cPromptTab + cPromptTab + @Text( tempReturnCheck ) +
+cPromptNewLineOne + cPromptTab + "Formula: " + cPromptTab + cPromptTab + OriginalValue ) ; "" );
+tempReturnCheck != "1" );
+OriginalValue );
+@Prompt( [OkCancelEditCombo] ; EditFieldPromptTitle ; "Enter or select the new desired value for: " + EditField + "." ; OriginalValue ; @Unique( OriginalValue : FormFieldListValuesList ) )
+);
+
+REM {Store Field in Profile doc};
+@SetProfileField( cProfileName ; cEditLastField ; @Unique( @Trim( FieldList : ( Form + cEditLastSeparator + EditField[1] ) ) ); @UserName );
+
+REM {Store Data Type of Field in Profile doc};
+@SetProfileField( cProfileName ; cEditLastFieldDataType ;
+@Unique( @Trim( FormFieldList : ( Form + EditField[1] + cEditLastSeparator + DataType + cEditLastSeparator +
+@ReplaceSubstring(
+@If( DataType = "Formula" ; RawValue ; FormFieldListFormulaCode ) ;
+";" ; cSemicolonReplace ) ) ) ) ;
+@UserName );
+
+REM {Store Data Value of Field in Profile doc};
+@SetProfileField( cProfileName ; cEditLastFieldDataTypeValue ;
+@Unique( @Trim( FormFieldListDataTypeValues : ( Form + EditField[1] + DataType + cEditLastSeparator +
+@Implode(
+@Subset(
+@Unique(
+@ReplaceSubstring(
+@If( DataType = ("Implode":"Explode" ) ; Separator ;
+DataType = cTextExtractList ; ExtractValue ;
+DataType = ( "Replace Substring":"Replace" ) ; RawValue + cFromRawValueSeparator + FromRawValue ;
+RawValue ) : FormFieldListValuesList ;
+";" ; cSemicolonReplace ) ) ;
+cFieldHistoryValues );
+cValueListSeparator ) ) ) ) ;
+@UserName );REM {If multi docs selected, only process those checked ... an unchecked doc cannot be NavNextSelected};
+@Command([NavNextSelected]);
+@UpdateFormulaContext;
+
+REM {Store all Note IDs before manipulation in case field modifications cause categorized views or sorted columns to reorganize};
+NoteIDList := @Text( @NoteID );
+ErrorNoteIDList := "";
+@Command([NavNextSelected]);
+@UpdateFormulaContext;
+
+REM {Start Looping Selected documents to gather all the documents that need to be updated.};
+@While( ( @Left( NoteIDList ; cNoteEntryLength ) != ( @Text( @NoteID + cArraySeparator ) ) ) &amp; ( @Length( NoteIDList ) &lt; cMaxSearchForSelectedDocs ) ;
+NoteIDList := NoteIDList + cArraySeparator + @Text( @NoteID );
+NoteIDList := @ReplaceSubstring( NoteIDList ; cCategoryNoteID + cArraySeparator ; "" );
+@Command([NavNextSelected]);
+@UpdateFormulaContext
+);
+REM {Remove all category Note IDs};
+NoteIDList := @ReplaceSubstring( NoteIDList ; cCategoryNoteID ; "" );
+REM {Remove all duplicate Note IDs};
+NoteIDList := @Unique( @Explode( NoteIDList ; cArraySeparator ; @False ) );
+@StatusBar( "Found " + @Text( @Elements( NoteIDList ) ) + " documents." );
+NotNoteIDList := "";
+
+REM {Determine if the document should be updated.};
+tmpPrompt := @Implode( "The following information will be used to update the " + @Text( @Elements( NoteIDList ) ) + " document" + @If( @Elements( NoteIDList ) &gt; 1 ; "s" ; "" ) + "." + cPromptTab + cPromptTab +
+cPromptNewLineTwo + cPromptTab + "Field:" + cPromptTab + cPromptTab + EditField +
+cPromptNewLineOne + cPromptTab + "Data type/action: " + cPromptTab + DataType +
+cPromptNewLineOne + cPromptTab +
+@If( DataType = ("Implode":"Explode" ) ; "Separator: " + cPromptTab + Separator ;
+DataType = ("Text Left":"Text Left Back":"Text Right":"Text Right Back" ) ; "Search string: " + cPromptTab + ExtractValue ;
+DataType = ("Replace Substring":"Replace" ) ; "Search string: " + cPromptTab + FromRawValue + cPromptNewLineOne + cPromptTab + "Replace string: " + cPromptTab + RawValue ;
+DataType = cNoPromptList;
+"" ;
+"Value: " + cPromptTab + cPromptTab + @Text( RawValue ) ) +
+cPromptNewLineTwo + "Would you like to continue?" );
+@If( cEnableConfirmation ;
+@Do(
+@StatusBar( @Explode( tmpPrompt ; cPromptNewLineOne ; @True ) );
+@If( @Prompt( [YesNo]; EditFieldPromptTitle ;
+tmpPrompt );
+"" ; @Return ( "" ) ) );
+"" );
+
+REM {Loop through selected docs taking each NoteIDList out of the list as it is processed};
+DocUpdateCount := 0;
+DocNavigationCount := 0;
+@While( DocUpdateCount &lt; @Elements( NoteIDList ) ;
+
+@If( @TextToNumber( @Text( @DocumentUniqueID ) ) != 0 ;
+@Do(
+NoteIDList := @Replace( NoteIDList ; @NoteID ; "" ) ;
+NotNoteIDList := NotNoteIDList : @NoteID;
+@For( ef := 1; ef &lt;= @Elements( EditField ); ef := ef + 1;
+formulaResult := @Eval( DataTypeAction );
+REMark := " **REM** The values entered above will be applied to all selected doc. If data conversion doesn't work then don't set field.";
+@If( @IsError( formulaResult );
+@Do(
+tmpPrompt := "Error with NoteID of " + @NoteID + ". Continue?" + cPromptTab +
+cPromptNewLineOne + cPromptTab + "Error: " + cPromptTab + cPromptTab + @Text( FormulaResult ) +
+cPromptNewLineOne + cPromptTab + "Formula: " + cPromptTab + cPromptTab + DataTypeAction +
+cPromptNewLineOne + cPromptTab + @If( @Contains( DataTypeAction ; "EditField[ef]" ) ; "EditField[ef]:" ; "Field:" + cPromptTab ) + cPromptTab + EditField[ef] +
+cPromptNewLineOne + cPromptTab + "Data type/action: " + cPromptTab + DataType +
+cPromptNewLineOne + cPromptTab +
+@If( DataType = ("Replace Substring":"Replace" ) ; "FromRawValue: " + cPromptTab + @Text( FromRawValue )+ cPromptNewLineOne + cPromptTab + "RawValue: " + cPromptTab + @Text( RawValue ) ;
+DataType = cNoPromptList;
+"" ;
+"RawValue: " + cPromptTab + @Text( RawValue ) );
+@StatusBar( @Explode( tmpPrompt ; cPromptNewLineOne ; @True ) );
+@If( @Prompt( [YesNo] ;"Error - " + EditFieldPromptTitle ; tmpPrompt ) ;
+ErrorNoteIDList := ErrorNoteIDList+ cArraySeparator + @Text( @NoteID );
+@Return( @If( @Eval( cErrorCheckCode ) != "" ;
+@StatusBar( @Explode( @Eval( cErrorInformation ) ; cPromptNewLineOne ; @True ) ):
+@Prompt( [Ok] ; "Unable to Update - " + EditFieldPromptTitle ; @Eval( cErrorInformation ) );
+"" ) ) ) );
+@SetField( EditField[ef] ; formulaResult )
+)
+);
+@If( DocNavigationCount &gt; cMaxUpdatedDocuments ;
+NoteIDList := "";
+@Do(
+DocUpdateCount := DocUpdateCount + 1;
+@Command([NavNextSelected]);
+@UpdateFormulaContext;
+REMark := " **REM** If we haven't processed all docs yet but the current doc is not in the NoteIDList list, keep looping ... if cnt exceeds MaxUpdatedDocuments assume infinite loop and stop ";
+@If( DocUpdateCount &lt; @Elements( NoteIDList ) &amp; ( !@Member( @NoteID ; NoteIDList ) ) &amp; ( !@Member( @NoteID ; NotNoteIDList) );
+@While( (! @Member( @NoteID ; NoteIDList ) &amp; DocNavigationCount &lt; cMaxUpdatedDocuments );
+@Command([NavNextSelected]);
+@UpdateFormulaContext;
+DocNavigationCount := DocNavigationCount + 1);
+"")
+)
+)
+);
+@Do( @Command([NavNextSelected]);
+@UpdateFormulaContext )
+)
+);
+
+@If( @Implode( @Unique( @Explode( NoteIDList : ErrorNoteIDList ; cArraySeparator ; @False ) ) ) != "" ;
+@StatusBar( @Explode( @Eval( cErrorInformation ) ; cPromptNewLineOne ; @True ) ):
+@Prompt( [Ok] ; "Unable to Update - " + EditFieldPromptTitle ; @Eval( cErrorInformation ) );
+"" );
+
+@StatusBar( "Navigated through " + @Text( DocUpdateCount + DocNavigationCount ) + " documents." );
+@StatusBar( "Performed '" + DataType + "' for '" + @Implode( EditField ; ", " ) + "' field" + @If( @Elements( EditField ) &gt; 1; "s " ; " " ) + "on " + @Text( DocUpdateCount ) + " document" + @If( DocUpdateCount &gt; 1 ; "s" ; "" ) + "." )</formula></code><code
+ event='hidewhen'><formula>@IsNotMember("[DatabaseAdmin]";@UserRoles)</formula></code></action></sharedactionref>
+<action title='Categori_ze' showinbar='false' systemcommand='categorize'/>
+<action title='_Edit Document' showinbar='false' systemcommand='edit'/>
+<action title='_Send Document' showinbar='false' systemcommand='send'/>
+<action title='_Forward' showinbar='false' systemcommand='forward'/>
+<action title='_Move To Folder...' showinbar='false' systemcommand='movetofolder'/>
+<action title='_Remove From Folder' showinbar='false' systemcommand='removefromfolder'/>
+<action title='_Read' showinbar='false' systemcommand='markread'/>
+<action title='_Unread' showinbar='false' systemcommand='markunread'/>
+<action title='_Open in New Window' showinbar='false' systemcommand='openinnewwindow'/>
+<action title='_Print...' showinbar='false' systemcommand='print'/>
+<action title='_Delete' showinbar='false' systemcommand='delete'/>
+<action title='_Document Properties' showinbar='false' systemcommand='properties'/>
+<action title='C_ut' showinbar='false' systemcommand='cut'/>
+<action title='_Copy' showinbar='false' systemcommand='copy'/>
+<action title='Copy as Document _Link' showinbar='false' systemcommand='copyasdoclink'/>
+<action title='Copy as _Table' showinbar='false' systemcommand='copyastable'/>
+<action title='P_aste' showinbar='false' systemcommand='paste'/>
+<action title='_Open' showinbar='false' systemcommand='open'/>
+<action title='Bookmark' showinbar='false' systemcommand='bookmark'/></actionbar>
+<column sort='ascending' hidedetailrows='false' itemname='name' width='10'
+ resizable='true' separatemultiplevalues='false' sortnoaccent='true' sortnocase='true'
+ showaslinks='false'><columnheader title='name'><font size='9pt' style='bold'/></columnheader></column>
+<column sort='ascending' hidedetailrows='false' itemname='description' width='20.2500'
+ resizable='true' separatemultiplevalues='false' sortnoaccent='true' sortnocase='true'
+ showaslinks='false'><columnheader title='description'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='words' width='16.6250' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='words'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='$0' width='22.6250' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='unid'><font size='9pt' style='bold'/></columnheader><code event='value'><formula
+>@Text(@DocumentUniqueID)</formula></code></column>
+<column hidedetailrows='false' itemname='coatOfArms' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='coatOfArms'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='currentLord' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='currentLord'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='heir' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='heir'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='overlord' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='overlord'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='region' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='region'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='seat' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='seat'><font size='9pt' style='bold'/></columnheader></column>
+<column hidedetailrows='false' itemname='title' width='10' resizable='true'
+ separatemultiplevalues='false' sortnoaccent='false' sortnocase='true' showaslinks='false'><columnheader
+ title='title'><font size='9pt' style='bold'/></columnheader></column></view>
+

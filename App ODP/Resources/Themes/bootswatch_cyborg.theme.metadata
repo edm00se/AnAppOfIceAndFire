@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.4" replicaid="86257EDA00047802" version="9.0" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="16e" sequence="89" unid="DA718185568D486B85257C460012A1B5">
+<created><datetime>20131218T222330,45-05</datetime></created>
+<modified><datetime dst="true">20151009T194849,16-05</datetime></modified>
+<revised><datetime dst="true">20150928T212702,63-05</datetime></revised>
+<lastaccessed><datetime dst="true">20151009T194849,16-05</datetime></lastaccessed>
+<addedtofile><datetime dst="true">20151009T194849,16-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Eric McCormick/O=Eric McCormick</name><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></updatedby>
+<wassignedby><name>CN=eric_mccormick_boldt_com/O=Bluemix</name></wassignedby>
+<item name="$Flags"><text>34567Cg~`</text></item>
+<item name="$TITLE" sign="true"><text>bootswatch_cyborg.theme</text></item>
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+<item name="$FileNames" sign="true"><text>bootswatch_cyborg.theme</text></item></note>
