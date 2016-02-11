@@ -9,3 +9,4 @@ ODP/WebContent/*.txt
 .DS_Store
 node_modules/*
 public
+.sonar
