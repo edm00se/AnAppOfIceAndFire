@@ -1,3 +1,8 @@
+# Note
+You should either dowload the [latest release](https://github.com/edm00se/AnAppOfIceAndFire/releases/latest) or cone from that corresponding commit (e991d40). The [next release](https://github.com/edm00se/AnAppOfIceAndFire/releases/tag/untagged-541762a13d97418f22f9) will contain all the goodies I'm currently refactoring in.
+
+refs: [#5](https://github.com/edm00se/AnAppOfIceAndFire/issues/5), [#6](https://github.com/edm00se/AnAppOfIceAndFire/issues/6)
+
 ## Synopsis
 
 This is an evolution of my demo app, "An App of Ice and Fire". There are currently branches for the stand-alone (single NSF) and Bluemix deployable (data and app NSFs segregated), along with the task runners being consolidated and front-end (UI layer of the) app being moved into its source with the `ODP/WebContent/` path being the published, optimized path.
