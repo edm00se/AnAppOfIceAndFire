@@ -1,5 +1,5 @@
 # Note
-You should either dowload the [latest release](https://github.com/edm00se/AnAppOfIceAndFire/releases/latest) or cone from that corresponding commit (e991d40). The next release will contain all the goodies I'm currently refactoring in; so if you want to use the _master_ branch in its current state, you can, but you need to perform the below steps for setting up your Domino (and Designer) environment (`java.pol`, JARs), followed by the creation of the `public/` symlink (instructions below), then an `npm install` and finally a `bower install` (node required, tested with v4 LTS).
+You should either dowload the [latest release](https://github.com/edm00se/AnAppOfIceAndFire/releases/latest) or cone from the [corresponding commit](https://github.com/edm00se/AnAppOfIceAndFire/tree/0.5.3.1). The next release will contain all the goodies I'm currently refactoring in; so if you want to use the _master_ branch in its current state, you can, but you need to perform the below steps for setting up your Domino (and Designer) environment (`java.pol`, JARs), followed by the creation of the `public/` symlink (instructions below), then an `npm install` and finally a `bower install` (node required, tested with v4 LTS).
 
 refs: [#5](https://github.com/edm00se/AnAppOfIceAndFire/issues/5), [#6](https://github.com/edm00se/AnAppOfIceAndFire/issues/6)
 
