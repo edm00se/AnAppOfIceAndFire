@@ -14,10 +14,10 @@
   "author": "edm00se",
   "license": "MIT",
   "dependencies": {
-    "json-server": "^0.8.14"
+    "json-server": "^0.8.17"
   },
   "devDependencies": {
-    "browser-sync": "^2.12.8",
+    "browser-sync": "^2.14.0",
     "compression": "^1.6.2",
     "del": "^2.2.0",
     "grunt": "^1.0.1",

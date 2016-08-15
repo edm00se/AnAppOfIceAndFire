@@ -26,14 +26,15 @@
 		$scope.charactersOfWesteros = [];
 		//the factory is returning the promise of the $http, so handle success/error here
 		characterCollectionFactory
-			.success( function(data, status, headers, config) {
+			.then( function(data, status, headers, config) {
 				if( !data.hasOwnProperty("dataAr") ){
+					$scope.characterFromJsonServer = true;
 					//loading by non-Domino method, probably json-server; just use the response
-					$scope.charactersOfWesteros = data;
+					$scope.charactersOfWesteros = data.data;
 				}else{
 					$scope.charactersOfWesteros = data.dataAr;
 				}
-			}).error( function(data, status, headers, config) {
+			}, function(data, status, headers, config) {
 				$scope.charactersOfWesteros = null;
 				console.log("data: " + data);
 				console.log("status: " + status);
@@ -49,10 +50,9 @@
 				method : 'DELETE',
 				url : 'characters/'+unid
 			})
-			.success( function(data, status, headers, config){
+			.then( function(data, status, headers, config){
 				console.log("successfully deleted character with id: "+unid);
-			})
-			.error( function(data, status, headers, config){
+			}, function(data, status, headers, config){
 				//might as well say something
 				console.log("error, status: "+status+"\nmessage: "+data);
 			})
@@ -83,11 +83,11 @@
 		var fieldNames = [];
 
 		characterFactory($stateParams.item)
-			.success(function(data, status, headers, config) {
+			.then( function(data, status, headers, config) {
 				if( !data.hasOwnProperty("values") ){
 					var values = {};
-					for( var prop in data ){
-						values[prop] = data[prop];
+					for( var prop in data.data ){
+						values[prop] = data.data[prop];
 					}
 					var tmpResp = {
 						"editMode": true,
@@ -118,14 +118,16 @@
 					};
 					$scope.myCharacter = tmpResp;
 				}
+				if( $scope.myCharacter.hasOwnProperty('id') ){
+					delete $scope.myCharacter.id;
+				}
 				$scope.canEditForm = true;
 				angular.forEach($scope.myCharacter.values,function(value,key){
-					if( key!="unid" ){
+					if( key!="unid" && key!="id" ){
 						fieldNames.push(key);
 					}
 				});
-			})
-			.error(function(data, status, headers, config) {
+			}, function(data, status, headers, config) {
 				console.log("status: "+status);
 				console.log("data: "+data);
 				console.log("headers: "+headers);
@@ -173,11 +175,11 @@
 			// the ng-tags-input values need to be returned to array of literals (strings)
 			var multiValueFields = ["abilities","siblings","parents","children"];
 
-			var tmpOb = { "unid": $scope.myCharacter.unid };
-			//console.log("checking field names: "+fieldNames.toString());
+			var unid = $scope.myCharacter.unid||$scope.myCharacter.values.unid;
+			var tmpOb = { "unid": unid };
 			angular.forEach(fieldNames, function(fldNm){
 				var nmG2g = fldNm!="unid";
-				var dirtyG2g = !!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty == true;
+				var dirtyG2g = (!!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty == true)||false;
 				if( nmG2g && dirtyG2g ){ //ignore multi-value fields
 					var isMulti = isInArray(fldNm,multiValueFields);
 					if( isMulti ){
@@ -193,18 +195,26 @@
 						//set new value back to the tmp object
 						tmpOb[fldNm] = $scope.myCharacter.values[fldNm];
 					}
+				} else {
+					if( $scope.characterFromJsonServer ){
+						// dirty hack to fix missing elements, since json-server expects all properties for PUT
+						for( prop in $scope.myCharacter.values ){
+							if( !tmpOb.hasOwnProperty(prop) ){
+								tmpOb[prop] = $scope.myCharacter.values[prop];
+							}
+						}
+					}
 				}
 			});
 
 			$http( {
 				method : 'PUT',
-				url : 'characters/'+$scope.myCharacter.unid,
+				url : 'characters/'+tmpOb.unid,
 				data: JSON.stringify(tmpOb)
 			})
-				.success( function(data, status, headers, config){
-					console.log("successfully updated character with unid: "+$scope.myCharacter.unid);
-				})
-				.error( function(data, status, headers, config){
+				.then( function(data, status, headers, config){
+					console.log("successfully updated character with unid: "+tmpOb.unid);
+				}, function(data, status, headers, config){
 					//might as well say something
 					console.log("poop");
 				})
@@ -239,10 +249,10 @@
 		$scope.peopleAr = [];
 		var tmpCharAr = [];
 		characterCollectionFactory
-			.success( function(data, status, headers, config) {
+			.then( function(data, status, headers, config) {
 				if( !data.hasOwnProperty("dataAr") ){
 					//loading by non-Domino method, probably json-server; just use the response
-					tmpCharAr = data;
+					tmpCharAr = data.data;
 				}else{
 					tmpCharAr = data.dataAr;
 				}
@@ -250,7 +260,7 @@
 					var myChar = tmpCharAr[i];
 					$scope.peopleAr.push(myChar.charFirstName+" "+myChar.charLastName);
 				}
-			}).error( function(data, status, headers, config){
+			}, function(data, status, headers, config){
 				console.log("status: "+status);
 				console.log("data: "+data);
 				console.log("headers: "+headers);
@@ -286,8 +296,8 @@
 
 			//console.log("checking field names: "+fieldNames.toString());
 			angular.forEach(fieldNames, function(fldNm){
-				var nmG2g = fldNm!="unid";
-				var dirtyG2g = !!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty == true;
+				var nmG2g = fldNm!="unid" && fldNm!="id";
+				var dirtyG2g = (!!$scope.characterForm[fldNm].$dirty && $scope.characterForm[fldNm].$dirty == true)||false;
 				if( nmG2g && dirtyG2g ){ //ignore multi-value fields
 					var isMulti = isInArray(fldNm,multiValueFields);
 					if( isMulti ){
@@ -311,10 +321,9 @@
 				url : 'characters',
 				data: JSON.stringify(tmpOb)
 			})
-				.success( function(data, status, headers, config){
+				.then( function(data, status, headers, config){
 					console.log("successfully updated character with unid: "+data.unid);
-				})
-				.error( function(data, status, headers, config){
+				}, function(data, status, headers, config){
 					//might as well say something
 					console.log("poop");
 				})
