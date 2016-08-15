@@ -1,5 +1,5 @@
 (function(){
-	
+
 	//defines the AngularJS app as a moduloadChildrenTagsle
 	angular.module('westerosiApp')
 
@@ -10,19 +10,19 @@
 	 //provies the controller to the app, which handles the interaction of data (model) with the view (a la MVC)
 	.controller('CharacterListCtrl', ['$scope','$state','$http','$filter','characterCollectionFactory',
 		function($scope, $state, $http, $filter, characterCollectionFactory) {
-		
+
 		//defines filter/search/etc. vars
 		$scope.pageQty = 5; //detectPhone() ? 10 : 30;
 		$scope.curPage = 0;
-		
+
 		//calculates the number of results
 		$scope.numberOfPages = function() {
 			return Math.ceil($scope.charactersOfWesteros.length / $scope.pageQty) || 0;
 		}
-		
+
 		//defines a boolean var
 		$scope.showSearch = false;
-		
+
 		$scope.charactersOfWesteros = [];
 		//the factory is returning the promise of the $http, so handle success/error here
 		characterCollectionFactory
@@ -183,8 +183,8 @@
 					if( isMulti ){
 						//handle multi-value fields by converting to simple string array
 						var tmpAr = [];
-						for( var i=0; i<$scope.myCharacter.values[fld].length; i++ ){
-							var ob = $scope.myCharacter.values[fld][i];
+						for( var i=0; i<$scope.myCharacter.values[fldNm].length; i++ ){
+							var ob = $scope.myCharacter.values[fldNm][i];
 							tmpAr.push(ob.text);
 						}
 						//set string array back to tmp object
@@ -195,7 +195,7 @@
 					}
 				}
 			});
-			
+
 			$http( {
 				method : 'PUT',
 				url : 'characters/'+$scope.myCharacter.unid,
@@ -305,7 +305,7 @@
 					}
 				}
 			});
-			
+
 			$http( {
 				method : 'POST',
 				url : 'characters',
