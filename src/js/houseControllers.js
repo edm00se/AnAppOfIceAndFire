@@ -26,12 +26,12 @@
 		$scope.housesOfWesteros = [];
 		//the factory is returning the promise of the $http, so handle success/error here
 		houseCollectionFactory
-			.then( function(data, status, headers, config) {
-				if( !data.hasOwnProperty("dataAr") ){
+			.then( function(response, status, headers, config) {
+				if( !response.data.hasOwnProperty("dataAr") ){
 					//loading by non-Domino method, probably json-server; just use the response
-					$scope.housesOfWesteros = data.data;
+					$scope.housesOfWesteros = response.data;
 				}else{
-					$scope.housesOfWesteros = data.dataAr;
+					$scope.housesOfWesteros = response.data.dataAr;
 				}
 			}, function(data, status, headers, config) {
 				$scope.housesOfWesteros = null;

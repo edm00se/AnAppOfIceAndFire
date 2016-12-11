@@ -26,17 +26,17 @@
 		$scope.charactersOfWesteros = [];
 		//the factory is returning the promise of the $http, so handle success/error here
 		characterCollectionFactory
-			.then( function(data, status, headers, config) {
-				if( !data.hasOwnProperty("dataAr") ){
+			.then( function(response, status, headers, config) {
+				if( !response.data.hasOwnProperty("dataAr") ){
 					$scope.characterFromJsonServer = true;
 					//loading by non-Domino method, probably json-server; just use the response
-					$scope.charactersOfWesteros = data.data;
+					$scope.charactersOfWesteros = response.data;
 				}else{
-					$scope.charactersOfWesteros = data.dataAr;
+					$scope.charactersOfWesteros = response.data.dataAr;
 				}
-			}, function(data, status, headers, config) {
+			}, function(response, status, headers, config) {
 				$scope.charactersOfWesteros = null;
-				console.log("data: " + data);
+				console.log("data: " + response);
 				console.log("status: " + status);
 				console.log("headers: " + headers);
 				console.log("config: " + JSON.parse(config));
@@ -249,12 +249,12 @@
 		$scope.peopleAr = [];
 		var tmpCharAr = [];
 		characterCollectionFactory
-			.then( function(data, status, headers, config) {
-				if( !data.hasOwnProperty("dataAr") ){
+			.then( function(response, status, headers, config) {
+				if( !response.data.hasOwnProperty("dataAr") ){
 					//loading by non-Domino method, probably json-server; just use the response
-					tmpCharAr = data.data;
+					tmpCharAr = response.data;
 				}else{
-					tmpCharAr = data.dataAr;
+					tmpCharAr = response.data.dataAr;
 				}
 				for( var i=0; i<tmpCharAr.length; i++ ){
 					var myChar = tmpCharAr[i];
