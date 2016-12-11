@@ -63,8 +63,8 @@ gulp.task('index', function(){
   var sources = gulp.src([
                   './'+dist+'/*.css',
                   './'+dist+'/*.js'
-                ], { ignorePath: dist, read: false });
-  return target.pipe(inject(sources, { ignorePath: ''+dist+'' }))
+                ], { ignorePath: dist, read: false, relative: true });
+  return target.pipe(inject(sources, { ignorePath: dist, addRootSlash: false }))
     .pipe(gulp.dest('./'+dist+''));
 });
 

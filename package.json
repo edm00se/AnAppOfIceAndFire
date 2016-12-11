@@ -10,7 +10,7 @@
     "dev": "concurrently --kill-others \"npm run json-srv\" \"npm run bs-srv\" \"npm run build:watch\"",
     "bs-srv": "browser-sync start --port 8000 --proxy localhost:3000",
     "json-srv": "json-server --quiet --id unid db.json --watch --routes routes.json --static ODP/WebContent/",
-    "clean": "del 'ODP/WebContent/*' '!ODP/WebContent/WEB-INF' '!ODP/WebContent/lib'",
+    "clean": "del-cli 'ODP/WebContent/*' '!ODP/WebContent/WEB-INF' '!ODP/WebContent/lib'",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
