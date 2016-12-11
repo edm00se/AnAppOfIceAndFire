@@ -3,3 +3,5 @@
 *.xsp.metadata linguist-language=XPages
 *.form linguist-language=XPages
 *.view linguist-language=XPages
+
+* text=auto

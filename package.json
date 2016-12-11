@@ -1,52 +1,51 @@
 {
   "name": "app-of-ice-and-fire",
-  "version": "1.0.2",
+  "version": "0.6.0",
   "description": "an app of ice and fire",
-  "main": "index.html",
+  "main": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server --id unid db.json --watch --routes routes.json"
+    "postinstall": "node ./node_modules/bower/bin/bower install",
+    "build": "gulp build",
+    "build:watch": "gulp",
+    "dev": "concurrently \"npm run json-srv\" \"npm run bs-srv\" \"npm run build:watch\"",
+    "bs-srv": "browser-sync start --port 8000 --proxy localhost:3000",
+    "json-srv": "json-server --quiet --id unid db.json --watch --routes routes.json --static ODP/WebContent/",
+    "clean": "del 'ODP/WebContent/*' '!ODP/WebContent/WEB-INF'",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:edm00se/AnAppOfIceAndFire.git"
   },
-  "author": "edm00se",
+  "author": {
+    "name": "Eric McCormick",
+    "url": "https://ericmccormick.io"
+  },
   "license": "MIT",
   "dependencies": {
-    "json-server": "^0.8.17"
+    "bower": "1.8.0",
+    "concurrently": "3.1.0",
+    "del-cli": "0.2.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.14.0",
-    "compression": "^1.6.2",
-    "del": "^2.2.0",
-    "grunt": "^1.0.1",
-    "grunt-browser-sync": "^2.2.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-htmlmin": "^1.4.0",
-    "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-run": "^0.6.0",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-inject": "^4.1.0",
-    "gulp-jshint": "^2.0.1",
+    "browser-sync": "2.14.0",
+    "compression": "1.6.2",
+    "del": "2.2.0",
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.0",
+    "gulp-inject": "4.1.0",
+    "gulp-jshint": "2.0.1",
     "gulp-json-srv": "0.2.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-minify-html": "^1.0.6",
-    "gulp-ng-annotate": "^2.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.3",
-    "gulp-util": "^3.0.7",
-    "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.0",
-    "run-sequence": "^1.2.0"
+    "gulp-minify-css": "1.2.4",
+    "gulp-minify-html": "1.0.6",
+    "gulp-ng-annotate": "2.0.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "1.5.3",
+    "gulp-util": "3.0.7",
+    "jshint": "2.9.2",
+    "jshint-stylish": "2.2.0",
+    "json-server": "0.9.4",
+    "run-sequence": "1.2.0"
   }
 }

@@ -1,12 +1,7 @@
-ODP/WebContent/libs/*
-ODP/WebContent/index.html
-ODP/WebContent/style.min.css
-ODP/WebContent/scripts.js
-ODP/WebContent/partials
-ODP/WebContent/tags
+ODP/WebContent/*
+!ODP/WebContent/WEB-INF
 src/libs
-ODP/WebContent/*.txt
 .DS_Store
-node_modules/*
+node_modules
 public
 .sonar

@@ -198,7 +198,7 @@
 				} else {
 					if( $scope.characterFromJsonServer ){
 						// dirty hack to fix missing elements, since json-server expects all properties for PUT
-						for( prop in $scope.myCharacter.values ){
+						for( var prop in $scope.myCharacter.values ){
 							if( !tmpOb.hasOwnProperty(prop) ){
 								tmpOb[prop] = $scope.myCharacter.values[prop];
 							}
