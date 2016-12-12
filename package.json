@@ -4,7 +4,7 @@
   "description": "an app of ice and fire",
   "main": "src/index.html",
   "scripts": {
-    "postinstall": "node ./node_modules/bower/bin/bower install",
+    "postinstall": "node ./node_modules/bower/bin/bower install -s",
     "build": "gulp build",
     "build:watch": "gulp",
     "dev": "concurrently --kill-others \"npm run json-srv\" \"npm run bs-srv\" \"npm run build:watch\"",
