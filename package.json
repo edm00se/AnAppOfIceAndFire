@@ -4,7 +4,10 @@
   "description": "an app of ice and fire",
   "main": "src/index.html",
   "scripts": {
-    "postinstall": "node ./node_modules/bower/bin/bower install -s",
+    "postinstall": "node ./node_modules/bower/bin/bower install -q && npm run fix-fa",
+    "fix-fa": "npm run fix-fa:ver && npm run fix-fa:ie",
+    "fix-fa:ver": "replace '\\?v=4\\.7\\.0' '' ODP/WebContent/libs/fontawesome/css/*.css -s",
+    "fix-fa:ie": "replace '\\?#iefix&v=4\\.7\\.0' '' ODP/WebContent/libs/fontawesome/css/*.css -s",
     "build": "gulp build",
     "build:watch": "gulp",
     "dev": "concurrently --kill-others \"npm run json-srv\" \"npm run bs-srv\" \"npm run build:watch\"",
@@ -45,6 +48,7 @@
     "jshint": "2.9.4",
     "jshint-stylish": "2.2.1",
     "json-server": "0.9.4",
+    "replace": "0.3.0",
     "run-sequence": "1.2.2"
   }
 }

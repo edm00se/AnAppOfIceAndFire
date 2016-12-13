@@ -1,10 +1,10 @@
 {
-  "name": "an app of ice and fire",
-  "version": "0.0.1",
+  "name": "an-app-of-ice-and-fire",
+  "version": "0.6.0",
   "dependencies": {
-    "bootstrap": "latest",
-    "fontawesome": "latest",
-    "jquery": "latest",
+    "bootstrap": "3.3.7",
+    "fontawesome": "4.7.0",
+    "jquery": "2.2.4",
     "angular": "1.4.3",
     "angular-sanitize": "1.4.3",
     "ng-tags-input": "3.0.0"
