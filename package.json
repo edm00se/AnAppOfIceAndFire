@@ -4,7 +4,7 @@
   "description": "an app of ice and fire",
   "main": "src/index.html",
   "scripts": {
-    "postinstall": "node ./node_modules/bower/bin/bower install -s && npm run fix-fa",
+    "postinstall": "node ./node_modules/bower/bin/bower install -s && npm run fix-fa && npm run pull:fe",
     "fix-fa": "npm run fix-fa:ver && npm run fix-fa:ie",
     "fix-fa:ver": "replace '\\?v=4\\.7\\.0' '' App\\ ODP/WebContent/libs/fontawesome/css/*.css -s",
     "fix-fa:ie": "replace '\\?#iefix&v=4\\.7\\.0' '' App\\ ODP/WebContent/libs/fontawesome/css/*.css -s",
@@ -15,7 +15,7 @@
     "json-srv": "json-server --quiet --id unid db.json --watch --routes routes.json --static 'App ODP/WebContent/'",
     "clean": "del-cli 'App ODP/WebContent/*' '!App ODP/WebContent/WEB-INF' '!App ODP/WebContent/lib'",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "fe": "del-cli 'src' && git checkout master -- src"
+    "pull:fe": "del-cli 'src' && git checkout master -- src"
   },
   "repository": {
     "type": "git",

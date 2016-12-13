@@ -10,7 +10,9 @@ The front-end portion of the application is treated as being held primarily in t
 
 - commit any changes
 - `git checkout bluemix`
-- `npm run fe`
+- `npm install` \*
+
+\* Running install does the install of development/tooling dependencies, front-end library dependencies, performs the fix (removes `?v=...` from Font-Awesome), and copies the `src/` contents from `master`. Alternatively, you could run `npm run pull:fe` instead of re-running the install.
 
 This will clear the `src/` directory and pull a copy of the latest committed contents of the `src/` directory from the `master` branch. The other scripts here have all been adjusted to work against `App ODP` instead of `ODP`.
 

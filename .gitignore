@@ -1,6 +1,6 @@
 App\ ODP/WebContent/*
 !App\ ODP/WebContent/WEB-INF
-src/libs
+src
 .DS_Store
 node_modules
 public
