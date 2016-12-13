@@ -1,5 +1,5 @@
 (function(){
-	
+
 	//defines the AngularJS app as a module
 	angular.module('westerosiApp')
 
@@ -10,38 +10,35 @@
 	 //provies the controller to the app, which handles the interaction of data (model) with the view (a la MVC)
 	.controller('HouseListCtrl', ['$scope','$state','$http','$filter','houseCollectionFactory',
 		function($scope, $state, $http, $filter, houseCollectionFactory) {
-		
+
 		//defines filter/search/etc. vars
 		$scope.pageQty = 5; //detectPhone() ? 10 : 30;
 		$scope.curPage = 0;
-		
+
 		//calculates the number of results
 		$scope.numberOfPages = function() {
 			return Math.ceil($scope.housesOfWesteros.length / $scope.pageQty) || 0;
 		}
-		
+
 		//defines a boolean var
 		$scope.showSearch = false;
-		
+
 		$scope.housesOfWesteros = [];
 		//the factory is returning the promise of the $http, so handle success/error here
 		houseCollectionFactory
-			.success( function(data, status, headers, config) {
-				if( !data.hasOwnProperty("dataAr") ){
+			.then( function(response, status, headers, config) {
+				if( !response.data.hasOwnProperty("dataAr") ){
 					//loading by non-Domino method, probably json-server; just use the response
-					$scope.housesOfWesteros = data;
+					$scope.housesOfWesteros = response.data;
 				}else{
-					$scope.housesOfWesteros = data.dataAr;
+					$scope.housesOfWesteros = response.data.dataAr;
 				}
-			}).error( function(data, status, headers, config) {
+			}, function(data, status, headers, config) {
 				$scope.housesOfWesteros = null;
 				console.log("data: " + data);
 				console.log("status: " + status);
 				console.log("headers: " + headers);
 				console.log("config: " + JSON.parse(config));
-			})
-			 .then( function(){
-				//angular.element('div.screenMask').css('visibility','hidden');
 			});
 
 		$scope.removeHouse = function(unid){
@@ -49,10 +46,9 @@
 				method : 'DELETE',
 				url : 'houses/'+unid
 			})
-			.success( function(data, status, headers, config){
+			.then( function(data, status, headers, config){
 				console.log("successfully deleted house with id: "+unid);
-			})
-			.error( function(data, status, headers, config){
+			}, function(data, status, headers, config){
 				//might as well say something
 				console.log("error, status: "+status+"\nmessage: "+data);
 			})
@@ -60,9 +56,9 @@
 				$state.go('houses',{},{reload: true});
 			});
 		};
-		
+
 	}])
-	
+
 	.controller('OneHouseCtrl', ['$scope','$state','$stateParams','$http','houseFactory',
 		function($scope, $state, $stateParams, $http, houseFactory){
 		// check for empty ID
@@ -83,7 +79,7 @@
 		var fieldNames = [];
 
 		houseFactory($stateParams.item)
-			.success(function(data, status, headers, config) {
+			.then( function(data, status, headers, config) {
 				if( !data.hasOwnProperty("values") ){
 					var values = {};
 					for( var prop in data ){
@@ -92,7 +88,7 @@
 					var tmpResp = {
 						"editMode": true,
 						"unid": data.unid,
-						"values": values
+						"values": values.data
 					};
 					$scope.myHouse = tmpResp;
 				}else{
@@ -104,8 +100,7 @@
 						fieldNames.push(key);
 					}
 				});
-			})
-			.error(function(data, status, headers, config) {
+			}, function(data, status, headers, config) {
 				console.log("status: "+status);
 				console.log("data: "+data);
 				console.log("headers: "+headers);
@@ -122,7 +117,7 @@
 
 		$scope.saveHouseForm = function(){
 			if( houseForm.$valid ){
-				
+
 				var tmpOb = { "unid": $scope.myHouse.unid };
 				//console.log("checking field names: "+fieldNames.toString());
 				angular.forEach(fieldNames, function(fldNm){
@@ -132,23 +127,22 @@
 						tmpOb[fldNm] = tmpVal;
 					}
 				});
-				
+
 				$http( {
 					method : 'PUT',
 					url : 'houses/'+$scope.myHouse.unid,
 					data: JSON.stringify(tmpOb)
 				})
-					.success( function(data, status, headers, config){
+				.then( function(data, status, headers, config){
 						console.log("successfully updated house with unid: "+$scope.myHouse.unid);
-					})
-					.error( function(data, status, headers, config){
+					}, function(data, status, headers, config){
 						//might as well say something
 						console.log("poop");
 					})
 					.then( function(){
 						$state.go('houses',{},{reload: true});
 					});
-				
+
 			}else{
 				var tmpFldAr = [];
 				angular.forEach($scope.houseForm, function(value, key){
@@ -159,7 +153,7 @@
 				});
 				alert("The form shows that there are fields which need to be fixed before you can save.\n\nPlease review the form, correct any validation requirements, and try again.");
 			}
-			
+
 		}
 
 		$scope.$on("$locationChangeStart", function(event) {
@@ -169,7 +163,7 @@
         });
 
 	}])
-	
+
 	.controller('NewHouseCtrl', ['$scope','$state','$stateParams','$http',
 		function($scope, $state, $stateParams, $http){
 
@@ -189,26 +183,25 @@
 		}
 
 		$scope.saveHouseForm = function(){
-			if( houseForm.$valid ){
-
+			// if( houseForm.$valid ){
 				var nwUnid = null;
-				
+
 				$http( {
 					method : 'POST',
 					url : 'houses',
 					data: JSON.stringify($scope.myHouse.values)
 				})
-					.success( function(data, status, headers, config){
-						var rawUnid = headers('Location'); // ex: /xsp/houses/:unid
-						if( rawUnid == null ){ //running json-server
-							nwUnid = data.unid;
-							console.log("successfully saved new house with unid: "+nwUnid );
-						}else{
-							nwUnid = rawUnid.split("/")[3];
-							console.log("successfully saved new house with unid: "+nwUnid );
-						}
-					})
-					.error( function(data, status, headers, config){
+					.then( function(resp){
+						var data = resp.data;
+						var config = resp.config;
+						var headers = resp.headers;
+						var status = resp.status+": "+resp.statusText;
+						console.log("data: ");
+						console.table(data);
+						var nwUnid = headers('Location')||data.unid; // ex: /xsp/houses/:unid
+						nwUnid = data.unid;
+						console.log("successfully saved new house with unid: "+nwUnid );
+					}, function(data, status, headers, config){
 						//might as well say something
 						console.log("error: "+data);
 					})
@@ -219,7 +212,7 @@
 							$state.go('houses',{},{reload: true});
 						}
 					});
-
+			/*
 			}else{
 				var tmpFldAr = [];
 				angular.forEach($scope.houseForm, function(value, key){
@@ -230,7 +223,8 @@
 				});
 				alert("The form shows that there are fields which need to be fixed before you can save.\n\nPlease review the form, correct any validation requirements, and try again.");
 			}
-			
+			*/
+
 		}
 
 		$scope.$on("$locationChangeStart", function(event) {

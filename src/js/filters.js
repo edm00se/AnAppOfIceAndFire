@@ -1,18 +1,22 @@
 (function(){
-	
+
 	//defines the AngularJS app as a module
 	angular.module('westerosiApp')
 
 	/*
 	 *	Filters
 	 */
-	
+
 	// we already use the limitTo filter built-in to AngularJS,
 	// this is a custom filter for startFrom
 	.filter('startFrom', function() {
 		return function(input, start) {
-			start = +start; //parse to int
-			return input.slice(start);
+			if( Object.prototype.toString.call( input ) === '[object Array]' ){
+				start = +start; //parse to int
+				return input.slice(start);
+			} else {
+				return input;
+			}
 		}
 	})
 
