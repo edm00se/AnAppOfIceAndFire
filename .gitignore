@@ -1,5 +1,6 @@
 App\ ODP/WebContent/*
 !App\ ODP/WebContent/WEB-INF
+App\ ODP/Code/Java
 src
 .DS_Store
 node_modules

@@ -12,9 +12,9 @@ The front-end portion of the application is treated as being held primarily in t
 - `git checkout bluemix`
 - `npm install` \*
 
-\* Running install does the install of development/tooling dependencies, front-end library dependencies, performs the fix (removes `?v=...` from Font-Awesome), and copies the `src/` contents from `master`. Alternatively, you could run `npm run pull:fe` instead of re-running the install.
+\* Running install does the install of development/tooling dependencies, front-end library dependencies, performs the fix (removes `?v=...` from Font-Awesome), and copies the `src/` and `ODP/Code/Java` contents from `master` to their respective destinations. Alternatively, you could run `npm run pull` instead of re-running the install.
 
-This will clear the `src/` directory and pull a copy of the latest committed contents of the `src/` directory from the `master` branch. The other scripts here have all been adjusted to work against `App ODP` instead of `ODP`.
+This will clear the `src/` directory and pull a copy of the latest committed contents of the `src/` directory from the `master` branch, in addition to the Java classes contained within the `master` branch's `ODP/Code/Java/` path; aka- `master` is where to keep your files. The other scripts here have all been adjusted to work against `App ODP` instead of `ODP`.
 
 ## History
 
@@ -26,7 +26,7 @@ This application requires some JAR files to be contained within the _<Domino ins
 
 * [com.google.Gson](https://code.google.com/p/google-gson/)
 * [Apache Commons IOUtils](http://commons.apache.org/proper/commons-io/)
-* a `notes.ini` edit (add _HTTPEnableMethods=PUT,DELETE_ next to your local web preview port) OR adding PUT and DELETE as allowed methods in your Internet Site document for your server
+* a `notes.ini` edit (add _HTTPEnableMethods=PUT,DELETE_ next to your local web preview port) OR adding `PUT` and `DELETE` as allowed methods in your Internet Site document for your server
 * the [lwpd.domino.adapter.jar](http://hasselba.ch/blog/?p=746) JAR needs to be added
 
 I've marked where I've used GSON in my Java classes and have almost entirely provided the working _com.ibm.commons.util.io.json_ equivalent. You can also manually work around the Apache Commons libraries, as they're mostly just helper utilities. I do recommend using them though, so if you can't access your server's file system, you can import them into the NSF.
